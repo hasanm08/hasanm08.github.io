@@ -3,7 +3,7 @@ const MANIFEST = 'flutter-app-manifest';
 const TEMP = 'flutter-temp-cache';
 const CACHE_NAME = 'flutter-app-cache';
 const RESOURCES = {
-  "assets/AssetManifest.json": "191794339eb95fd6fc377025848e06c4",
+  "assets/AssetManifest.json": "a55c617af207c8c73946cfc930fdb717",
 "assets/assets/fonts/Exo2-Medium.ttf": "654449e291aeca104593a0c2ad4b99a8",
 "assets/assets/fonts/Pacifico-Regular.ttf": "9b94499ccea3bd82b24cb210733c4b5e",
 "assets/assets/images/coding.png": "53ba28d748db5eb33c277888d3879c08",
@@ -18,17 +18,17 @@ const RESOURCES = {
 "assets/assets/images/telegram.png": "eb1fa44bd3e279f3f0b7c05df3bee9b9",
 "assets/assets/images/whatsapp.png": "fc601ba58f923366416bd69b8be6cca4",
 "assets/FontManifest.json": "c8cbaf8e04944b7b8d1e43c433b23d6d",
-"assets/fonts/MaterialIcons-Regular.otf": "1288c9e28052e028aba623321f7826ac",
-"assets/NOTICES": "042b03bbb9fe94f708f8a084141ce1a1",
-"assets/packages/font_awesome_flutter/lib/fonts/fa-brands-400.ttf": "831eb40a2d76095849ba4aecd4340f19",
-"assets/packages/font_awesome_flutter/lib/fonts/fa-regular-400.ttf": "a126c025bab9a1b4d8ac5534af76a208",
-"assets/packages/font_awesome_flutter/lib/fonts/fa-solid-900.ttf": "d80ca32233940ebadc5ae5372ccd67f9",
+"assets/fonts/MaterialIcons-Regular.otf": "4e6447691c9509f7acdbf8a931a85ca1",
+"assets/NOTICES": "2e78fec31e77b656b56369ffe99510ba",
+"assets/packages/font_awesome_flutter/lib/fonts/fa-brands-400.ttf": "00bb2b684be61e89d1bc7d75dee30b58",
+"assets/packages/font_awesome_flutter/lib/fonts/fa-regular-400.ttf": "4b6a9b7c20913279a3ad3dd9c96e155b",
+"assets/packages/font_awesome_flutter/lib/fonts/fa-solid-900.ttf": "dffd9504fcb1894620fa41c700172994",
 "favicon.png": "5dcef449791fa27946b3d35ad8803796",
 "icons/Icon-192.png": "ac9a721a12bbc803b44f645561ecb1e1",
 "icons/Icon-512.png": "96e752610906ba2a93c65f8abe1645f1",
-"index.html": "ade232c4cae6bd1ee43987226d11039d",
-"/": "ade232c4cae6bd1ee43987226d11039d",
-"main.dart.js": "38499f6baa99648cfbb9954ee749052e",
+"index.html": "f081a4ac4c9d3abea0f2a4cda982b0aa",
+"/": "f081a4ac4c9d3abea0f2a4cda982b0aa",
+"main.dart.js": "3c1eb8b9da1c260d35cd4562f3ffc054",
 "manifest.json": "246490102f6169c962f051509c988a18",
 "version.json": "6ee4937b434f4eeb18b78d8a3c76e50e"
 };
@@ -48,7 +48,7 @@ self.addEventListener("install", (event) => {
   return event.waitUntil(
     caches.open(TEMP).then((cache) => {
       return cache.addAll(
-        CORE.map((value) => new Request(value + '?revision=' + RESOURCES[value], {'cache': 'reload'})));
+        CORE.map((value) => new Request(value, {'cache': 'reload'})));
     })
   );
 });
@@ -174,7 +174,7 @@ async function downloadOffline() {
     }
     currentContent[key] = true;
   }
-  for (var resourceKey in Object.keys(RESOURCES)) {
+  for (var resourceKey of Object.keys(RESOURCES)) {
     if (!currentContent[resourceKey]) {
       resources.push(resourceKey);
     }
