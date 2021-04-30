@@ -3,12 +3,13 @@ const MANIFEST = 'flutter-app-manifest';
 const TEMP = 'flutter-temp-cache';
 const CACHE_NAME = 'flutter-app-cache';
 const RESOURCES = {
-  "assets/AssetManifest.json": "a55c617af207c8c73946cfc930fdb717",
+  "assets/AssetManifest.json": "54ab2354aae02792a7950b31946629f8",
 "assets/assets/fonts/Exo2-Medium.ttf": "654449e291aeca104593a0c2ad4b99a8",
 "assets/assets/fonts/Pacifico-Regular.ttf": "9b94499ccea3bd82b24cb210733c4b5e",
 "assets/assets/images/coding.png": "53ba28d748db5eb33c277888d3879c08",
 "assets/assets/images/gmail.png": "e79bcec8e3b333c4b242080a6dd40b48",
 "assets/assets/images/hasanm08.jpg": "2e22b0a1510db6bd2c2e9f423b11e802",
+"assets/assets/images/hasanm108.jpg": "96913781dbfe0c63042285c18e71b103",
 "assets/assets/images/instagram.png": "26631a4043b14dff84180bdf51c3cacb",
 "assets/assets/images/Kerman.png": "6400cf65752e411c49d98f4741d5d4c5",
 "assets/assets/images/Mashhad.png": "9963a34a66336e2cb161bd004c40fa41",
@@ -26,9 +27,9 @@ const RESOURCES = {
 "favicon.png": "5dcef449791fa27946b3d35ad8803796",
 "icons/Icon-192.png": "ac9a721a12bbc803b44f645561ecb1e1",
 "icons/Icon-512.png": "96e752610906ba2a93c65f8abe1645f1",
-"index.html": "d14d475a019c7706015daef6a4f995a5",
-"/": "d14d475a019c7706015daef6a4f995a5",
-"main.dart.js": "c19a303b67878a0be3e663610652063b",
+"index.html": "9e4b53228f658544d69904d15d117820",
+"/": "9e4b53228f658544d69904d15d117820",
+"main.dart.js": "aa38dfbea3b677407a8694a5a3570c39",
 "manifest.json": "246490102f6169c962f051509c988a18",
 "version.json": "6ee4937b434f4eeb18b78d8a3c76e50e"
 };
