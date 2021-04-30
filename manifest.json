@@ -1,11 +1,11 @@
 {
-    "name": "hasanm08",
-    "short_name": "hasanm08",
+    "name": "hasanm08 portfolio",
+    "short_name": "hasanm08 cv",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",
     "theme_color": "#0175C2",
-    "description": "A new Flutter project.",
+    "description": "hasanm08 portfolio for more info linkedin.com/in/hasanm08",
     "orientation": "portrait-primary",
     "prefer_related_applications": false,
     "icons": [
