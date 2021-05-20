@@ -19,16 +19,16 @@ const RESOURCES = {
 "assets/assets/images/telegram.png": "eb1fa44bd3e279f3f0b7c05df3bee9b9",
 "assets/assets/images/whatsapp.png": "fc601ba58f923366416bd69b8be6cca4",
 "assets/FontManifest.json": "c8cbaf8e04944b7b8d1e43c433b23d6d",
-"assets/fonts/MaterialIcons-Regular.otf": "4e6447691c9509f7acdbf8a931a85ca1",
-"assets/NOTICES": "2e78fec31e77b656b56369ffe99510ba",
+"assets/fonts/MaterialIcons-Regular.otf": "1288c9e28052e028aba623321f7826ac",
+"assets/NOTICES": "03328816047e3e1906a061ead0296352",
 "assets/packages/font_awesome_flutter/lib/fonts/fa-brands-400.ttf": "00bb2b684be61e89d1bc7d75dee30b58",
 "assets/packages/font_awesome_flutter/lib/fonts/fa-regular-400.ttf": "4b6a9b7c20913279a3ad3dd9c96e155b",
 "assets/packages/font_awesome_flutter/lib/fonts/fa-solid-900.ttf": "dffd9504fcb1894620fa41c700172994",
 "icons/Icon-192.png": "ac9a721a12bbc803b44f645561ecb1e1",
 "icons/Icon-512.png": "96e752610906ba2a93c65f8abe1645f1",
-"index.html": "2512e1fcfee063b183d9c8f6be6cde90",
-"/": "2512e1fcfee063b183d9c8f6be6cde90",
-"main.dart.js": "488b10b7a80adbfafc57b7744d2bfb00",
+"index.html": "7f718a4a04dcae2ebbe81742fb296bcb",
+"/": "7f718a4a04dcae2ebbe81742fb296bcb",
+"main.dart.js": "0e7e19f13266ac7525c5d78b59c5d08d",
 "manifest.json": "de26242f7d531f8004b2cad3c50ad649",
 "profile.png": "055a91979264664a1ee12b9453610d82",
 "version.json": "c32a170d915d70db1948a154725168b0"
@@ -49,7 +49,7 @@ self.addEventListener("install", (event) => {
   return event.waitUntil(
     caches.open(TEMP).then((cache) => {
       return cache.addAll(
-        CORE.map((value) => new Request(value, {'cache': 'reload'})));
+        CORE.map((value) => new Request(value + '?revision=' + RESOURCES[value], {'cache': 'reload'})));
     })
   );
 });
