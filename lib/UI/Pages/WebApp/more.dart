@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'package:url_launcher/url_launcher.dart';
+import 'package:hasanm08/UI/Components/ContactButton.dart';
 
 class More extends StatelessWidget {
   const More({Key? key}) : super(key: key);
@@ -8,26 +8,14 @@ class More extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
+      mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        Center(child: Text("Access Source in:")),
-        TextButton(
-          onPressed: () async =>
-              await _showUrl('https://github.com/hasanm08/hasanm08.github.io'),
-          child: Text(
-            "https://github.com/hasanm08/hasanm08.github.io",
-            style: Theme.of(context).textTheme.bodyText1!.copyWith(
-                color: Colors.blue, decoration: TextDecoration.underline),
-          ),
-        )
+        Text("Access Source in:"),
+        ContactButton(
+            icon: Icons.code,
+            link: 'https://github.com/hasanm08/hasanm08.github.io',
+            title: 'Github Repo')
       ],
     );
-  }
-
-  Future<void> _showUrl(String url) async {
-    if (await canLaunch(url)) {
-      await launch(url);
-    } else {
-      throw 'Could not launch $url';
-    }
   }
 }

@@ -29,19 +29,36 @@ class _MenuButtonState extends State<MenuButton> {
         width: 160,
         child: FocusableActionDetector(
           onShowHoverHighlight: _handleHoveHighlight,
-          child: InkWell(
-            child: Container(
-              padding: EdgeInsets.all(12),
-              margin: EdgeInsets.fromLTRB(8, 8, 0, 8),
-              decoration: BoxDecoration(
-                  border: null,
-                  color: value == widget.index || _hovering
-                      ? Colors.white
-                      : Colors.blue,
-                  borderRadius: BorderRadius.only(
+          child: Container(
+            margin: EdgeInsets.fromLTRB(8, 8, 0, 8),
+            decoration: BoxDecoration(
+                border: null,
+                color: value == widget.index || _hovering
+                    ? Colors.white
+                    : Colors.blue,
+                borderRadius: BorderRadius.only(
+                  topLeft: Radius.circular(30),
+                  bottomLeft: Radius.circular(30),
+                )),
+            child: TextButton(
+              style: TextButton.styleFrom(
+                  tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+                  animationDuration: const Duration(microseconds: 200),
+                  textStyle: Theme.of(context)
+                      .textTheme
+                      .bodyText1!
+                      .copyWith(fontWeight: FontWeight.w700),
+                  padding: EdgeInsets.all(12),
+                  shadowColor: Colors.white,
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.only(
                     topLeft: Radius.circular(30),
                     bottomLeft: Radius.circular(30),
-                  )),
+                  ))),
+              onPressed: () {
+                Provider.of<MenuBloc>(context, listen: false)
+                    .setIndex(widget.index!);
+              },
               child: Row(
                 mainAxisSize: MainAxisSize.max,
                 children: [
@@ -64,10 +81,6 @@ class _MenuButtonState extends State<MenuButton> {
                 ],
               ),
             ),
-            onTap: () {
-              Provider.of<MenuBloc>(context, listen: false)
-                  .setIndex(widget.index!);
-            },
           ),
         ),
       ),
