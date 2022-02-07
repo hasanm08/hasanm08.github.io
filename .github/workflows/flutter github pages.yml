@@ -23,6 +23,7 @@ jobs:
         run: |
           flutter config --enable-web
           flutter pub get
+          flutter doctor -v
 
       - name: Build
         run: flutter build web --pwa-strategy offline-first --dart-define=FLUTTER_WEB_USE_SKIA=true --web-renderer auto --profile
