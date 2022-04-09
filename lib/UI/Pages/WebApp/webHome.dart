@@ -15,17 +15,17 @@ class WebHome extends StatelessWidget {
           mainAxisSize: MainAxisSize.max,
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            SizedBox(
+            const SizedBox(
               height: 150,
             ),
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text("HELLO",
+                const Text("HELLO",
                     style: TextStyle(
                         fontFamily: "Exo2", fontSize: 18, color: Colors.black)),
-                Padding(
-                  padding: const EdgeInsets.symmetric(vertical: 8),
+                const Padding(
+                  padding: EdgeInsets.symmetric(vertical: 8),
                   child: Text("I'm AmirHassan",
                       style: TextStyle(
                           fontSize: 26,
@@ -34,10 +34,10 @@ class WebHome extends StatelessWidget {
                           wordSpacing: 0,
                           letterSpacing: 1.4)),
                 ),
-                Text("Freelance Mobile/Desktop developer &",
+                const Text("Freelance Mobile/Desktop developer &",
                     style: TextStyle(
                         fontSize: 18, fontFamily: "Exo2", color: Colors.black)),
-                Text("Love learning Deep Learning.",
+                const Text("Love learning Deep Learning.",
                     style: TextStyle(
                         fontSize: 18, fontFamily: "Exo2", color: Colors.black)),
                 Padding(
@@ -45,12 +45,12 @@ class WebHome extends StatelessWidget {
                   child: TextButton(
                     style: TextButton.styleFrom(
                       backgroundColor: Colors.blue,
-                      shape: RoundedRectangleBorder(
+                      shape: const RoundedRectangleBorder(
                           borderRadius: BorderRadius.all(Radius.circular(15))),
                     ),
-                    child: Padding(
-                      padding: const EdgeInsets.symmetric(
-                          vertical: 8, horizontal: 12),
+                    child: const Padding(
+                      padding:
+                          EdgeInsets.symmetric(vertical: 8, horizontal: 12),
                       child: Text("Hire Me",
                           style: TextStyle(
                               fontSize: 18,
@@ -64,7 +64,7 @@ class WebHome extends StatelessWidget {
                 )
               ],
             ),
-            SizedBox(
+            const SizedBox(
               height: 20,
             )
           ],

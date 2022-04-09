@@ -19,7 +19,7 @@ class WebRoot extends StatelessWidget {
             children: [
               ///menu
               Container(
-                decoration: BoxDecoration(
+                decoration: const BoxDecoration(
                   border: null,
                   color: Colors.blue,
                 ),
@@ -32,10 +32,10 @@ class WebRoot extends StatelessWidget {
                       children: [
                         Center(
                           child: Container(
-                            margin: EdgeInsets.all(12),
+                            margin: const EdgeInsets.all(12),
                             height: 100,
                             width: 100,
-                            decoration: BoxDecoration(
+                            decoration: const BoxDecoration(
                                 shape: BoxShape.rectangle,
                                 image: DecorationImage(
                                     fit: BoxFit.fill,
@@ -72,7 +72,7 @@ class WebRoot extends StatelessWidget {
                     ),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.start,
-                      children: [
+                      children: const [
                         Text("Made With:",
                             style: TextStyle(
                                 fontSize: 14,

@@ -9,7 +9,7 @@ class More extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
-      children: [
+      children: const [
         Text("Access Source in:"),
         ContactButton(
             icon: Icons.code,

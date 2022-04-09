@@ -8,7 +8,7 @@ class Contact extends StatelessWidget {
   Widget build(BuildContext context) {
     return Center(
       child: Wrap(
-        children: [
+        children: const [
           ContactButton(
               title: "Make a Call",
               icon: Icons.phone,

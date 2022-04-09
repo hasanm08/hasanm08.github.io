@@ -14,7 +14,7 @@ String? tolocation;
 class SecondPage extends StatelessWidget {
   final String? fromloc;
   final String? toloc;
-  SecondPage({this.fromloc, this.toloc});
+  const SecondPage({this.fromloc, this.toloc});
 
   @override
   Widget build(BuildContext context) {
@@ -23,14 +23,14 @@ class SecondPage extends StatelessWidget {
     return Scaffold(
         appBar: AppBar(
           leading: IconButton(
-            icon: Icon(Icons.arrow_back_ios),
+            icon: const Icon(Icons.arrow_back_ios),
             onPressed: () {
               Navigator.pop(context);
             },
           ),
           elevation: 0.0,
           centerTitle: true,
-          title: Text(
+          title: const Text(
             'Search Result',
             style: TextStyle(fontSize: 25, fontWeight: FontWeight.w400),
           ),
@@ -54,12 +54,12 @@ class StackDown extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: <Widget>[
-            Text('Best Deals for Next 6 Months',
+            const Text('Best Deals for Next 6 Months',
                 style: TextStyle(fontWeight: FontWeight.w900, fontSize: 20)),
             ListView(
               scrollDirection: Axis.vertical,
               shrinkWrap: true,
-              physics: ClampingScrollPhysics(),
+              physics: const ClampingScrollPhysics(),
               children: <Widget>[
                 FlightCard(
                   date: "01 Far 1399",
@@ -108,7 +108,7 @@ class FlightCard extends StatelessWidget {
   final double? rating;
   final String? oldprice;
 
-  FlightCard(
+  const FlightCard(
       {this.date,
       this.flightTo,
       this.percentOff,
@@ -126,10 +126,12 @@ class FlightCard extends StatelessWidget {
             Container(
               //height: prefix0.height/6,
               width: prefix0.width! * .8,
-              padding: EdgeInsets.all(10),
+              padding: const EdgeInsets.all(10),
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.all(Radius.lerp(
-                    Radius.elliptical(10, 20), Radius.circular(20), 2)!),
+                    const Radius.elliptical(10, 20),
+                    const Radius.circular(20),
+                    2)!),
                 border: Border.all(color: borderColor),
               ),
               child: Column(
@@ -140,7 +142,7 @@ class FlightCard extends StatelessWidget {
                     children: <Widget>[
                       Text(
                         price! + '\$',
-                        style: TextStyle(
+                        style: const TextStyle(
                             fontSize: 18, fontWeight: FontWeight.bold),
                       ),
                       SizedBox(
@@ -148,7 +150,7 @@ class FlightCard extends StatelessWidget {
                       ),
                       Text(
                         oldprice! + '\$',
-                        style: TextStyle(
+                        style: const TextStyle(
                             fontSize: 15,
                             fontWeight: FontWeight.bold,
                             decoration: TextDecoration.lineThrough,
@@ -165,18 +167,18 @@ class FlightCard extends StatelessWidget {
                     children: <Widget>[
                       Tag(
                         label: date!,
-                        avatar: Icon(
+                        avatar: const Icon(
                           Icons.calendar_today,
                           size: 18,
                         ),
                       ),
                       Tag(
                         label: flightTo!,
-                        avatar: Icon(Icons.flight_takeoff, size: 18),
+                        avatar: const Icon(Icons.flight_takeoff, size: 18),
                       ),
                       Tag(
                         label: rating.toString(),
-                        avatar: Icon(Icons.star, size: 18),
+                        avatar: const Icon(Icons.star, size: 18),
                       ),
                     ],
                   )
@@ -187,10 +189,10 @@ class FlightCard extends StatelessWidget {
               top: prefix0.height! * .025,
               right: 15,
               child: Container(
-                padding: EdgeInsets.symmetric(horizontal: 2, vertical: 3),
+                padding: const EdgeInsets.symmetric(horizontal: 2, vertical: 3),
                 width: prefix0.width! * .09,
                 decoration: BoxDecoration(
-                    borderRadius: BorderRadius.all(Radius.circular(5)),
+                    borderRadius: const BorderRadius.all(Radius.circular(5)),
                     color: discountBackground.withOpacity(.2)),
                 child: Center(
                   child: Text(
@@ -214,21 +216,21 @@ class Tag extends StatelessWidget {
   final String? label;
   final Widget? avatar;
 
-  Tag({this.avatar, this.label});
+  const Tag({this.avatar, this.label});
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.symmetric(vertical: 5),
+      margin: const EdgeInsets.symmetric(vertical: 5),
       child: RawChip(
         label: Text(
           label!,
         ),
-        labelStyle: TextStyle(
+        labelStyle: const TextStyle(
             fontWeight: FontWeight.w400, fontSize: 8, color: Colors.black),
         avatar: avatar,
         backgroundColor: chipBackground,
-        shape: RoundedRectangleBorder(
+        shape: const RoundedRectangleBorder(
             borderRadius: BorderRadius.all(Radius.circular(10))),
       ),
     );
@@ -264,7 +266,7 @@ class StackTop extends StatelessWidget {
                 height: prefix0.height! * .04,
               ),
               Card(
-                shape: RoundedRectangleBorder(
+                shape: const RoundedRectangleBorder(
                     borderRadius: BorderRadius.all(Radius.circular(20))),
                 margin:
                     EdgeInsets.symmetric(horizontal: prefix0.height! * .035),
@@ -283,7 +285,7 @@ class StackTop extends StatelessWidget {
                             Text(
                               /*prefix0.locs[0]*/ fromlocation! +
                                   /* ' Beauty and old place */ '\n (City name Can have any lentgh)',
-                              style: TextStyle(fontSize: 16.0),
+                              style: const TextStyle(fontSize: 16.0),
                               // key: from,
                             ),
                             Divider(
@@ -292,14 +294,14 @@ class StackTop extends StatelessWidget {
                             ),
                             Text(
                               /*prefix0.locs[1]*/ tolocation! /*+ ' Imam reza Holy Shrine'*/,
-                              style: TextStyle(
+                              style: const TextStyle(
                                   fontSize: 16.0, fontWeight: FontWeight.bold),
                               // key: to,
                             ),
                           ],
                         ),
                       ),
-                      Spacer(),
+                      const Spacer(),
                       Expanded(
                           flex: 1,
                           child: IconButton(

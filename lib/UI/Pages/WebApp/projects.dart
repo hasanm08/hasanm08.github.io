@@ -17,14 +17,14 @@ class Projects extends StatelessWidget {
           mainAxisSize: MainAxisSize.max,
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            SizedBox(
+            const SizedBox(
               height: 150,
             ),
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
+              children: const [
                 Padding(
-                  padding: const EdgeInsets.symmetric(vertical: 8),
+                  padding: EdgeInsets.symmetric(vertical: 8),
                   child: Text("Travel Mobile App",
                       style: TextStyle(
                           fontSize: 26,
@@ -41,7 +41,7 @@ class Projects extends StatelessWidget {
                         fontSize: 18, fontFamily: "Exo2", color: Colors.blue)),
               ],
             ),
-            SizedBox(
+            const SizedBox(
               height: 20,
             )
           ],
@@ -53,28 +53,29 @@ class Projects extends StatelessWidget {
 
             // areSettingsEnabled: false,
             // usePreferences: false,
-            style: DevicePreviewStyle(
-                background: BoxDecoration(color: Colors.transparent),
-                // hasFrameShadow: false,
-                toolBar: DevicePreviewToolBarStyle(
-                    backgroundColor: Colors.blue,
-                    foregroundColor: Colors.white,
-                    buttonBackgroundColor: Colors.blue,
-                    buttonHoverBackgroundColor: Colors.black,
-                    position: DevicePreviewToolBarPosition.right,
-                    buttonsVisibility:
-                        DevicePreviewButtonsVisibilityStyleData(),
-                    fontStyles: DevicePreviewToolBarTextStyleData(
-                        title: TextStyle(fontSize: 18, color: Colors.white),
-                        fieldLabel:
-                            TextStyle(fontSize: 16, color: Colors.white),
-                        body: TextStyle(fontSize: 14, color: Colors.white),
-                        smallBody:
-                            TextStyle(fontSize: 11, color: Colors.white)),
-                    spacing: DevicePreviewToolBarSpacingData(
-                        big: EdgeInsets.all(8),
-                        regular: EdgeInsets.all(8),
-                        small: EdgeInsets.all(8)))),
+
+            // style: DevicePreviewStyle(
+            //     background: BoxDecoration(color: Colors.transparent),
+            //     // hasFrameShadow: false,
+            //     toolBar: DevicePreviewToolBarStyle(
+            //         backgroundColor: Colors.blue,
+            //         foregroundColor: Colors.white,
+            //         buttonBackgroundColor: Colors.blue,
+            //         buttonHoverBackgroundColor: Colors.black,
+            //         position: DevicePreviewToolBarPosition.right,
+            //         buttonsVisibility:
+            //             DevicePreviewButtonsVisibilityStyleData(),
+            //         fontStyles: DevicePreviewToolBarTextStyleData(
+            //             title: TextStyle(fontSize: 18, color: Colors.white),
+            //             fieldLabel:
+            //                 TextStyle(fontSize: 16, color: Colors.white),
+            //             body: TextStyle(fontSize: 14, color: Colors.white),
+            //             smallBody:
+            //                 TextStyle(fontSize: 11, color: Colors.white)),
+            //         spacing: DevicePreviewToolBarSpacingData(
+            //             big: EdgeInsets.all(8),
+            //             regular: EdgeInsets.all(8),
+            //             small: EdgeInsets.all(8)))),
             builder: (context) {
               return NestedNavigator(
                 navigationKey: GlobalKey<NavigatorState>(),

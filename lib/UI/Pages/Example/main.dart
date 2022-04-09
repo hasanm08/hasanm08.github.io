@@ -11,8 +11,9 @@ double? height;
 final bodies = [HomeScreen(), WishList(), Deals(), prefix0.Notification()];
 
 class BottomNav extends StatefulWidget {
-  BottomNav({Key? key}) : super(key: key);
+  const BottomNav({Key? key}) : super(key: key);
 
+  @override
   _BottomNavState createState() => _BottomNavState();
 }
 
@@ -24,7 +25,7 @@ class _BottomNavState extends State<BottomNav> {
           Icons.home,
           color: appTheme.primaryColor,
         ),
-        icon: Icon(
+        icon: const Icon(
           Icons.home,
           color: Colors.black,
         ),
@@ -34,7 +35,7 @@ class _BottomNavState extends State<BottomNav> {
           Icons.favorite,
           color: appTheme.primaryColor,
         ),
-        icon: Icon(
+        icon: const Icon(
           Icons.favorite,
           color: Colors.black,
         ),
@@ -44,7 +45,7 @@ class _BottomNavState extends State<BottomNav> {
           Icons.local_offer,
           color: appTheme.primaryColor,
         ),
-        icon: Icon(
+        icon: const Icon(
           Icons.local_offer,
           color: Colors.black,
         ),
@@ -54,7 +55,7 @@ class _BottomNavState extends State<BottomNav> {
           Icons.notifications,
           color: appTheme.primaryColor,
         ),
-        icon: Icon(
+        icon: const Icon(
           Icons.notifications,
           color: Colors.black,
         ),
@@ -76,10 +77,11 @@ class _BottomNavState extends State<BottomNav> {
           currentIndex: sel,
           elevation: 1.5,
           onTap: (int index) {
-            if (index != sel)
+            if (index != sel) {
               setState(() {
                 sel = index;
               });
+            }
           },
         ));
   }
@@ -110,7 +112,7 @@ class HomeScreen extends StatelessWidget {
             context: context,
             builder: (context) {
               return AlertDialog(
-                title: Text("More Info :"),
+                title: const Text("More Info :"),
                 content: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: <Widget>[
@@ -121,7 +123,7 @@ class HomeScreen extends StatelessWidget {
                         width: 50,
                         child: ElevatedButton(
                           style: ElevatedButton.styleFrom(
-                            shape: StadiumBorder(),
+                            shape: const StadiumBorder(),
                             onPrimary: Colors.white,
                           ),
                           child: Image.asset('assets/images/gmail.png'),
@@ -145,7 +147,7 @@ class HomeScreen extends StatelessWidget {
                         width: w,
                         child: ElevatedButton(
                           style: ElevatedButton.styleFrom(
-                            shape: StadiumBorder(),
+                            shape: const StadiumBorder(),
                             onPrimary: Colors.blue,
                           ),
                           child: Image.asset('assets/images/instagram.png'),
@@ -167,7 +169,7 @@ class HomeScreen extends StatelessWidget {
                         width: w,
                         child: ElevatedButton(
                           style: ElevatedButton.styleFrom(
-                            shape: StadiumBorder(),
+                            shape: const StadiumBorder(),
                             onPrimary: Colors.white,
                           ),
                           child: Image.asset('assets/images/telegram.png'),
@@ -189,7 +191,7 @@ class HomeScreen extends StatelessWidget {
                         width: w,
                         child: ElevatedButton(
                           style: ElevatedButton.styleFrom(
-                            shape: StadiumBorder(),
+                            shape: const StadiumBorder(),
                             onPrimary: Colors.white,
                           ),
                           child: Image.asset('assets/images/whatsapp.png'),
@@ -210,7 +212,7 @@ class HomeScreen extends StatelessWidget {
             },
           );
         },
-        child: Icon(Icons.info_outline),
+        child: const Icon(Icons.info_outline),
         backgroundColor: appTheme.primaryColor.withOpacity(.5),
       ),
 
@@ -255,10 +257,10 @@ class _HomeTop extends State<HomeTop> {
                   height: height! / 16,
                 ),
                 Padding(
-                  padding: EdgeInsets.all(16.0),
+                  padding: const EdgeInsets.all(16.0),
                   child: Row(
                     children: <Widget>[
-                      Icon(
+                      const Icon(
                         Icons.location_on,
                         color: Colors.white,
                       ),
@@ -275,12 +277,12 @@ class _HomeTop extends State<HomeTop> {
                           children: <Widget>[
                             Text(
                               locs[selectedloc],
-                              style: TextStyle(
+                              style: const TextStyle(
                                 color: Colors.white,
                                 fontSize: 16.0,
                               ),
                             ),
-                            Icon(
+                            const Icon(
                               Icons.keyboard_arrow_down,
                               color: Colors.white,
                             )
@@ -291,7 +293,7 @@ class _HomeTop extends State<HomeTop> {
                             PopupMenuItem(
                               child: Text(
                                 locs[0],
-                                style: TextStyle(
+                                style: const TextStyle(
                                   color: Colors.black,
                                   fontSize: 16.0,
                                 ),
@@ -301,7 +303,7 @@ class _HomeTop extends State<HomeTop> {
                             PopupMenuItem(
                               child: Text(
                                 locs[1],
-                                style: TextStyle(
+                                style: const TextStyle(
                                   color: Colors.black,
                                   fontSize: 16.0,
                                 ),
@@ -311,8 +313,8 @@ class _HomeTop extends State<HomeTop> {
                           ];
                         },
                       ),
-                      Spacer(),
-                      Icon(
+                      const Spacer(),
+                      const Icon(
                         Icons.settings,
                         color: Colors.white,
                       )
@@ -322,7 +324,7 @@ class _HomeTop extends State<HomeTop> {
                 SizedBox(
                   height: height! / 16,
                 ),
-                Text(
+                const Text(
                   'Where Would  \n you want to go',
                   style: TextStyle(
                     fontSize: 24.0,
@@ -333,24 +335,24 @@ class _HomeTop extends State<HomeTop> {
                 SizedBox(height: height! * 0.0375),
                 Container(
                   width: 300,
-                  padding: EdgeInsets.symmetric(horizontal: 32.0),
+                  padding: const EdgeInsets.symmetric(horizontal: 32.0),
                   child: Material(
                     elevation: 5.0,
-                    borderRadius: BorderRadius.all(Radius.circular(30)),
+                    borderRadius: const BorderRadius.all(Radius.circular(30)),
                     child: TextField(
                       controller: c,
-                      style: TextStyle(
+                      style: const TextStyle(
                         fontSize: 16.0,
                         color: Colors.black,
                       ),
                       cursorColor: appTheme.primaryColor,
                       decoration: InputDecoration(
                           border: InputBorder.none,
-                          contentPadding: EdgeInsets.symmetric(
+                          contentPadding: const EdgeInsets.symmetric(
                               horizontal: 32, vertical: 13),
                           suffixIcon: Material(
                             child: InkWell(
-                              child: Icon(
+                              child: const Icon(
                                 Icons.search,
                                 color: Colors.black,
                               ),
@@ -364,7 +366,8 @@ class _HomeTop extends State<HomeTop> {
                               },
                             ),
                             elevation: 2.0,
-                            borderRadius: BorderRadius.all(Radius.circular(30)),
+                            borderRadius:
+                                const BorderRadius.all(Radius.circular(30)),
                           )),
                     ),
                   ),
@@ -444,7 +447,7 @@ class Choice08 extends StatefulWidget {
   final IconData? icon;
   final String? text;
   final bool? selected;
-  Choice08({this.icon, this.text, this.selected});
+  const Choice08({this.icon, this.text, this.selected});
   @override
   _Choice08State createState() => _Choice08State();
 }
@@ -454,11 +457,11 @@ class _Choice08State extends State<Choice08>
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.symmetric(horizontal: 18, vertical: 8),
+      padding: const EdgeInsets.symmetric(horizontal: 18, vertical: 8),
       decoration: widget.selected!
           ? BoxDecoration(
               color: Colors.white.withOpacity(.30),
-              borderRadius: BorderRadius.all(Radius.circular(20)),
+              borderRadius: const BorderRadius.all(Radius.circular(20)),
             )
           : null,
       child: Row(
@@ -475,7 +478,7 @@ class _Choice08State extends State<Choice08>
           ),
           Text(
             widget.text!,
-            style: TextStyle(color: Colors.white, fontSize: 16),
+            style: const TextStyle(color: Colors.white, fontSize: 16),
           )
         ],
       ),
@@ -497,16 +500,16 @@ var homeDown = Column(
           // SizedBox(
           //   width: width! * 0.05,
           // ),
-          Text(
+          const Text(
             "Currently Watched items",
             style: TextStyle(color: Colors.black, fontSize: 16),
           ),
-          Spacer(),
+          const Spacer(),
           Text("VIEW ALL", style: viewallstyle)
         ],
       ),
     ),
-    Container(
+    SizedBox(
       height: height! * .25 < 170 ? height! * .25 : 170,
       //height: height! * .25 < 300 ? height! * .25 : 300,
       // child:
@@ -515,14 +518,14 @@ var homeDown = Column(
       child: ListView.builder(
           itemBuilder: (context, index) => cities[index],
           shrinkWrap: true,
-          padding: EdgeInsets.all(0.0),
+          padding: const EdgeInsets.all(0.0),
           itemCount: cities.length,
           scrollDirection: Axis.horizontal),
     ),
   ],
 );
 List<City> cities = [
-  City(
+  const City(
     image: "assets/images/Kerman.png",
     name: "Kerman",
     monthyear: "Far 1399",
@@ -530,7 +533,7 @@ List<City> cities = [
     newprice: "150000",
     discount: "58",
   ),
-  City(
+  const City(
     image: "assets/images/Mashhad.png",
     name: "Mashhad",
     monthyear: "Far 1399",
@@ -538,7 +541,7 @@ List<City> cities = [
     newprice: "150000",
     discount: "58",
   ),
-  City(
+  const City(
     image: "assets/images/Tehran.png",
     name: "Tehran",
     monthyear: "Far 1399",
@@ -566,7 +569,7 @@ class City extends StatelessWidget {
     return Column(
       children: <Widget>[
         ClipRRect(
-            borderRadius: BorderRadius.all(Radius.circular(20)),
+            borderRadius: const BorderRadius.all(Radius.circular(20)),
             child: Stack(
               children: <Widget>[
                 Padding(
@@ -587,7 +590,7 @@ class City extends StatelessWidget {
                   //right: 0,
                   bottom: 0,
                   child: Container(
-                    decoration: BoxDecoration(
+                    decoration: const BoxDecoration(
                         gradient: LinearGradient(
                             colors: [Colors.black, Colors.black12],
                             begin: Alignment.bottomCenter,
@@ -600,8 +603,8 @@ class City extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: <Widget>[
                       Container(
-                        padding:
-                            EdgeInsets.symmetric(horizontal: 8, vertical: 2),
+                        padding: const EdgeInsets.symmetric(
+                            horizontal: 8, vertical: 2),
                         //decoration: BoxDecoration(
                         //   shape: BoxShape.rectangle,
                         //   color: Colors.black.withOpacity(.4),
@@ -612,14 +615,14 @@ class City extends StatelessWidget {
                           children: <Widget>[
                             Text(
                               name!,
-                              style: TextStyle(
+                              style: const TextStyle(
                                   fontSize: 18,
                                   fontWeight: FontWeight.bold,
                                   color: Colors.white),
                             ),
                             Text(
                               monthyear!,
-                              style: TextStyle(
+                              style: const TextStyle(
                                   fontSize: 14,
                                   fontWeight: FontWeight.w400,
                                   color: Colors.white),
@@ -628,16 +631,16 @@ class City extends StatelessWidget {
                         ),
                       ),
                       Container(
-                        padding:
-                            EdgeInsets.symmetric(horizontal: 8, vertical: 2),
-                        decoration: BoxDecoration(
+                        padding: const EdgeInsets.symmetric(
+                            horizontal: 8, vertical: 2),
+                        decoration: const BoxDecoration(
                             shape: BoxShape.rectangle,
                             color: Colors.white,
                             borderRadius:
                                 BorderRadius.all(Radius.circular(10))),
                         child: Text(
                           discount! + "%",
-                          style: TextStyle(
+                          style: const TextStyle(
                               fontSize: 14,
                               fontWeight: FontWeight.w400,
                               color: Colors.black),
@@ -655,16 +658,16 @@ class City extends StatelessWidget {
           mainAxisSize: MainAxisSize.max,
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: <Widget>[
-            Text("\$ " + '${(newprice)}',
-                style: TextStyle(
+            Text("\$ " '${(newprice)}',
+                style: const TextStyle(
                     color: Colors.black,
                     fontWeight: FontWeight.bold,
                     fontStyle: FontStyle.italic)),
             SizedBox(
               width: width! * 0.08,
             ),
-            Text("\$ " + '${(oldprice)}',
-                style: TextStyle(
+            Text("\$ " '${(oldprice)}',
+                style: const TextStyle(
                     color: Colors.black87,
                     fontWeight: FontWeight.w400,
                     fontStyle: FontStyle.italic)),
