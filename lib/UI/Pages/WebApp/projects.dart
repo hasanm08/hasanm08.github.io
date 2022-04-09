@@ -81,8 +81,8 @@ class Projects extends StatelessWidget {
                 navigationKey: GlobalKey<NavigatorState>(),
                 initialRoute: '/',
                 routes: {
-                  '/': (context) => BottomNav(),
-                  '/two': (context) => SecondPage()
+                  '/': (context) => const BottomNav(),
+                  '/two': (context) => const SecondPage()
                 },
               );
             },
