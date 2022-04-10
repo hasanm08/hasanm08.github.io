@@ -50,7 +50,7 @@ class Contact extends StatelessWidget {
           ContactButton(
               title: "StackOverflow",
               icon: Icons.ads_click_sharp,
-              link: 'https://stackoverflow.com/users/14041364/hasanm08')
+              link: 'https://stackoverflow.com/users/14041364/hasanm08'),
         ],
       ),
     );
