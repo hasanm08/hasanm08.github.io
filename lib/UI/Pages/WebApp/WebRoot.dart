@@ -48,22 +48,22 @@ class WebRoot extends StatelessWidget {
                         //   text: "Home",
                         //   index: 0,
                         // ),
-                        MenuButton(
+                        const MenuButton(
                           icon: Icons.person,
                           text: "About",
                           index: 0,
                         ),
-                        MenuButton(
+                        const MenuButton(
                           icon: Icons.call,
                           text: "Contact",
                           index: 1,
                         ),
-                        MenuButton(
+                        const MenuButton(
                           icon: Icons.work,
                           text: "Projects",
                           index: 2,
                         ),
-                        MenuButton(
+                        const MenuButton(
                           icon: Icons.more_horiz,
                           text: "More",
                           index: 3,

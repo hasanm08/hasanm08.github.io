@@ -60,7 +60,7 @@ class StackDown extends StatelessWidget {
               scrollDirection: Axis.vertical,
               shrinkWrap: true,
               physics: const ClampingScrollPhysics(),
-              children: <Widget>[
+              children: const <Widget>[
                 FlightCard(
                   date: "01 Far 1399",
                   percentOff: "34",

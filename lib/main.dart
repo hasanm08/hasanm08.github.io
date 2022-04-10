@@ -45,7 +45,6 @@ class MyApp extends StatelessWidget {
 }
 
 Widget builder(BuildContext context, SizingInformation sizingInformation) {
-  print(sizingInformation.deviceType.toString());
   var mobile = const MobilePage();
   var web = const WebRoot();
   switch (sizingInformation.deviceType) {
