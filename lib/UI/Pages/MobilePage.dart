@@ -126,6 +126,10 @@ class MobilePage extends StatelessWidget {
                       title: "LinkedIn",
                       icon: Icons.info,
                       link: 'https://linkedin.com/in/hasanm08'),
+                  ContactButton(
+                      title: "StackOverflow",
+                      icon: Icons.code,
+                      link: 'https://stackoverflow.com/users/14041364/hasanm08')
                 ],
               ),
             ),
