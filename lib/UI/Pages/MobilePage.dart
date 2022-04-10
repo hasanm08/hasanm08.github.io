@@ -127,6 +127,7 @@ class MobilePage extends StatelessWidget {
                       icon: Icons.info,
                       link: 'https://linkedin.com/in/hasanm08'),
                   ContactButton(
+                      color: Colors.black,
                       title: "StackOverflow",
                       icon: Icons.code,
                       link: 'https://stackoverflow.com/users/14041364/hasanm08')
