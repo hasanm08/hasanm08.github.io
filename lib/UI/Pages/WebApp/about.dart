@@ -6,34 +6,37 @@ class About extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
-      physics: BouncingScrollPhysics(),
+      physics: const BouncingScrollPhysics(),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.center,
         mainAxisSize: MainAxisSize.max,
         children: [
-          SizedBox(height: 12),
+          const SizedBox(height: 12),
           Padding(
             padding: const EdgeInsets.all(12.0),
             child: Container(
               height: 140,
               width: 140,
-              decoration: BoxDecoration(
+              decoration: const BoxDecoration(
                   shape: BoxShape.circle,
                   image: DecorationImage(
-                      image: AssetImage("assets/images/hasanm108.jpg"),
+                      image: AssetImage("assets/images/hasanm208.jpg"),
                       fit: BoxFit.contain)),
             ),
           ),
           Container(
             padding: const EdgeInsets.all(12.0),
-            child: Text(
-              "Amir Hassan AmirMahani",
+            child: const Text(
+              "Amir Hassan Amirmahani",
               style: TextStyle(
-                  fontSize: 22, color: Colors.black, fontFamily: "Pacifico"),
+                  fontWeight: FontWeight.bold,
+                  fontSize: 22,
+                  color: Colors.black,
+                  fontFamily: "kalame"),
             ),
           ),
-          Container(
+          const SizedBox(
             width: 400,
             child: Divider(
               endIndent: 12,

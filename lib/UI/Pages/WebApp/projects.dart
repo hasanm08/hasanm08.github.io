@@ -17,14 +17,14 @@ class Projects extends StatelessWidget {
           mainAxisSize: MainAxisSize.max,
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            SizedBox(
+            const SizedBox(
               height: 150,
             ),
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
+              children: const [
                 Padding(
-                  padding: const EdgeInsets.symmetric(vertical: 8),
+                  padding: EdgeInsets.symmetric(vertical: 8),
                   child: Text("Travel Mobile App",
                       style: TextStyle(
                           fontSize: 26,
@@ -41,7 +41,7 @@ class Projects extends StatelessWidget {
                         fontSize: 18, fontFamily: "Exo2", color: Colors.blue)),
               ],
             ),
-            SizedBox(
+            const SizedBox(
               height: 20,
             )
           ],
@@ -50,18 +50,13 @@ class Projects extends StatelessWidget {
           child: DevicePreview(
             enabled: true,
             isToolbarVisible: true,
-            storage: DevicePreviewStorage.preferences(),
-            data: DevicePreviewData(
-              textScaleFactor: 1,
-              isToolbarVisible: true,
-            ),
             builder: (context) {
               return NestedNavigator(
                 navigationKey: GlobalKey<NavigatorState>(),
                 initialRoute: '/',
                 routes: {
-                  '/': (context) => BottomNav(),
-                  '/two': (context) => SecondPage()
+                  '/': (context) => const BottomNav(),
+                  '/two': (context) => const SecondPage()
                 },
               );
             },

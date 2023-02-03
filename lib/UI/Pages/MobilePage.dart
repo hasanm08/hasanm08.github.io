@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:hasanm08/UI/Components/ContactButton.dart';
 
 class MobilePage extends StatelessWidget {
-  MobilePage({Key? key}) : super(key: key);
+  const MobilePage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -11,38 +11,39 @@ class MobilePage extends StatelessWidget {
         width: double.infinity,
         color: Colors.white,
         child: ListView(
-          physics: BouncingScrollPhysics(),
+          physics: const BouncingScrollPhysics(),
           scrollDirection: Axis.vertical,
           cacheExtent: 3,
           children: [
-            SizedBox(height: 12),
+            const SizedBox(height: 12),
             Padding(
               padding: const EdgeInsets.all(12.0),
               child: Container(
                 height: 200,
                 width: 200,
-                decoration: BoxDecoration(
+                decoration: const BoxDecoration(
                     shape: BoxShape.circle,
                     image: DecorationImage(
-                        image: AssetImage("assets/images/hasanm108.jpg"),
+                        image: AssetImage("assets/images/hasanm208.jpg"),
                         fit: BoxFit.contain)),
               ),
             ),
-            Center(
+            const Center(
               child: Padding(
-                padding: const EdgeInsets.all(8.0),
+                padding: EdgeInsets.all(8.0),
                 child: Text(
-                  "Amir Hassan AmirMahani",
+                  "Amir Hassan Amirmahani",
                   style: TextStyle(
+                      fontWeight: FontWeight.bold,
                       fontSize: 24,
                       color: Colors.black,
-                      fontFamily: "Pacifico"),
+                      fontFamily: "kalame"),
                 ),
               ),
             ),
-            Center(
+            const Center(
               child: Padding(
-                padding: const EdgeInsets.fromLTRB(8, 8, 8, 0),
+                padding: EdgeInsets.fromLTRB(8, 8, 8, 0),
                 child: Text(
                   "Flutter Developer",
                   style: TextStyle(
@@ -53,9 +54,9 @@ class MobilePage extends StatelessWidget {
                 ),
               ),
             ),
-            Center(
+            const Center(
               child: Padding(
-                padding: const EdgeInsets.fromLTRB(8, 0, 8, 8),
+                padding: EdgeInsets.fromLTRB(8, 0, 8, 8),
                 child: Text(
                   "C# Developer",
                   style: TextStyle(
@@ -66,7 +67,7 @@ class MobilePage extends StatelessWidget {
                 ),
               ),
             ),
-            Container(
+            const SizedBox(
               width: 300,
               child: Divider(
                 endIndent: 12,
@@ -77,7 +78,7 @@ class MobilePage extends StatelessWidget {
             ),
             Center(
               child: Wrap(
-                children: [
+                children: const [
                   ContactButton(
                       color: Colors.black,
                       title: "Make a Call",
@@ -125,6 +126,11 @@ class MobilePage extends StatelessWidget {
                       title: "LinkedIn",
                       icon: Icons.info,
                       link: 'https://linkedin.com/in/hasanm08'),
+                  ContactButton(
+                      color: Colors.black,
+                      title: "StackOverflow",
+                      icon: Icons.code,
+                      link: 'https://stackoverflow.com/users/14041364/hasanm08')
                 ],
               ),
             ),

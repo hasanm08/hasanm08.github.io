@@ -3,14 +3,17 @@ description: My portfolio website.
 version: 2.0.0
 
 environment:
-  sdk: ">=2.12.0 <3.0.0"
+  sdk: ">=2.16.0 <3.0.0"
 
 dependencies:
   flutter:
     sdk: flutter
   url_launcher: ^6.0.2
+  flutter_native_splash: ^2.1.3+1
   provider: ^6.0.2
   device_preview: ^1.1.0
+  flutter_lints: ^2.0.1
+  # flutter_lints: ^2.0.0
 dev_dependencies:
   flutter_launcher_icons: ^0.11.0
 
@@ -34,3 +37,11 @@ flutter:
     - family: Exo2
       fonts:
         - asset: assets/fonts/Exo2-Medium.ttf
+    - family: kalame
+      fonts:
+        - asset: assets/fonts/kalame-bold.ttf
+          weight: 700
+        - asset: assets/fonts/kalame-regular.ttf
+          weight: 400
+        - asset: assets/fonts/kalame-light.ttf
+          weight: 300

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class ContactButton extends StatefulWidget {
-  ContactButton(
+  const ContactButton(
       {this.color = Colors.blue,
       required this.icon,
       required this.link,
@@ -30,12 +30,12 @@ class _ContactButtonState extends State<ContactButton> {
     return FocusableActionDetector(
       onShowHoverHighlight: _handleHoveHighlight,
       child: Container(
-        margin: EdgeInsets.all(8),
+        margin: const EdgeInsets.all(8),
         height: 55,
         width: 150,
         decoration: BoxDecoration(
             color: _hovering ? widget.color : Colors.transparent,
-            borderRadius: BorderRadius.all(Radius.circular(30)),
+            borderRadius: const BorderRadius.all(Radius.circular(30)),
             border: Border.all(color: widget.color!, width: 1)),
         child: TextButton(
           style: TextButton.styleFrom(
@@ -45,9 +45,9 @@ class _ContactButtonState extends State<ContactButton> {
                   .textTheme
                   .bodyText1!
                   .copyWith(fontWeight: FontWeight.w700),
-              padding: EdgeInsets.all(8),
+              padding: const EdgeInsets.all(8),
               shadowColor: widget.color,
-              shape: RoundedRectangleBorder(
+              shape: const RoundedRectangleBorder(
                 borderRadius: BorderRadius.all(Radius.circular(30)),
               )),
           onPressed: () async => await _showUrl(widget.link),

@@ -6,7 +6,8 @@ class MenuButton extends StatefulWidget {
   final int? index;
   final String? text;
   final IconData? icon;
-  MenuButton({@required this.icon, @required this.text, @required this.index});
+  const MenuButton(
+      {@required this.icon, @required this.text, @required this.index});
 
   @override
   _MenuButtonState createState() => _MenuButtonState();
@@ -24,19 +25,19 @@ class _MenuButtonState extends State<MenuButton> {
   Widget build(BuildContext context) {
     return Selector<MenuBloc, int>(
       selector: (_, bloc) => bloc.index,
-      builder: (context, value, child) => Container(
+      builder: (context, value, child) => SizedBox(
         height: 60,
         width: 160,
         child: FocusableActionDetector(
           onShowHoverHighlight: _handleHoveHighlight,
           child: Container(
-            margin: EdgeInsets.fromLTRB(8, 8, 0, 8),
+            margin: const EdgeInsets.fromLTRB(8, 8, 0, 8),
             decoration: BoxDecoration(
                 border: null,
                 color: value == widget.index || _hovering
                     ? Colors.white
                     : Colors.blue,
-                borderRadius: BorderRadius.only(
+                borderRadius: const BorderRadius.only(
                   topLeft: Radius.circular(30),
                   bottomLeft: Radius.circular(30),
                 )),
@@ -48,9 +49,9 @@ class _MenuButtonState extends State<MenuButton> {
                       .textTheme
                       .bodyText1!
                       .copyWith(fontWeight: FontWeight.w700),
-                  padding: EdgeInsets.all(12),
+                  padding: const EdgeInsets.all(12),
                   shadowColor: Colors.white,
-                  shape: RoundedRectangleBorder(
+                  shape: const RoundedRectangleBorder(
                       borderRadius: BorderRadius.only(
                     topLeft: Radius.circular(30),
                     bottomLeft: Radius.circular(30),
@@ -68,7 +69,7 @@ class _MenuButtonState extends State<MenuButton> {
                         ? Colors.white
                         : Colors.blue,
                   ),
-                  SizedBox(
+                  const SizedBox(
                     width: 8,
                   ),
                   Text(

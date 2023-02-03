@@ -8,7 +8,7 @@ class Contact extends StatelessWidget {
   Widget build(BuildContext context) {
     return Center(
       child: Wrap(
-        children: [
+        children: const [
           ContactButton(
               title: "Make a Call",
               icon: Icons.phone,
@@ -46,7 +46,11 @@ class Contact extends StatelessWidget {
           ContactButton(
               title: "LinkedIn",
               icon: Icons.info,
-              link: 'https://linkedin.com/in/hasanm08')
+              link: 'https://linkedin.com/in/hasanm08'),
+          ContactButton(
+              title: "StackOverflow",
+              icon: Icons.code,
+              link: 'https://stackoverflow.com/users/14041364/hasanm08'),
         ],
       ),
     );

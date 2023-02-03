@@ -19,7 +19,7 @@ class WebRoot extends StatelessWidget {
             children: [
               ///menu
               Container(
-                decoration: BoxDecoration(
+                decoration: const BoxDecoration(
                   border: null,
                   color: Colors.blue,
                 ),
@@ -32,10 +32,10 @@ class WebRoot extends StatelessWidget {
                       children: [
                         Center(
                           child: Container(
-                            margin: EdgeInsets.all(12),
+                            margin: const EdgeInsets.all(12),
                             height: 100,
                             width: 100,
-                            decoration: BoxDecoration(
+                            decoration: const BoxDecoration(
                                 shape: BoxShape.rectangle,
                                 image: DecorationImage(
                                     fit: BoxFit.fill,
@@ -48,22 +48,22 @@ class WebRoot extends StatelessWidget {
                         //   text: "Home",
                         //   index: 0,
                         // ),
-                        MenuButton(
+                        const MenuButton(
                           icon: Icons.person,
                           text: "About",
                           index: 0,
                         ),
-                        MenuButton(
+                        const MenuButton(
                           icon: Icons.call,
                           text: "Contact",
                           index: 1,
                         ),
-                        MenuButton(
+                        const MenuButton(
                           icon: Icons.work,
                           text: "Projects",
                           index: 2,
                         ),
-                        MenuButton(
+                        const MenuButton(
                           icon: Icons.more_horiz,
                           text: "More",
                           index: 3,
@@ -72,7 +72,7 @@ class WebRoot extends StatelessWidget {
                     ),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.start,
-                      children: [
+                      children: const [
                         Text("Made With:",
                             style: TextStyle(
                                 fontSize: 14,
