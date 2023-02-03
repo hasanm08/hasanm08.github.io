@@ -12,12 +12,16 @@ jobs:
     concurrency:
       group: ${{ github.workflow }}-${{ github.ref }}
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
+      - uses: subosito/flutter-action@v2
+        with:
+          channel: "stable"
+      - run: flutter --version
 
-      - name: Setup Flutter
-        run: |
-          git clone https://github.com/flutter/flutter.git --depth 1 -b beta _flutter
-          echo "${GITHUB_WORKSPACE}/_flutter/bin" >> ${GITHUB_PATH}
+      # - name: Setup Flutter
+      #   run: |
+      #     git clone https://github.com/flutter/flutter.git --depth 1 -b beta _flutter
+      #     echo "${GITHUB_WORKSPACE}/_flutter/bin" >> ${GITHUB_PATH}
 
       - name: Install
         run: |
