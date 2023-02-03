@@ -31,13 +31,19 @@
   <!-- This script installs service_worker.js to provide PWA functionality to
        application. For more information, see:
        https://developers.google.com/web/fundamentals/primers/service-workers -->
-  <script>
+  <!-- <script>
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', function () {
-        navigator.serviceWorker.register('flutter_service_worker.js?v=163737019');
+        navigator.serviceWorker.register('flutter_service_worker.js?v=3191652802');
       });
     }
-  </script>
+  </script> -->
+  <!-- <script>
+    const regExp = new RegExp("bot|google|baidu|bing|msn|teoma|slurp|yandex", "i");
+    if (regExp.test(navigator.userAgent)) {
+      window.flutterWebRenderer = "html";
+    }
+  </script> -->
   <script src="main.dart.js" type="application/javascript"></script>
 </body>
 
