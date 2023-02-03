@@ -50,31 +50,11 @@ class Projects extends StatelessWidget {
           child: DevicePreview(
             enabled: true,
             isToolbarVisible: true,
-
-            // areSettingsEnabled: false,
-            // usePreferences: false,
-            style: DevicePreviewStyle(
-                background: BoxDecoration(color: Colors.transparent),
-                // hasFrameShadow: false,
-                toolBar: DevicePreviewToolBarStyle(
-                    backgroundColor: Colors.blue,
-                    foregroundColor: Colors.white,
-                    buttonBackgroundColor: Colors.blue,
-                    buttonHoverBackgroundColor: Colors.black,
-                    position: DevicePreviewToolBarPosition.right,
-                    buttonsVisibility:
-                        DevicePreviewButtonsVisibilityStyleData(),
-                    fontStyles: DevicePreviewToolBarTextStyleData(
-                        title: TextStyle(fontSize: 18, color: Colors.white),
-                        fieldLabel:
-                            TextStyle(fontSize: 16, color: Colors.white),
-                        body: TextStyle(fontSize: 14, color: Colors.white),
-                        smallBody:
-                            TextStyle(fontSize: 11, color: Colors.white)),
-                    spacing: DevicePreviewToolBarSpacingData(
-                        big: EdgeInsets.all(8),
-                        regular: EdgeInsets.all(8),
-                        small: EdgeInsets.all(8)))),
+            storage: DevicePreviewStorage.preferences(),
+            data: DevicePreviewData(
+              textScaleFactor: 1,
+              isToolbarVisible: true,
+            ),
             builder: (context) {
               return NestedNavigator(
                 navigationKey: GlobalKey<NavigatorState>(),
