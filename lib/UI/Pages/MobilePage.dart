@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:hasanm08/UI/Components/ContactButton.dart';
 
+import '../Components/RotatingCircle.dart';
+
 class MobilePage extends StatelessWidget {
   const MobilePage({Key? key}) : super(key: key);
 
@@ -18,14 +20,26 @@ class MobilePage extends StatelessWidget {
             const SizedBox(height: 12),
             Padding(
               padding: const EdgeInsets.all(12.0),
-              child: Container(
-                height: 200,
-                width: 200,
-                decoration: const BoxDecoration(
-                    shape: BoxShape.circle,
-                    image: DecorationImage(
-                        image: AssetImage("assets/images/hasanm208.jpg"),
-                        fit: BoxFit.contain)),
+              child: SizedBox(
+                height: 140,
+                width: 280,
+                child: Stack(
+                  alignment: Alignment.center,
+                  children: [
+                    Container(
+                      height: 140,
+                      width: 140,
+                      decoration: const BoxDecoration(
+                          shape: BoxShape.circle,
+                          image: DecorationImage(
+                              image: AssetImage("assets/images/hasanm208.jpg"),
+                              fit: BoxFit.contain)),
+                    ),
+                    const RotatingCircle(
+                      color: Colors.black,
+                    )
+                  ],
+                ),
               ),
             ),
             const Center(

@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../../Components/RotatingCircle.dart';
+
 class About extends StatelessWidget {
   const About({Key? key}) : super(key: key);
 
@@ -15,14 +17,26 @@ class About extends StatelessWidget {
           const SizedBox(height: 12),
           Padding(
             padding: const EdgeInsets.all(12.0),
-            child: Container(
+            child: SizedBox(
               height: 140,
-              width: 140,
-              decoration: const BoxDecoration(
-                  shape: BoxShape.circle,
-                  image: DecorationImage(
-                      image: AssetImage("assets/images/hasanm208.jpg"),
-                      fit: BoxFit.contain)),
+              width: 280,
+              child: Stack(
+                alignment: Alignment.center,
+                children: [
+                  Container(
+                    height: 140,
+                    width: 140,
+                    decoration: const BoxDecoration(
+                        shape: BoxShape.circle,
+                        image: DecorationImage(
+                            image: AssetImage("assets/images/hasanm208.jpg"),
+                            fit: BoxFit.contain)),
+                  ),
+                  const RotatingCircle(
+                    color: Colors.blue,
+                  )
+                ],
+              ),
             ),
           ),
           Container(
@@ -45,21 +59,17 @@ class About extends StatelessWidget {
               color: Colors.black26,
             ),
           ),
-          infoRow("Age", (DateTime.now().year - 1999).toString() + " years",
-              context),
+          infoRow("Age", "${DateTime.now().year - 1999} years", context),
           infoRow("Country", "Iran", context),
           infoRow("City", "Kerman", context),
           infoRow("Education ", "B.Sc Computer Eng Bahonar Uni", context),
-          infoRow("Julia Age",
-              (DateTime.now().year - 2020).toString() + " years", context),
-          infoRow("Flutter Age",
-              (DateTime.now().year - 2019).toString() + " years", context),
-          infoRow("Arduino Age",
-              (DateTime.now().year - 2018).toString() + " years", context),
-          infoRow("Python Age",
-              (DateTime.now().year - 2018).toString() + " years", context),
-          infoRow("C# Age", (DateTime.now().year - 2017).toString() + " years",
-              context),
+          infoRow("Julia Age", "${DateTime.now().year - 2020} years", context),
+          infoRow(
+              "Flutter Age", "${DateTime.now().year - 2019} years", context),
+          infoRow(
+              "Arduino Age", "${DateTime.now().year - 2018} years", context),
+          infoRow("Python Age", "${DateTime.now().year - 2018} years", context),
+          infoRow("C# Age", "${DateTime.now().year - 2017} years", context),
         ],
       ),
     );
@@ -75,11 +85,11 @@ class About extends StatelessWidget {
           Expanded(
               child: Text(
             title,
-            style: Theme.of(context).textTheme.bodyText1,
+            style: Theme.of(context).textTheme.bodyLarge,
           )),
           Text(
             description,
-            style: Theme.of(context).textTheme.bodyText2,
+            style: Theme.of(context).textTheme.bodyMedium,
           ),
         ],
       ),
