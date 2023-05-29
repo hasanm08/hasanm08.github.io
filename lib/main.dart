@@ -5,6 +5,8 @@ import 'package:hasanm08/UI/Pages/WebApp/WebRoot.dart';
 
 import 'UI/BaseWidget.dart';
 import 'UI/SizinigInformation.dart';
+import 'UI/Components/Shimms/nonweb_title_switcher.dart'
+    if (dart.library.html) 'UI/Components/Shimms/web_title_switcher.dart';
 
 void main() {
   runApp(
@@ -16,6 +18,8 @@ void main() {
 }
 
 class MyApp extends StatelessWidget {
+  const MyApp({Key? key}) : super(key: key);
+
   // This widget is the root of your application.
 
   @override
@@ -46,7 +50,7 @@ class MyApp extends StatelessWidget {
 
 Widget builder(BuildContext context, SizingInformation sizingInformation) {
   var mobile = const MobilePage();
-  var web = const WebRoot();
+  var web = const WebTitleSwitcher(child: WebRoot());
   switch (sizingInformation.deviceType) {
     case null:
       return const Text("");
