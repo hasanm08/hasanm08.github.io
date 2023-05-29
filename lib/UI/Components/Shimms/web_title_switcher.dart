@@ -49,7 +49,7 @@ class _WebTitleSwitcherState extends State<WebTitleSwitcher> {
   }
 
   void _updateTabTitle() {
-    final String title = _isTabActive ? "hasanm08" : "Come back ;(";
+    final String title = _isTabActive ? "Hi what's up :)" : "Come back ;(";
     html.document.title = title;
   }
 
