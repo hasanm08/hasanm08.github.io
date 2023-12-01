@@ -82,3 +82,4 @@ void listenToBeforeInstallPromptEvent() {
     return widget.child;
   }
 }
+}
