@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:hasanm08/UI/Pages/WebApp/MenuButton.dart';
+import 'package:hasanm08/UI/Pages/WebApp/menu_button.dart';
 import 'package:hasanm08/blocs/menuBloc.dart';
 import 'package:provider/provider.dart';
 
@@ -70,9 +70,9 @@ class WebRoot extends StatelessWidget {
                         ),
                       ],
                     ),
-                    Row(
+                    const Row(
                       mainAxisAlignment: MainAxisAlignment.start,
-                      children: const [
+                      children: [
                         Text("Made With:",
                             style: TextStyle(
                                 fontSize: 14,

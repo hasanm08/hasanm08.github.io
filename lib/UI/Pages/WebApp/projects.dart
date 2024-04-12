@@ -1,8 +1,8 @@
 import 'package:device_preview/device_preview.dart';
 import 'package:flutter/material.dart';
-import 'package:hasanm08/UI/Components/NestedNavigator.dart';
-import 'package:hasanm08/UI/Pages/Example/SecondPage.dart';
-import 'package:hasanm08/UI/Pages/Example/main.dart';
+import 'package:hasanm08/UI/Components/nested_navigator.dart';
+import 'package:hasanm08/UI/Pages/Example/custom_navigation_bar.dart';
+import 'package:hasanm08/UI/Pages/Example/ticket_page.dart';
 
 class Projects extends StatelessWidget {
   const Projects({Key? key}) : super(key: key);
@@ -13,16 +13,16 @@ class Projects extends StatelessWidget {
       mainAxisSize: MainAxisSize.max,
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        Column(
+        const Column(
           mainAxisSize: MainAxisSize.max,
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            const SizedBox(
+            SizedBox(
               height: 150,
             ),
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
-              children: const [
+              children: [
                 Padding(
                   padding: EdgeInsets.symmetric(vertical: 8),
                   child: Text("Travel Mobile App",
@@ -41,7 +41,7 @@ class Projects extends StatelessWidget {
                         fontSize: 18, fontFamily: "Exo2", color: Colors.blue)),
               ],
             ),
-            const SizedBox(
+            SizedBox(
               height: 20,
             )
           ],
@@ -55,8 +55,8 @@ class Projects extends StatelessWidget {
                 navigationKey: GlobalKey<NavigatorState>(),
                 initialRoute: '/',
                 routes: {
-                  '/': (context) => const BottomNav(),
-                  '/two': (context) => const SecondPage()
+                  '/': (context) => const CustomNavigationBar(),
+                  '/two': (context) => const TicketPage()
                 },
               );
             },

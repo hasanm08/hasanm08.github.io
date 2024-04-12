@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'SizinigInformation.dart';
+import '../../Utils/sizinig_information.dart';
 
 enum DeviceScreenType { Mobile, Tablet, Web }
 

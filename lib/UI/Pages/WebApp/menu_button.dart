@@ -6,8 +6,12 @@ class MenuButton extends StatefulWidget {
   final int? index;
   final String? text;
   final IconData? icon;
-  const MenuButton(
-      {@required this.icon, @required this.text, @required this.index});
+  const MenuButton({
+    Key? key,
+    required this.icon,
+    required this.text,
+    required this.index,
+  }) : super(key: key);
 
   @override
   _MenuButtonState createState() => _MenuButtonState();
@@ -47,7 +51,7 @@ class _MenuButtonState extends State<MenuButton> {
                   animationDuration: const Duration(microseconds: 200),
                   textStyle: Theme.of(context)
                       .textTheme
-                      .bodyText1!
+                      .bodyLarge!
                       .copyWith(fontWeight: FontWeight.w700),
                   padding: const EdgeInsets.all(12),
                   shadowColor: Colors.white,

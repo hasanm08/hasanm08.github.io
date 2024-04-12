@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:hasanm08/UI/Components/ContactButton.dart';
+import 'package:hasanm08/UI/Components/contact_button.dart';
 
 import '../Components/RotatingCircle.dart';
 
@@ -90,9 +90,9 @@ class MobilePage extends StatelessWidget {
                 color: Colors.black26,
               ),
             ),
-            Center(
+            const Center(
               child: Wrap(
-                children: const [
+                children: [
                   ContactButton(
                       color: Colors.black,
                       title: "Make a Call",

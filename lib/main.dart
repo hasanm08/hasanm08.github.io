@@ -1,18 +1,18 @@
 //import 'package:device_preview/device_preview.dart';
 import 'package:flutter/material.dart';
 import 'package:hasanm08/UI/Pages/MobilePage.dart';
-import 'package:hasanm08/UI/Pages/WebApp/WebRoot.dart';
+import 'package:hasanm08/UI/Pages/WebApp/web_root.dart';
 
-import 'UI/BaseWidget.dart';
-import 'UI/SizinigInformation.dart';
 import 'UI/Components/Shimms/nonweb_title_switcher.dart'
     if (dart.library.html) 'UI/Components/Shimms/web_title_switcher.dart';
+import 'UI/Components/base_widget.dart';
+import 'Utils/sizinig_information.dart';
 
 void main() {
   runApp(
     //DevicePreview(
     //builder: (context) =>
-    MyApp(),
+    const MyApp(),
     //)
   );
 }

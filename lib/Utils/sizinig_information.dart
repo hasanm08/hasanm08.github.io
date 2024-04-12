@@ -1,6 +1,6 @@
 import 'package:flutter/widgets.dart';
 
-import 'BaseWidget.dart';
+import '../UI/Components/base_widget.dart';
 
 class SizingInformation {
   final Orientation? orientation;

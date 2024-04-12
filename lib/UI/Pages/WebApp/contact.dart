@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:hasanm08/UI/Components/ContactButton.dart';
+import 'package:hasanm08/UI/Components/contact_button.dart';
 
 class Contact extends StatelessWidget {
   const Contact({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Center(
+    return const Center(
       child: Wrap(
-        children: const [
+        children: [
           ContactButton(
               title: "Make a Call",
               icon: Icons.phone,

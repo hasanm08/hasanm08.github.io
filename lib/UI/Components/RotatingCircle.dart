@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'dart:math' show pi;
 
-import 'HalfCircleClipper.dart';
+import 'half_circle_clipper.dart';
 
 class RotatingCircle extends StatefulWidget {
   const RotatingCircle({Key? key, required this.color}) : super(key: key);
