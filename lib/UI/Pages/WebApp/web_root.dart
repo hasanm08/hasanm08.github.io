@@ -88,6 +88,7 @@ class WebRoot extends StatelessWidget {
                   ],
                 ),
               ),
+              /// body
               Selector<MenuBloc, Widget>(
                 selector: (_, bloc) => bloc.body,
                 builder: (context, value, child) => Expanded(

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:hasanm08/Utils/example_utils.dart';
 
-class HomeFooter extends StatelessWidget {
-  const HomeFooter({Key? key}) : super(key: key);
+class CitiesSlider extends StatelessWidget {
+  const CitiesSlider({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

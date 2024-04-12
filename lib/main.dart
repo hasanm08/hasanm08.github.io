@@ -1,6 +1,6 @@
 //import 'package:device_preview/device_preview.dart';
 import 'package:flutter/material.dart';
-import 'package:hasanm08/UI/Pages/MobilePage.dart';
+import 'package:hasanm08/UI/Pages/WebApp/mobile_page.dart';
 import 'package:hasanm08/UI/Pages/WebApp/web_root.dart';
 
 import 'UI/Components/Shimms/nonweb_title_switcher.dart'

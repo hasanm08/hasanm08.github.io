@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hasanm08/UI/Components/contact_button.dart';
 
-import '../Components/RotatingCircle.dart';
+import '../../Components/rotating_circle_animation.dart';
 
 class MobilePage extends StatelessWidget {
   const MobilePage({Key? key}) : super(key: key);
@@ -32,7 +32,7 @@ class MobilePage extends StatelessWidget {
                       decoration: const BoxDecoration(
                           shape: BoxShape.circle,
                           image: DecorationImage(
-                              image: AssetImage("assets/images/hasanm208.jpg"),
+                              image: AssetImage("assets/images/hasanm308.jpeg"),
                               fit: BoxFit.contain)),
                     ),
                     const RotatingCircle(

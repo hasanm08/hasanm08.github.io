@@ -9,6 +9,8 @@ mixin ExampleUtils {
   static int selectedLocation = 0;
   static int selectedIndex = 0;
   static List<String> locations = ['Kerman (KER)', 'Mashhad (MASH)'];
+
+  static bool shrinkHeader = false;
   static double width(BuildContext context) =>
       MediaQuery.of(context).size.shortestSide;
   static double height(BuildContext context) =>

@@ -22,13 +22,15 @@ class _HomeHeader extends State<HomeHeader> {
 
   @override
   Widget build(BuildContext context) {
+    var defaultHeight =
+        ExampleUtils.height(context) * (ExampleUtils.shrinkHeader ? 0.2 : 0.65);
     return Stack(
       children: <Widget>[
         ClipPath(
           clipper: CustomClipperComponent(),
-          child: Container(
-            height: ExampleUtils.height(context) * .65 < 450
-                ? ExampleUtils.height(context) * .65
+          child: AnimatedContainer(
+            duration: const Duration(milliseconds: 370),
+            height: defaultHeight < 450 ? defaultHeight
                 : 500,
             decoration: BoxDecoration(
                 gradient: LinearGradient(colors: [

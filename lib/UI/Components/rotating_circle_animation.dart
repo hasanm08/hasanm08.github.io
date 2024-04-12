@@ -1,18 +1,21 @@
-import 'package:flutter/material.dart';
 import 'dart:math' show pi;
 
+import 'package:flutter/material.dart';
+
 import 'half_circle_clipper.dart';
+extension on VoidCallback {
+  Future<void> delayed(Duration duration) => Future.delayed(duration, this);
+}
 
 class RotatingCircle extends StatefulWidget {
-  const RotatingCircle({Key? key, required this.color}) : super(key: key);
+  const RotatingCircle({Key? key, required this.color, this.size = 140})
+      : super(key: key);
+  final double size;
   final Color color;
   @override
   State<RotatingCircle> createState() => _RotatingCircleState();
 }
 
-extension on VoidCallback {
-  Future<void> delayed(Duration duration) => Future.delayed(duration, this);
-}
 
 class _RotatingCircleState extends State<RotatingCircle>
     with TickerProviderStateMixin {
@@ -120,7 +123,7 @@ class _RotatingCircleState extends State<RotatingCircle>
           seconds: 1,
         ),
       );
-    const double size = 140;
+    
     return AnimatedBuilder(
       animation: _counterClockwiseRotationController,
       builder: (context, child) {
@@ -146,8 +149,8 @@ class _RotatingCircleState extends State<RotatingCircle>
                       clipper: const HalfCircleClipper(side: CircleSide.left),
                       child: Container(
                         color: Colors.transparent,
-                        width: size,
-                        height: size,
+                        width: widget.size,
+                        height: widget.size,
                       ),
                     ),
                   );
@@ -166,8 +169,8 @@ class _RotatingCircleState extends State<RotatingCircle>
                       clipper: const HalfCircleClipper(side: CircleSide.right),
                       child: Container(
                         color: widget.color.withOpacity(.2),
-                        width: size,
-                        height: size,
+                        width: widget.size,
+                        height: widget.size,
                       ),
                     ),
                   );

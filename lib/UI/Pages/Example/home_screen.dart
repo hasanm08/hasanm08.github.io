@@ -1,16 +1,40 @@
 import 'package:flutter/material.dart';
-import 'package:hasanm08/UI/Components/home_footer.dart';
+import 'package:hasanm08/UI/Components/cities_slider.dart';
 import 'package:hasanm08/UI/Pages/Example/home_header.dart';
 import 'package:hasanm08/Utils/example_utils.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-class HomeScreen extends StatelessWidget {
+class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
 
   @override
+  State<HomeScreen> createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> {
+  double height = 50, width = 50;
+  late ScrollController scrollController;
+  @override
+  void initState() {
+    addController();
+    super.initState();
+  }
+
+  void addController() {
+    scrollController = ScrollController();
+    scrollController.addListener(() {
+      if (scrollController.position.atEdge) {
+        if (scrollController.position.pixels != 0) {
+          setState(() {
+            ExampleUtils.shrinkHeader = true;
+          });
+        }
+      }
+    });
+  }
+
+  @override
   Widget build(BuildContext context) {
-    double h = 50;
-    double w = 50;
     return Theme(
       data: ThemeData(
       primaryColor: //Colors.purple,
@@ -57,8 +81,8 @@ class HomeScreen extends StatelessWidget {
                       FittedBox(
                         fit: BoxFit.scaleDown,
                         child: SizedBox(
-                          height: h,
-                          width: w,
+                          height: height,
+                          width: width,
                           child: ElevatedButton(
                             style: ElevatedButton.styleFrom(
                               shape: const StadiumBorder(),
@@ -79,8 +103,8 @@ class HomeScreen extends StatelessWidget {
                       FittedBox(
                         fit: BoxFit.scaleDown,
                         child: SizedBox(
-                          height: h,
-                          width: w,
+                          height: height,
+                          width: width,
                           child: ElevatedButton(
                             style: ElevatedButton.styleFrom(
                               shape: const StadiumBorder(),
@@ -101,8 +125,8 @@ class HomeScreen extends StatelessWidget {
                       FittedBox(
                         fit: BoxFit.scaleDown,
                         child: SizedBox(
-                          height: h,
-                          width: w,
+                          height: height,
+                          width: width,
                           child: ElevatedButton(
                             style: ElevatedButton.styleFrom(
                               shape: const StadiumBorder(),
@@ -131,13 +155,14 @@ class HomeScreen extends StatelessWidget {
         ),
         body: SingleChildScrollView(
           scrollDirection: Axis.vertical,
+          controller: scrollController,
           child: Column(
             children: <Widget>[
               HomeHeader(
                 locations: ExampleUtils.locations,
               ),
-              const HomeFooter(),
-              const HomeFooter(),
+              const CitiesSlider(),
+              const CitiesSlider(),
             ],
           ),
         ),

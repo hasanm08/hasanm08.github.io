@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-
-import '../../Components/RotatingCircle.dart';
+import 'package:hasanm08/UI/Components/custom_animated_3d_card.dart';
 
 class About extends StatelessWidget {
   const About({Key? key}) : super(key: key);
@@ -15,27 +14,14 @@ class About extends StatelessWidget {
         mainAxisSize: MainAxisSize.max,
         children: [
           const SizedBox(height: 12),
-          Padding(
-            padding: const EdgeInsets.all(12.0),
+          const Padding(
+            padding: EdgeInsets.all(12.0),
             child: SizedBox(
-              height: 140,
-              width: 280,
-              child: Stack(
-                alignment: Alignment.center,
-                children: [
-                  Container(
-                    height: 140,
-                    width: 140,
-                    decoration: const BoxDecoration(
-                        shape: BoxShape.circle,
-                        image: DecorationImage(
-                            image: AssetImage("assets/images/hasanm208.jpg"),
-                            fit: BoxFit.contain)),
-                  ),
-                  const RotatingCircle(
-                    color: Colors.blue,
-                  )
-                ],
+              height: 250,
+              width: 500,
+              child: CustomAnimated3DCard(
+                characterImage: "assets/images/hasanm308.png",
+                coverImage: "assets/images/hasanm308.jpeg",
               ),
             ),
           ),
