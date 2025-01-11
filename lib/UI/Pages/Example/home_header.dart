@@ -8,10 +8,10 @@ class HomeHeader extends StatefulWidget {
   const HomeHeader({required this.locations, Key? key}) : super(key: key);
   final List<String> locations;
   @override
-  _HomeHeader createState() => _HomeHeader();
+  HomeHeaderState createState() => HomeHeaderState();
 }
 
-class _HomeHeader extends State<HomeHeader> {
+class HomeHeaderState extends State<HomeHeader> {
   bool isFlightSelected = true;
   late TextEditingController textEditingController;
   @override

@@ -66,7 +66,7 @@ class City extends StatelessWidget {
                             horizontal: 8, vertical: 2),
                         //decoration: BoxDecoration(
                         //   shape: BoxShape.rectangle,
-                        //   color: Colors.black.withOpacity(.4),
+                        //   color: Colors.black.withValues(alpha:.4),
                         //  borderRadius: BorderRadius.all(Radius.circular(10))
                         // ),
                         child: Column(

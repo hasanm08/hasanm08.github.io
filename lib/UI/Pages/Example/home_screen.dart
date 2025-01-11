@@ -150,7 +150,7 @@ class _HomeScreenState extends State<HomeScreen> {
               },
             );
           },
-          backgroundColor: Theme.of(context).primaryColor.withOpacity(.5),
+          backgroundColor: Theme.of(context).primaryColor.withValues(alpha: .5),
           child: const Icon(Icons.info_outline),
         ),
         body: SingleChildScrollView(

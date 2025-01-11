@@ -20,7 +20,7 @@ mixin ExampleUtils {
   static Color flightColor(BuildContext context) =>
       Theme.of(context).primaryColor;
   static Color chipBackground(BuildContext context) =>
-      Theme.of(context).secondaryHeaderColor.withOpacity(.2);
+      Theme.of(context).secondaryHeaderColor.withValues(alpha: .2);
   static Color borderColor(BuildContext context) =>
       Theme.of(context).primaryColor.withAlpha(100);
   static List<Widget> bodies = [

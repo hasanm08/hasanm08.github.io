@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
-import '../../Utils/sizinig_information.dart';
+import '../../Utils/sizing_information.dart';
 
-enum DeviceScreenType { Mobile, Tablet, Web }
+enum DeviceScreenType { mobile, tablet, desktop }
 
 class BaseWidget extends StatelessWidget {
   final Widget Function(
@@ -22,14 +22,14 @@ class BaseWidget extends StatelessWidget {
     }
 
     if (deviceWidth > 950) {
-      return DeviceScreenType.Web;
+      return DeviceScreenType.desktop;
     }
 
     if (deviceWidth > 600) {
-      return DeviceScreenType.Tablet;
+      return DeviceScreenType.tablet;
     }
 
-    return DeviceScreenType.Mobile;
+    return DeviceScreenType.mobile;
   }
 
   @override

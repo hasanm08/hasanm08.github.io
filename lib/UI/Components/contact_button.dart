@@ -3,20 +3,22 @@ import 'package:url_launcher/url_launcher.dart';
 
 class ContactButton extends StatefulWidget {
   const ContactButton(
-      {this.color = Colors.blue,
+      {Key? key,
+      this.color = Colors.blue,
       required this.icon,
       required this.link,
-      required this.title});
+      required this.title})
+      : super(key: key);
   final IconData icon;
   final String title;
   final String link;
   final Color? color;
 
   @override
-  _ContactButtonState createState() => _ContactButtonState();
+  ContactButtonState createState() => ContactButtonState();
 }
 
-class _ContactButtonState extends State<ContactButton> {
+class ContactButtonState extends State<ContactButton> {
   bool _hovering = false;
 
   void _handleHoveHighlight(bool value) {
@@ -43,7 +45,7 @@ class _ContactButtonState extends State<ContactButton> {
               animationDuration: const Duration(microseconds: 200),
               textStyle: Theme.of(context)
                   .textTheme
-                  .bodyText1!
+                  .bodyLarge!
                   .copyWith(fontWeight: FontWeight.w700),
               padding: const EdgeInsets.all(8),
               shadowColor: widget.color,
@@ -63,7 +65,7 @@ class _ContactButtonState extends State<ContactButton> {
                 widget.title,
                 style: Theme.of(context)
                     .textTheme
-                    .caption!
+                    .bodySmall!
                     .copyWith(color: _hovering ? Colors.white : widget.color),
               )
             ],
@@ -74,8 +76,9 @@ class _ContactButtonState extends State<ContactButton> {
   }
 
   Future<void> _showUrl(String url) async {
-    if (await canLaunch(url)) {
-      await launch(url);
+    Uri uri = Uri.parse(url);
+    if (await canLaunchUrl(uri)) {
+      await launchUrl(uri);
     } else {
       throw 'Could not launch $url';
     }

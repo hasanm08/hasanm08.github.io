@@ -6,7 +6,7 @@ import 'package:hasanm08/UI/Pages/WebApp/web_root.dart';
 import 'UI/Components/Shimms/nonweb_title_switcher.dart'
     if (dart.library.html) 'UI/Components/Shimms/web_title_switcher.dart';
 import 'UI/Components/base_widget.dart';
-import 'Utils/sizinig_information.dart';
+import 'Utils/sizing_information.dart';
 
 void main() {
   runApp(
@@ -54,11 +54,11 @@ Widget builder(BuildContext context, SizingInformation sizingInformation) {
   switch (sizingInformation.deviceType) {
     case null:
       return const Text("");
-    case DeviceScreenType.Mobile:
+    case DeviceScreenType.mobile:
       return mobile;
-    case DeviceScreenType.Tablet:
+    case DeviceScreenType.tablet:
       return mobile;
-    case DeviceScreenType.Web:
+    case DeviceScreenType.desktop:
       return BaseWidget(builder: (context, sizingInformation) {
         return web;
       });

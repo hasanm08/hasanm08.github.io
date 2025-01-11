@@ -168,7 +168,7 @@ class _RotatingCircleState extends State<RotatingCircle>
                     child: ClipPath(
                       clipper: const HalfCircleClipper(side: CircleSide.right),
                       child: Container(
-                        color: widget.color.withOpacity(.2),
+                        color: widget.color.withValues(alpha: .2),
                         width: widget.size,
                         height: widget.size,
                       ),

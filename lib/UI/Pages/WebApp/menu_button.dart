@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:hasanm08/blocs/menuBloc.dart';
+import 'package:hasanm08/blocs/menu_bloc.dart';
 import 'package:provider/provider.dart';
 
 class MenuButton extends StatefulWidget {
@@ -14,10 +14,10 @@ class MenuButton extends StatefulWidget {
   }) : super(key: key);
 
   @override
-  _MenuButtonState createState() => _MenuButtonState();
+  MenuButtonState createState() => MenuButtonState();
 }
 
-class _MenuButtonState extends State<MenuButton> {
+class MenuButtonState extends State<MenuButton> {
   bool _hovering = false;
   void _handleHoveHighlight(bool value) {
     setState(() {

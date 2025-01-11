@@ -97,7 +97,7 @@ class FlightCard extends StatelessWidget {
                 decoration: BoxDecoration(
                     borderRadius: const BorderRadius.all(Radius.circular(5)),
                     color: ExampleUtils.discountBackground(context)
-                        .withOpacity(.2)),
+                        .withValues(alpha: .2)),
                 child: Center(
                   child: Text(
                     '${percentOff!}%',

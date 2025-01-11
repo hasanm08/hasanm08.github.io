@@ -7,17 +7,17 @@ class Item extends StatefulWidget {
   final bool? selected;
   const Item({Key? key, this.icon, this.text, this.selected}) : super(key: key);
   @override
-  _ItemState createState() => _ItemState();
+  ItemState createState() => ItemState();
 }
 
-class _ItemState extends State<Item> {
+class ItemState extends State<Item> {
   @override
   Widget build(BuildContext context) {
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 18, vertical: 8),
       decoration: widget.selected!
           ? BoxDecoration(
-              color: Colors.white.withOpacity(.30),
+              color: Colors.white.withValues(alpha: .30),
               borderRadius: const BorderRadius.all(Radius.circular(20)),
             )
           : null,
