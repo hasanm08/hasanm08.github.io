@@ -30,7 +30,7 @@ jobs:
           flutter doctor -v
 
       - name: Build
-        run: flutter build web --pwa-strategy offline-first --dart-define=FLUTTER_WEB_USE_SKIA=true --web-renderer auto --profile
+        run: flutter build web --wasm
 
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
