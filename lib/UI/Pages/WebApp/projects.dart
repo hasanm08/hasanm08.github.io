@@ -1,5 +1,6 @@
 import 'package:device_preview/device_preview.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/foundation.dart';
 import 'package:hasanm08/UI/Components/nested_navigator.dart';
 import 'package:hasanm08/UI/Pages/Example/custom_navigation_bar.dart';
 import 'package:hasanm08/UI/Pages/Example/ticket_page.dart';
@@ -48,8 +49,8 @@ class Projects extends StatelessWidget {
         ),
         Expanded(
           child: DevicePreview(
-            enabled: true,
-            isToolbarVisible: true,
+            enabled: kDebugMode,
+            isToolbarVisible: kDebugMode,
             builder: (context) {
               return NestedNavigator(
                 navigationKey: GlobalKey<NavigatorState>(),
