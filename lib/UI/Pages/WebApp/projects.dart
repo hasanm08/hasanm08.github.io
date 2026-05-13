@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:hasanm08/UI/Components/portfolio_animations.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class Projects extends StatelessWidget {
@@ -14,7 +15,7 @@ class Projects extends StatelessWidget {
         final horizontalPadding = isWide ? 24.0 : 12.0;
 
         return Scrollbar(
-          child: ListView.separated(
+          child: PortfolioStaggeredListView(
             physics: const BouncingScrollPhysics(
               parent: AlwaysScrollableScrollPhysics(),
             ),
@@ -222,7 +223,7 @@ const List<_Project> _projects = [
   ),
 ];
 
-class _ProjectCard extends StatelessWidget {
+class _ProjectCard extends StatefulWidget {
   const _ProjectCard({
     required this.project,
     required this.isCompact,
@@ -232,7 +233,16 @@ class _ProjectCard extends StatelessWidget {
   final bool isCompact;
 
   @override
+  State<_ProjectCard> createState() => _ProjectCardState();
+}
+
+class _ProjectCardState extends State<_ProjectCard> {
+  bool _hover = false;
+
+  @override
   Widget build(BuildContext context) {
+    final project = widget.project;
+    final isCompact = widget.isCompact;
     final titleStyle = TextStyle(
       fontSize: isCompact ? 20 : 24,
       fontFamily: 'Exo2',
@@ -253,95 +263,106 @@ class _ProjectCard extends StatelessWidget {
       height: 1.4,
     );
 
-    return Container(
-      decoration: BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.circular(16),
-        border: Border.all(color: Colors.black12),
-        boxShadow: const [
-          BoxShadow(
-            color: Color(0x14000000),
-            blurRadius: 12,
-            offset: Offset(0, 4),
+    return MouseRegion(
+      onEnter: (_) => setState(() => _hover = true),
+      onExit: (_) => setState(() => _hover = false),
+      child: AnimatedScale(
+        scale: _hover ? 1.008 : 1.0,
+        duration: const Duration(milliseconds: 220),
+        curve: Curves.easeOutCubic,
+        child: AnimatedContainer(
+          duration: const Duration(milliseconds: 220),
+          curve: Curves.easeOutCubic,
+          decoration: BoxDecoration(
+            color: Colors.white,
+            borderRadius: BorderRadius.circular(16),
+            border: Border.all(color: Colors.black12),
+            boxShadow: [
+              BoxShadow(
+                color: const Color(0x14000000),
+                blurRadius: _hover ? 22 : 12,
+                offset: Offset(0, _hover ? 10 : 4),
+              ),
+            ],
           ),
-        ],
-      ),
-      padding: EdgeInsets.all(isCompact ? 16 : 20),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Text(project.name, style: titleStyle),
-          if (project.dateRange != null) ...[
-            const SizedBox(height: 4),
-            Text(project.dateRange!, style: metaStyle),
-          ],
-          if (project.associatedWith != null) ...[
-            const SizedBox(height: 2),
-            Text(
-              'Associated with ${project.associatedWith!}',
-              style: metaStyle,
-            ),
-          ],
-          const SizedBox(height: 12),
-          Text(project.description, style: bodyStyle),
-          if (project.highlights.isNotEmpty) ...[
-            const SizedBox(height: 12),
-            ...project.highlights.map(
-              (h) => Padding(
-                padding: const EdgeInsets.only(bottom: 6),
-                child: Row(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Padding(
-                      padding: EdgeInsets.only(top: isCompact ? 6 : 7),
-                      child: Container(
-                        width: 6,
-                        height: 6,
-                        decoration: const BoxDecoration(
-                          color: Colors.blue,
-                          shape: BoxShape.circle,
+          padding: EdgeInsets.all(isCompact ? 16 : 20),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(project.name, style: titleStyle),
+              if (project.dateRange != null) ...[
+                const SizedBox(height: 4),
+                Text(project.dateRange!, style: metaStyle),
+              ],
+              if (project.associatedWith != null) ...[
+                const SizedBox(height: 2),
+                Text(
+                  'Associated with ${project.associatedWith!}',
+                  style: metaStyle,
+                ),
+              ],
+              const SizedBox(height: 12),
+              Text(project.description, style: bodyStyle),
+              if (project.highlights.isNotEmpty) ...[
+                const SizedBox(height: 12),
+                ...project.highlights.map(
+                  (h) => Padding(
+                    padding: const EdgeInsets.only(bottom: 6),
+                    child: Row(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Padding(
+                          padding: EdgeInsets.only(top: isCompact ? 6 : 7),
+                          child: Container(
+                            width: 6,
+                            height: 6,
+                            decoration: const BoxDecoration(
+                              color: Colors.blue,
+                              shape: BoxShape.circle,
+                            ),
+                          ),
                         ),
-                      ),
+                        const SizedBox(width: 8),
+                        Expanded(child: Text(h, style: bodyStyle)),
+                      ],
                     ),
-                    const SizedBox(width: 8),
-                    Expanded(child: Text(h, style: bodyStyle)),
+                  ),
+                ),
+              ],
+              if (project.skills.isNotEmpty) ...[
+                const SizedBox(height: 12),
+                Text(
+                  'Skills: ${project.skills.join(', ')}',
+                  style: bodyStyle.copyWith(
+                    color: Colors.black54,
+                    fontSize: isCompact ? 13 : 14,
+                  ),
+                ),
+              ],
+              if (project.tags.isNotEmpty) ...[
+                const SizedBox(height: 12),
+                Wrap(
+                  spacing: 8,
+                  runSpacing: 8,
+                  children: [
+                    for (final tag in project.tags) _TagChip(label: tag),
                   ],
                 ),
-              ),
-            ),
-          ],
-          if (project.skills.isNotEmpty) ...[
-            const SizedBox(height: 12),
-            Text(
-              'Skills: ${project.skills.join(', ')}',
-              style: bodyStyle.copyWith(
-                color: Colors.black54,
-                fontSize: isCompact ? 13 : 14,
-              ),
-            ),
-          ],
-          if (project.tags.isNotEmpty) ...[
-            const SizedBox(height: 12),
-            Wrap(
-              spacing: 8,
-              runSpacing: 8,
-              children: [
-                for (final tag in project.tags) _TagChip(label: tag),
               ],
-            ),
-          ],
-          if (project.links.isNotEmpty) ...[
-            const SizedBox(height: 16),
-            Wrap(
-              spacing: 10,
-              runSpacing: 10,
-              children: [
-                for (final link in project.links)
-                  _LinkButton(link: link, isCompact: isCompact),
+              if (project.links.isNotEmpty) ...[
+                const SizedBox(height: 16),
+                Wrap(
+                  spacing: 10,
+                  runSpacing: 10,
+                  children: [
+                    for (final link in project.links)
+                      _LinkButton(link: link, isCompact: isCompact),
+                  ],
+                ),
               ],
-            ),
-          ],
-        ],
+            ],
+          ),
+        ),
       ),
     );
   }

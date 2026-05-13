@@ -1,5 +1,6 @@
 //import 'package:device_preview/device_preview.dart';
-import 'package:flutter/material.dart';import 'package:go_router/go_router.dart';
+import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:hasanm08/UI/Pages/WebApp/mobile_page.dart';
 import 'package:hasanm08/UI/Pages/WebApp/about.dart';
 import 'package:hasanm08/UI/Pages/WebApp/contact.dart';
@@ -22,6 +23,32 @@ void main() {
     //builder: (context) =>
     const MyApp(),
     //)
+  );
+}
+
+CustomTransitionPage<void> _shellChildPage(GoRouterState state, Widget child) {
+  return CustomTransitionPage<void>(
+    key: state.pageKey,
+    transitionDuration: const Duration(milliseconds: 400),
+    reverseTransitionDuration: const Duration(milliseconds: 260),
+    child: child,
+    transitionsBuilder: (context, animation, secondaryAnimation, child) {
+      final curved = CurvedAnimation(
+        parent: animation,
+        curve: Curves.easeOutCubic,
+        reverseCurve: Curves.easeInCubic,
+      );
+      return FadeTransition(
+        opacity: curved,
+        child: SlideTransition(
+          position: Tween<Offset>(
+            begin: const Offset(0, 0.036),
+            end: Offset.zero,
+          ).animate(curved),
+          child: child,
+        ),
+      );
+    },
   );
 }
 
@@ -55,19 +82,22 @@ final GoRouter _router = GoRouter(
       routes: [
         GoRoute(
           path: '/about',
-          builder: (context, state) => const About(),
+          pageBuilder: (context, state) =>
+              _shellChildPage(state, const About()),
         ),
         GoRoute(
           path: '/contact-me',
-          builder: (context, state) => const Contact(),
+          pageBuilder: (context, state) =>
+              _shellChildPage(state, const Contact()),
         ),
         GoRoute(
           path: '/projects',
-          builder: (context, state) => const Projects(),
+          pageBuilder: (context, state) =>
+              _shellChildPage(state, const Projects()),
         ),
         GoRoute(
           path: '/more',
-          builder: (context, state) => const More(),
+          pageBuilder: (context, state) => _shellChildPage(state, const More()),
         ),
       ],
     ),

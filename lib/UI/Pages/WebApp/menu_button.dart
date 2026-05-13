@@ -35,7 +35,9 @@ class MenuButtonState extends State<MenuButton> {
       width: 160,
       child: FocusableActionDetector(
         onShowHoverHighlight: _handleHoveHighlight,
-        child: Container(
+        child: AnimatedContainer(
+          duration: const Duration(milliseconds: 220),
+          curve: Curves.easeOutCubic,
           margin: const EdgeInsets.fromLTRB(8, 8, 0, 8),
           decoration: BoxDecoration(
               border: null,

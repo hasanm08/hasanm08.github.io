@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hasanm08/UI/Components/custom_animated_3d_card.dart';
+import 'package:hasanm08/UI/Components/portfolio_animations.dart';
 
 class About extends StatelessWidget {
   const About({Key? key}) : super(key: key);
@@ -8,7 +9,7 @@ class About extends StatelessWidget {
   Widget build(BuildContext context) {
     return SingleChildScrollView(
       physics: const BouncingScrollPhysics(),
-      child: Column(
+      child: PortfolioStaggeredColumn(
         mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.center,
         mainAxisSize: MainAxisSize.max,
