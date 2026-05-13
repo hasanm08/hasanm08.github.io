@@ -10,18 +10,20 @@ on:
       - source-code
 
 permissions:
-  contents: write
+  contents: read
+  pages: write
+  id-token: write
 
 concurrency:
-  group: ${{ github.workflow }}-${{ github.event_name }}-${{ github.ref }}
+  group: pages-${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
 
 jobs:
-  deploy:
+  build:
     runs-on: ubuntu-latest
     timeout-minutes: 45
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
 
       - uses: subosito/flutter-action@v2
         with:
@@ -38,9 +40,34 @@ jobs:
       - name: Build
         run: flutter build web --wasm
 
-      - name: Deploy
-        if: github.event_name != 'pull_request' && github.ref == 'refs/heads/source-code'
-        uses: peaceiris/actions-gh-pages@v4
+      - name: Setup Pages
+        if: >-
+          github.event_name == 'pull_request'
+          || (github.event_name == 'push' && github.ref == 'refs/heads/source-code')
+          || (github.event_name == 'workflow_dispatch' && github.ref == 'refs/heads/source-code')
+        uses: actions/configure-pages@v5
+
+      - name: Upload artifact
+        if: >-
+          github.event_name == 'pull_request'
+          || (github.event_name == 'push' && github.ref == 'refs/heads/source-code')
+          || (github.event_name == 'workflow_dispatch' && github.ref == 'refs/heads/source-code')
+        uses: actions/upload-pages-artifact@v4
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./build/web
+          path: build/web
+
+  deploy:
+    needs: build
+    if: >-
+      github.event_name == 'pull_request'
+      || (github.event_name == 'push' && github.ref == 'refs/heads/source-code')
+      || (github.event_name == 'workflow_dispatch' && github.ref == 'refs/heads/source-code')
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
