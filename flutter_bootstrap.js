@@ -36,13 +36,7 @@ if (!window._flutter) {
 _flutter.buildConfig = {"engineRevision":"42d3d75a56efe1a2e9902f52dc8006099c45d937","builds":[{"compileTarget":"dart2wasm","renderer":"skwasm","mainWasmPath":"main.dart.wasm","jsSupportRuntimePath":"main.dart.mjs"},{"compileTarget":"dart2js","renderer":"canvaskit","mainJsPath":"main.dart.js"}]};
 
 
-// Replaced at build time with a version string when offline-first SW is enabled.
-const serviceWorkerVersion = "1503919968" /* Flutter's service worker is deprecated and will be removed in a future Flutter release. */;
-
 _flutter.loader.load({
-  serviceWorkerSettings: {
-    serviceWorkerVersion: serviceWorkerVersion,
-  },
   onEntrypointLoaded: async function (engineInitializer) {
     const appRunner = await engineInitializer.initializeEngine();
     await appRunner.runApp();
