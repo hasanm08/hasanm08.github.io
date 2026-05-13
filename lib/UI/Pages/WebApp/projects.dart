@@ -150,8 +150,18 @@ const List<_Project> _projects = [
         icon: Icons.public,
       ),
       _ProjectLink(
+        label: 'Google Play',
+        url: 'https://play.google.com/store/apps/details?id=edu.xaban.xaban',
+        icon: Icons.android,
+      ),
+      _ProjectLink(
+        label: 'Sibapp',
+        url: 'https://sibapp.com/applications/Zaban',
+        icon: Icons.apple,
+      ),
+      _ProjectLink(
         label: 'PWA',
-        url: 'https://app.zaban.com',
+        url: 'https://app.zaban.io',
         icon: Icons.web,
       ),
       _ProjectLink(
