@@ -35,8 +35,10 @@ jobs:
           flutter config --enable-web
           flutter pub get
 
+      # SkWasm (--wasm) uses SharedArrayBuffer; that needs COOP/COEP headers.
+      # GitHub Pages cannot set those, so use the default JS web build here.
       - name: Build
-        run: flutter build web --wasm
+        run: flutter build web
 
       # Path URL strategy: GitHub Pages must serve index.html for unknown paths.
       - name: SPA fallback for deep links
