@@ -8,12 +8,12 @@ class MenuButton extends StatefulWidget {
   final bool isSelected;
 
   const MenuButton({
-    Key? key,
+    super.key,
     required this.text,
     required this.icon,
     required this.route,
     required this.isSelected,
-  }) : super(key: key);
+  });
 
   @override
   MenuButtonState createState() => MenuButtonState();

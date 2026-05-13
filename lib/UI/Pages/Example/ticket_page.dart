@@ -2,13 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:hasanm08/UI/Pages/Example/ticket_footer.dart';
 import 'package:hasanm08/UI/Pages/Example/ticket_header.dart';
 
-
-
 class TicketPage extends StatelessWidget {
   final String? firstLocation;
   final String? secondLocation;
-  const TicketPage({Key? key, this.firstLocation, this.secondLocation})
-      : super(key: key);
+  const TicketPage({super.key, this.firstLocation, this.secondLocation});
 
   @override
   Widget build(BuildContext context) {

@@ -6,11 +6,11 @@ class NestedNavigator extends StatelessWidget {
   final Map<String, WidgetBuilder> routes;
 
   const NestedNavigator({
-    Key? key, 
+    super.key,
     required this.navigationKey,
     required this.initialRoute,
     required this.routes,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -21,7 +21,6 @@ class NestedNavigator extends StatelessWidget {
         WidgetBuilder builder = routes[routeSettings.name]!;
         return MaterialPageRoute(
           builder: builder,
-          
           settings: routeSettings,
         );
       },

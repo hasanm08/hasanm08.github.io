@@ -3,7 +3,7 @@ import 'package:hasanm08/UI/Components/custom_animated_3d_card.dart';
 import 'package:hasanm08/UI/Components/portfolio_animations.dart';
 
 class About extends StatelessWidget {
-  const About({Key? key}) : super(key: key);
+  const About({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -62,7 +62,7 @@ class About extends StatelessWidget {
     );
   }
 
-  infoRow(String title, String description, BuildContext context) {
+  Widget infoRow(String title, String description, BuildContext context) {
     return Container(
       width: 350,
       padding: const EdgeInsets.all(20.0),

@@ -5,7 +5,7 @@ import 'package:hasanm08/Utils/example_utils.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class HomeScreen extends StatefulWidget {
-  const HomeScreen({Key? key}) : super(key: key);
+  const HomeScreen({super.key});
 
   @override
   State<HomeScreen> createState() => _HomeScreenState();
@@ -37,10 +37,10 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return Theme(
       data: ThemeData(
-      primaryColor: //Colors.purple,
-          Colors.indigo,
-      secondaryHeaderColor: // Colors.blue
-          Colors.teal),
+          primaryColor: //Colors.purple,
+              Colors.indigo,
+          secondaryHeaderColor: // Colors.blue
+              Colors.teal),
       child: Scaffold(
         floatingActionButton: FloatingActionButton(
           elevation: 0,
@@ -90,7 +90,8 @@ class _HomeScreenState extends State<HomeScreen> {
                             ),
                             child: Image.asset('assets/images/instagram.png'),
                             onPressed: () async {
-                              const url = 'https://www.instagram.com/hasanm108/';
+                              const url =
+                                  'https://www.instagram.com/hasanm108/';
                               if (await canLaunchUrl(Uri.dataFromString(url))) {
                                 await launchUrl(Uri.dataFromString(url));
                               } else {

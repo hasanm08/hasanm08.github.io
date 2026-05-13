@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:hasanm08/Utils/example_utils.dart';
 
 class CitiesSlider extends StatelessWidget {
-  const CitiesSlider({Key? key}) : super(key: key);
+  const CitiesSlider({super.key});
 
   @override
   Widget build(BuildContext context) {

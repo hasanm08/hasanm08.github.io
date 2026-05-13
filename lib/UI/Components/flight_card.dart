@@ -11,14 +11,13 @@ class FlightCard extends StatelessWidget {
   final String? oldPrice;
 
   const FlightCard(
-      {Key? key,
+      {super.key,
       this.date,
       this.flightTo,
       this.percentOff,
       this.price,
       this.rating,
-      this.oldPrice})
-      : super(key: key);
+      this.oldPrice});
 
   @override
   Widget build(BuildContext context) {

@@ -7,10 +7,10 @@ class WebRoot extends StatelessWidget {
   final Widget child;
 
   const WebRoot({
-    Key? key,
+    super.key,
     required this.currentPath,
     required this.child,
-  }) : super(key: key);
+  });
 
   int get selectedIndex => AppShellRoutes.indexForPath(currentPath);
 

@@ -5,7 +5,7 @@ import 'package:hasanm08/UI/Pages/Example/ticket_page.dart';
 import 'package:hasanm08/Utils/example_utils.dart';
 
 class HomeHeader extends StatefulWidget {
-  const HomeHeader({required this.locations, Key? key}) : super(key: key);
+  const HomeHeader({required this.locations, super.key});
   final List<String> locations;
   @override
   HomeHeaderState createState() => HomeHeaderState();
@@ -30,8 +30,7 @@ class HomeHeaderState extends State<HomeHeader> {
           clipper: CustomClipperComponent(),
           child: AnimatedContainer(
             duration: const Duration(milliseconds: 370),
-            height: defaultHeight < 450 ? defaultHeight
-                : 500,
+            height: defaultHeight < 450 ? defaultHeight : 500,
             decoration: BoxDecoration(
                 gradient: LinearGradient(colors: [
               Theme.of(context).primaryColor,
@@ -150,8 +149,7 @@ class HomeHeaderState extends State<HomeHeader> {
                                 Navigator.push(context,
                                     MaterialPageRoute(builder: (context) {
                                   return TicketPage(
-                                      firstLocation:
-                                          widget.locations[
+                                      firstLocation: widget.locations[
                                           ExampleUtils.selectedLocation],
                                       secondLocation:
                                           textEditingController.text);

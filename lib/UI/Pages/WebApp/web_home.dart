@@ -3,7 +3,7 @@ import 'package:hasanm08/blocs/menu_bloc.dart';
 import 'package:provider/provider.dart';
 
 class WebHome extends StatelessWidget {
-  const WebHome({Key? key}) : super(key: key);
+  const WebHome({super.key});
 
   @override
   Widget build(BuildContext context) {

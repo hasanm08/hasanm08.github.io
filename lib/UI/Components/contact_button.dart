@@ -3,12 +3,11 @@ import 'package:url_launcher/url_launcher.dart';
 
 class ContactButton extends StatefulWidget {
   const ContactButton(
-      {Key? key,
+      {super.key,
       this.color = Colors.blue,
       required this.icon,
       required this.link,
-      required this.title})
-      : super(key: key);
+      required this.title});
   final IconData icon;
   final String title;
   final String link;

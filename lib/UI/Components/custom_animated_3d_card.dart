@@ -6,11 +6,11 @@ class CustomAnimated3DCard extends StatefulWidget {
   final double? size;
 
   const CustomAnimated3DCard({
-    Key? key,
+    super.key,
     required this.characterImage,
     required this.coverImage,
     this.size,
-  }) : super(key: key);
+  });
 
   @override
   CustomAnimated3DCardState createState() => CustomAnimated3DCardState();
@@ -95,7 +95,7 @@ class CustomAnimated3DCardState extends State<CustomAnimated3DCard>
             //     ),
             //   ),
             // ),
-            
+
             AnimatedPositioned(
               duration: const Duration(milliseconds: 370),
               bottom: isHovered ? 8 : 0,
