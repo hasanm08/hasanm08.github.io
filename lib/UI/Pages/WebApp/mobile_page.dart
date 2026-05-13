@@ -1,155 +1,53 @@
 import 'package:flutter/material.dart';
-import 'package:hasanm08/UI/Components/contact_button.dart';
+import 'package:go_router/go_router.dart';
+import 'package:hasanm08/Utils/app_shell_routes.dart';
 
-import '../../Components/rotating_circle_animation.dart';
-
+/// Mobile/tablet shell: same route-driven tabs as [WebRoot], with a bottom bar.
 class MobilePage extends StatelessWidget {
-  const MobilePage({Key? key}) : super(key: key);
+  const MobilePage({
+    Key? key,
+    required this.currentPath,
+    required this.child,
+  }) : super(key: key);
+
+  final String currentPath;
+  final Widget child;
 
   @override
   Widget build(BuildContext context) {
+    final selectedIndex = AppShellRoutes.indexForPath(currentPath);
+
     return Scaffold(
-      body: Container(
-        width: double.infinity,
-        color: Colors.white,
-        child: ListView(
-          physics: const BouncingScrollPhysics(),
-          scrollDirection: Axis.vertical,
-          cacheExtent: 3,
-          children: [
-            const SizedBox(height: 12),
-            Padding(
-              padding: const EdgeInsets.all(12.0),
-              child: SizedBox(
-                height: 140,
-                width: 280,
-                child: Stack(
-                  alignment: Alignment.center,
-                  children: [
-                    Container(
-                      height: 140,
-                      width: 140,
-                      decoration: const BoxDecoration(
-                          shape: BoxShape.circle,
-                          image: DecorationImage(
-                              image: AssetImage("assets/images/hasanm308.jpeg"),
-                              fit: BoxFit.contain)),
-                    ),
-                    const RotatingCircle(
-                      color: Colors.black,
-                    )
-                  ],
-                ),
-              ),
-            ),
-            const Center(
-              child: Padding(
-                padding: EdgeInsets.all(8.0),
-                child: Text(
-                  "Amir Hassan Amirmahani",
-                  style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      fontSize: 24,
-                      color: Colors.black,
-                      fontFamily: "kalame"),
-                ),
-              ),
-            ),
-            const Center(
-              child: Padding(
-                padding: EdgeInsets.fromLTRB(8, 8, 8, 0),
-                child: Text(
-                  "Flutter Developer",
-                  style: TextStyle(
-                      fontSize: 18,
-                      color: Colors.black,
-                      fontFamily: "Exo2",
-                      letterSpacing: 8),
-                ),
-              ),
-            ),
-            const Center(
-              child: Padding(
-                padding: EdgeInsets.fromLTRB(8, 0, 8, 8),
-                child: Text(
-                  "C# Developer",
-                  style: TextStyle(
-                      fontSize: 18,
-                      color: Colors.black,
-                      fontFamily: "Exo2",
-                      letterSpacing: 8),
-                ),
-              ),
-            ),
-            const SizedBox(
-              width: 300,
-              child: Divider(
-                endIndent: 12,
-                thickness: 1,
-                indent: 12,
-                color: Colors.black26,
-              ),
-            ),
-            const Center(
-              child: Wrap(
-                children: [
-                  ContactButton(
-                      color: Colors.black,
-                      title: "Make a Call",
-                      icon: Icons.phone,
-                      link: 'tel:+98 991 018 7797'),
-                  ContactButton(
-                      color: Colors.black,
-                      title: "Gmail",
-                      icon: Icons.mail,
-                      link:
-                          'mailto:hasanmahani08@gmail.com?subject=Let\'s work together'),
-                  ContactButton(
-                      color: Colors.black,
-                      title: "Instagram",
-                      icon: Icons.camera,
-                      link: 'https://www.instagram.com/hasanm108'),
-                  ContactButton(
-                      color: Colors.black,
-                      title: "Telegram",
-                      icon: Icons.chat,
-                      link: 'https://t.me/hasanm08'),
-                  ContactButton(
-                      color: Colors.black,
-                      title: "Twitter",
-                      icon: Icons.chat,
-                      link: 'https://twitter.com/hasanm08'),
-                  ContactButton(
-                      color: Colors.black,
-                      title: "Whatsapp",
-                      icon: Icons.chat,
-                      link:
-                          'https://api.whatsapp.com/send?phone=+989910187797&text=Let\'s work together&source=&data=&app_absent='),
-                  ContactButton(
-                      color: Colors.black,
-                      title: "GitHub",
-                      icon: Icons.code,
-                      link: 'https://github.com/hasanm08'),
-                  ContactButton(
-                      color: Colors.black,
-                      title: "GitLab",
-                      icon: Icons.code,
-                      link: 'https://gitlab.com/hasanmahani08'),
-                  ContactButton(
-                      color: Colors.black,
-                      title: "LinkedIn",
-                      icon: Icons.info,
-                      link: 'https://linkedin.com/in/hasanm08'),
-                  ContactButton(
-                      color: Colors.black,
-                      title: "StackOverflow",
-                      icon: Icons.code,
-                      link: 'https://stackoverflow.com/users/14041364/hasanm08')
-                ],
-              ),
-            ),
-          ],
-        ),
+      body: child,
+      bottomNavigationBar: BottomNavigationBar(
+        type: BottomNavigationBarType.fixed,
+        currentIndex: selectedIndex,
+        selectedItemColor: Colors.blue,
+        unselectedItemColor: Colors.black54,
+        onTap: (index) {
+          final path = AppShellRoutes.pathForIndex(index);
+          if (path != currentPath) {
+            context.go(path);
+          }
+        },
+        items: const [
+          BottomNavigationBarItem(
+            icon: Icon(Icons.person),
+            label: 'About',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.call),
+            label: 'Contact',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.work),
+            label: 'Projects',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.more_horiz),
+            label: 'More',
+          ),
+        ],
       ),
     );
   }

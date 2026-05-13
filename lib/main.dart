@@ -1,6 +1,5 @@
 //import 'package:device_preview/device_preview.dart';
-import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
+import 'package:flutter/material.dart';import 'package:go_router/go_router.dart';
 import 'package:hasanm08/UI/Pages/WebApp/mobile_page.dart';
 import 'package:hasanm08/UI/Pages/WebApp/about.dart';
 import 'package:hasanm08/UI/Pages/WebApp/contact.dart';
@@ -12,8 +11,12 @@ import 'UI/Components/Shimms/nonweb_title_switcher.dart'
     if (dart.library.html) 'UI/Components/Shimms/web_title_switcher.dart';
 import 'UI/Components/base_widget.dart';
 import 'Utils/sizing_information.dart';
+import 'Utils/web_url_strategy_stub.dart'
+    if (dart.library.html) 'Utils/web_url_strategy_web.dart';
 
 void main() {
+  WidgetsFlutterBinding.ensureInitialized();
+  configureWebUrlStrategy();
   runApp(
     //DevicePreview(
     //builder: (context) =>
@@ -96,7 +99,10 @@ Widget _appRootForSize(
   GoRouterState state,
   Widget child,
 ) {
-  var mobile = const MobilePage();
+  var mobile = MobilePage(
+    currentPath: state.uri.path,
+    child: child,
+  );
   var web = WebTitleSwitcher(
     child: WebRoot(currentPath: state.uri.path, child: child),
   );

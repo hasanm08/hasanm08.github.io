@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hasanm08/UI/Pages/WebApp/menu_button.dart';
+import 'package:hasanm08/Utils/app_shell_routes.dart';
 
 class WebRoot extends StatelessWidget {
   final String currentPath;
@@ -11,20 +12,7 @@ class WebRoot extends StatelessWidget {
     required this.child,
   }) : super(key: key);
 
-  int get selectedIndex {
-    switch (currentPath) {
-      case '/about':
-        return 0;
-      case '/contact-me':
-        return 1;
-      case '/projects':
-        return 2;
-      case '/more':
-        return 3;
-      default:
-        return 0;
-    }
-  }
+  int get selectedIndex => AppShellRoutes.indexForPath(currentPath);
 
   @override
   Widget build(BuildContext context) {
