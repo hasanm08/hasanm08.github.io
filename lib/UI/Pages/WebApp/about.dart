@@ -49,7 +49,10 @@ class About extends StatelessWidget {
           infoRow("Age", "${DateTime.now().year - 1999} years", context),
           infoRow("Country", "Iran", context),
           infoRow("City", "Kerman", context),
-          infoRow("Education ", "B.Sc Computer Eng Bahonar Uni", context),
+          infoRow(
+              "Education ",
+              "M.sc Artifitial Inteligence & Robotics Shiraz University",
+              context),
           infoRow("Julia Age", "${DateTime.now().year - 2020} years", context),
           infoRow(
               "Flutter Age", "${DateTime.now().year - 2019} years", context),
