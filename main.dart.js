@@ -80013,7 +80013,7 @@ this.cd()
 this.fA()}}
 A.FT.prototype={
 L(a){var s=this,r=null
-return A.av8(new A.rU(A.c([B.c4,B.KC,A.hi(r,B.SA,B.r,r,r,r,r,r,r,B.fs,r,r,r),B.O_,s.kw("Age",""+(A.rX(new A.et(Date.now(),0,!1))-1999)+" years",a),s.kw("Country","Iran",a),s.kw("City","Kerman",a),s.kw("Education ","B.Sc Computer Eng Bahonar Uni",a),s.kw("Julia Age",""+(A.rX(new A.et(Date.now(),0,!1))-2020)+" years",a),s.kw("Flutter Age",""+(A.rX(new A.et(Date.now(),0,!1))-2019)+" years",a),s.kw("Arduino Age",""+(A.rX(new A.et(Date.now(),0,!1))-2018)+" years",a),s.kw("Python Age",""+(A.rX(new A.et(Date.now(),0,!1))-2018)+" years",a),s.kw("C# Age",""+(A.rX(new A.et(Date.now(),0,!1))-2017)+" years",a)],t.p),B.ax,B.a1,B.aC,r),B.lu)},
+return A.av8(new A.rU(A.c([B.c4,B.KC,A.hi(r,B.SA,B.r,r,r,r,r,r,r,B.fs,r,r,r),B.O_,s.kw("Age",""+(A.rX(new A.et(Date.now(),0,!1))-1999)+" years",a),s.kw("Country","Iran",a),s.kw("City","Kerman",a),s.kw("Education ","M.sc Artifitial Inteligence & Robotics Shiraz University",a),s.kw("Julia Age",""+(A.rX(new A.et(Date.now(),0,!1))-2020)+" years",a),s.kw("Flutter Age",""+(A.rX(new A.et(Date.now(),0,!1))-2019)+" years",a),s.kw("Arduino Age",""+(A.rX(new A.et(Date.now(),0,!1))-2018)+" years",a),s.kw("Python Age",""+(A.rX(new A.et(Date.now(),0,!1))-2018)+" years",a),s.kw("C# Age",""+(A.rX(new A.et(Date.now(),0,!1))-2017)+" years",a)],t.p),B.ax,B.a1,B.aC,r),B.lu)},
 kw(a,b,c){var s=null
 return A.hi(s,A.mg(A.c([A.a_K(A.d_(a,s,s,A.ae(c).ok.y,s),1),A.d_(b,s,s,A.ae(c).ok.z,s)],t.p),B.a1,B.fY,B.aC,0),B.r,s,s,s,s,s,s,B.mq,s,s,350)}}
 A.Hb.prototype={
