@@ -21,6 +21,7 @@ class MenuButton extends StatefulWidget {
 
 class MenuButtonState extends State<MenuButton> {
   bool _hovering = false;
+
   void _handleHoveHighlight(bool value) {
     setState(() {
       _hovering = value;
@@ -29,6 +30,7 @@ class MenuButtonState extends State<MenuButton> {
 
   @override
   Widget build(BuildContext context) {
+    final scheme = Theme.of(context).colorScheme;
     final active = widget.isSelected || _hovering;
     return SizedBox(
       height: 60,
@@ -36,31 +38,32 @@ class MenuButtonState extends State<MenuButton> {
       child: FocusableActionDetector(
         onShowHoverHighlight: _handleHoveHighlight,
         child: AnimatedContainer(
-          duration: const Duration(milliseconds: 220),
-          curve: Curves.easeOutCubic,
+          duration: const Duration(milliseconds: 420),
+          curve: Curves.easeOutQuint,
           margin: const EdgeInsets.fromLTRB(8, 8, 0, 8),
           decoration: BoxDecoration(
-              border: null,
-              color: active ? Colors.white : Colors.blue,
-              borderRadius: const BorderRadius.only(
-                topLeft: Radius.circular(30),
-                bottomLeft: Radius.circular(30),
-              )),
+            color: active ? scheme.onPrimary : scheme.primary,
+            borderRadius: const BorderRadius.only(
+              topLeft: Radius.circular(30),
+              bottomLeft: Radius.circular(30),
+            ),
+          ),
           child: TextButton(
             style: TextButton.styleFrom(
-                tapTargetSize: MaterialTapTargetSize.shrinkWrap,
-                animationDuration: const Duration(microseconds: 200),
-                textStyle: Theme.of(context)
-                    .textTheme
-                    .bodyLarge!
-                    .copyWith(fontWeight: FontWeight.w700),
-                padding: const EdgeInsets.all(12),
-                shadowColor: Colors.white,
-                shape: const RoundedRectangleBorder(
-                    borderRadius: BorderRadius.only(
+              tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+              animationDuration: const Duration(milliseconds: 240),
+              textStyle: Theme.of(context).textTheme.bodyLarge?.copyWith(
+                    fontWeight: FontWeight.w700,
+                  ),
+              padding: const EdgeInsets.all(12),
+              foregroundColor: active ? scheme.primary : scheme.onPrimary,
+              shape: const RoundedRectangleBorder(
+                borderRadius: BorderRadius.only(
                   topLeft: Radius.circular(30),
                   bottomLeft: Radius.circular(30),
-                ))),
+                ),
+              ),
+            ),
             onPressed: () {
               context.go(widget.route);
             },
@@ -69,15 +72,15 @@ class MenuButtonState extends State<MenuButton> {
               children: [
                 Icon(
                   widget.icon,
-                  color: !active ? Colors.white : Colors.blue,
+                  color: active ? scheme.primary : scheme.onPrimary,
                 ),
-                const SizedBox(
-                  width: 8,
-                ),
+                const SizedBox(width: 8),
                 Text(
                   widget.text,
-                  style: TextStyle(color: !active ? Colors.white : Colors.blue),
-                )
+                  style: TextStyle(
+                    color: active ? scheme.primary : scheme.onPrimary,
+                  ),
+                ),
               ],
             ),
           ),

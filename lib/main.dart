@@ -1,5 +1,6 @@
 //import 'package:device_preview/device_preview.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hasanm08/UI/Pages/WebApp/about.dart';
 import 'package:hasanm08/UI/Pages/WebApp/contact.dart';
@@ -7,6 +8,10 @@ import 'package:hasanm08/UI/Pages/WebApp/mobile_page.dart';
 import 'package:hasanm08/UI/Pages/WebApp/more.dart';
 import 'package:hasanm08/UI/Pages/WebApp/projects.dart';
 import 'package:hasanm08/UI/Pages/WebApp/web_root.dart';
+import 'package:hasanm08/l10n/app_localizations.dart';
+import 'package:hasanm08/providers/app_settings.dart';
+import 'package:hasanm08/theme/app_theme.dart';
+import 'package:provider/provider.dart';
 
 import 'UI/Components/base_widget.dart';
 import 'Utils/sizing_information.dart';
@@ -17,30 +22,30 @@ void main() {
   WidgetsFlutterBinding.ensureInitialized();
   configureWebUrlStrategy();
   runApp(
-    //DevicePreview(
-    //builder: (context) =>
-    const MyApp(),
-    //)
+    ChangeNotifierProvider(
+      create: (_) => AppSettings(),
+      child: const MyApp(),
+    ),
   );
 }
 
 CustomTransitionPage<void> _shellChildPage(GoRouterState state, Widget child) {
   return CustomTransitionPage<void>(
     key: state.pageKey,
-    transitionDuration: const Duration(milliseconds: 400),
-    reverseTransitionDuration: const Duration(milliseconds: 260),
+    transitionDuration: const Duration(milliseconds: 520),
+    reverseTransitionDuration: const Duration(milliseconds: 360),
     child: child,
     transitionsBuilder: (context, animation, secondaryAnimation, child) {
       final curved = CurvedAnimation(
         parent: animation,
-        curve: Curves.easeOutCubic,
-        reverseCurve: Curves.easeInCubic,
+        curve: Curves.easeOutQuint,
+        reverseCurve: Curves.easeInQuart,
       );
       return FadeTransition(
         opacity: curved,
         child: SlideTransition(
           position: Tween<Offset>(
-            begin: const Offset(0, 0.036),
+            begin: const Offset(0, 0.022),
             end: Offset.zero,
           ).animate(curved),
           child: child,
@@ -105,18 +110,27 @@ final GoRouter _router = GoRouter(
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
-  // This widget is the root of your application.
-
   @override
   Widget build(BuildContext context) {
-    return MaterialApp.router(
-      //builder: DevicePreview.appBuilder,
-      title: 'hasanm08 cv',
-      theme: ThemeData(
-        primarySwatch: Colors.teal,
-        visualDensity: VisualDensity.adaptivePlatformDensity,
-      ),
-      routerConfig: _router,
+    return Consumer<AppSettings>(
+      builder: (context, settings, _) {
+        return MaterialApp.router(
+          title: 'hasanm08 cv',
+          debugShowCheckedModeBanner: false,
+          theme: AppTheme.light(),
+          darkTheme: AppTheme.dark(),
+          themeMode: settings.themeMode,
+          locale: settings.locale,
+          supportedLocales: AppLocalizations.supportedLocales,
+          localizationsDelegates: const [
+            AppLocalizations.delegate,
+            GlobalMaterialLocalizations.delegate,
+            GlobalWidgetsLocalizations.delegate,
+            GlobalCupertinoLocalizations.delegate,
+          ],
+          routerConfig: _router,
+        );
+      },
     );
   }
 }

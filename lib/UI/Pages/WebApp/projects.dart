@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hasanm08/UI/Components/portfolio_animations.dart';
+import 'package:hasanm08/l10n/app_localizations.dart';
+import 'package:hasanm08/l10n/localized_text.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class Projects extends StatelessWidget {
@@ -9,6 +11,7 @@ class Projects extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context);
     return LayoutBuilder(
       builder: (context, constraints) {
         final isWide = constraints.maxWidth >= _wideBreakpoint;
@@ -32,14 +35,14 @@ class Projects extends StatelessWidget {
                 return Padding(
                   padding: const EdgeInsets.only(bottom: 8),
                   child: Text(
-                    'Projects',
-                    style: TextStyle(
-                      fontFamily: 'Exo2',
-                      fontSize: isWide ? 30 : 24,
-                      color: Colors.blue,
-                      letterSpacing: 1.2,
-                      fontWeight: FontWeight.w600,
-                    ),
+                    l10n.projectsTitle,
+                    style: Theme.of(context).textTheme.headlineSmall?.copyWith(
+                          fontFamily: 'Exo2',
+                          fontSize: isWide ? 30 : 24,
+                          color: Theme.of(context).colorScheme.primary,
+                          letterSpacing: 1.2,
+                          fontWeight: FontWeight.w600,
+                        ),
                   ),
                 );
               }
@@ -70,10 +73,10 @@ class _Project {
   final String name;
   final String? dateRange;
   final String? associatedWith;
-  final String description;
+  final LocalizedText description;
   final List<String> skills;
   final List<String> tags;
-  final List<String> highlights;
+  final List<LocalizedText> highlights;
   final List<_ProjectLink> links;
 }
 
@@ -89,28 +92,51 @@ class _ProjectLink {
   final IconData icon;
 }
 
-const List<_Project> _projects = [
+final List<_Project> _projects = [
   _Project(
     name: 'Volvero',
     dateRange: 'Mar 2025 – Mar 2026',
-    description:
-        'Volvero is a peer-to-peer vehicle sharing mobile application that '
-        'connects vehicle owners with drivers, enabling efficient, secure, '
-        'and sustainable access to cars, motorcycles, and commercial vehicles. '
-        'As a core member of the Volvero Flutter team, I led multiple '
-        'high-impact technical improvements across performance, security, '
-        'and code quality.',
-    highlights: [
-      'Performance Optimization: refactored critical parts of the Flutter '
-          'codebase for better responsiveness and rendering on Android and iOS.',
-      'Security Enhancements: secure data handling, input validation, '
-          'dependency hardening, and runtime protections.',
-      'Null Safety Migration: migrated the entire project to Dart null safety, '
-          'eliminating a major class of runtime errors.',
-      'Collaborative Development: aligned with backend, QA, and product to '
-          'deliver seamless user experiences.',
-      'Code Quality & Scalability: enforced standards for code structure, '
-          'modularization, and testability.',
+    description: LocalizedText(
+      'Volvero is a peer-to-peer vehicle sharing mobile application that '
+      'connects vehicle owners with drivers, enabling efficient, secure, '
+      'and sustainable access to cars, motorcycles, and commercial vehicles. '
+      'As a core member of the Volvero Flutter team, I led multiple '
+      'high-impact technical improvements across performance, security, '
+      'and code quality.',
+      '«ولورو» یک اپلیکیشن موبایل اشتراک خودرو همتا به همتا است که مالکان و '
+      'رانندگان را به هم متصل می‌کند و دسترسی امن، کارآمد و پایدار به خودرو، '
+      'موتورسیکلت و ناوگان تجاری را ممکن می‌سازد. به‌عنوان عضو اصلی تیم فلاتر '
+      'ولورو، روی بهبودهای فنی مهم در عملکرد، امنیت و کیفیت کد نقش داشتم.',
+    ),
+    highlights: const [
+      LocalizedText(
+        'Performance Optimization: refactored critical parts of the Flutter '
+            'codebase for better responsiveness and rendering on Android and iOS.',
+        'بهینه‌سازی عملکرد: بازطراحی بخش‌های حساس کدبیس فلاتر برای پاسخگویی و '
+            'رندر بهتر در اندروید و iOS.',
+      ),
+      LocalizedText(
+        'Security Enhancements: secure data handling, input validation, '
+            'dependency hardening, and runtime protections.',
+        'تقویت امنیت: مدیریت امن داده، اعتبارسنجی ورودی، سخت‌سازی وابستگی‌ها و '
+            'محافظت‌های زمان اجرا.',
+      ),
+      LocalizedText(
+        'Null Safety Migration: migrated the entire project to Dart null safety, '
+            'eliminating a major class of runtime errors.',
+        'مهاجرت به Null Safety: انتقال کامل پروژه به null safety در Dart و '
+            'کاهش خطاهای زمان اجرا.',
+      ),
+      LocalizedText(
+        'Collaborative Development: aligned with backend, QA, and product to '
+            'deliver seamless user experiences.',
+        'توسعهٔ تیمی: هم‌راستایی با بک‌اند، QA و محصول برای تجربهٔ کاربری روان.',
+      ),
+      LocalizedText(
+        'Code Quality & Scalability: enforced standards for code structure, '
+            'modularization, and testability.',
+        'کیفیت و مقیاس‌پذیری کد: استانداردساختار، ماژولار بودن و قابلیت تست.',
+      ),
     ],
     tags: ['Flutter', 'Mobile', 'P2P', 'Performance', 'Security'],
     links: [
@@ -137,11 +163,15 @@ const List<_Project> _projects = [
     name: 'Zaban',
     dateRange: 'Apr 2021 – Sep 2025',
     associatedWith: 'ParsPack | پارس پک',
-    description:
-        'An interactive English learning mobile app designed to make language '
-        'acquisition more engaging and enjoyable through efficient tools and '
-        'gamified elements. Grew the active user base to 50,000 by delivering '
-        'a seamless experience and integrating cutting-edge learning features.',
+    description: LocalizedText(
+      'An interactive English learning mobile app designed to make language '
+      'acquisition more engaging and enjoyable through efficient tools and '
+      'gamified elements. Grew the active user base to 50,000 by delivering '
+      'a seamless experience and integrating cutting-edge learning features.',
+      'یک اپلیکیشن موبایل آموزش زبان انگلیسی تعاملی که با ابزارهای کارآمد و '
+      'المان‌های بازی‌وار، یادگیری را جذاب‌تر می‌کند. با تمرکز بر تجربهٔ روان و '
+      'امکانات یادگیری به‌روز، به رشد پایگاه فعال تا حدود ۵۰٬۰۰۰ کاربر کمک شد.',
+    ),
     skills: ['Web Development', 'Computer Science', 'Flutter'],
     tags: ['Flutter', 'EdTech', 'PWA', 'Gamification'],
     links: [
@@ -179,11 +209,15 @@ const List<_Project> _projects = [
   ),
   _Project(
     name: 'CodeWolf',
-    description:
-        'A comprehensive management application for a programming institute '
-        'built with WPF, focused on delivering an intuitive user experience '
-        'through sleek, modern styling. The app streamlines administrative '
-        'tasks and enhances overall efficiency for staff and students.',
+    description: LocalizedText(
+      'A comprehensive management application for a programming institute '
+      'built with WPF, focused on delivering an intuitive user experience '
+      'through sleek, modern styling. The app streamlines administrative '
+      'tasks and enhances overall efficiency for staff and students.',
+      'یک نرم‌افزار جامع مدیریتی برای آموزشگاه برنامه‌نویسی با WPF با تمرکز بر '
+      'تجربهٔ کاربری شهودی و ظاهر مدرن؛ فرایندهای اداری را ساده‌تر و کارایی '
+      'کارکنان و هنرجویان را بالا می‌برد.',
+    ),
     skills: ['WPF', 'C#', 'Computer Science'],
     tags: ['Desktop', 'Windows', 'WPF', 'C#'],
     links: [
@@ -196,21 +230,29 @@ const List<_Project> _projects = [
   ),
   _Project(
     name: 'PayBay',
-    description:
-        'A cross-platform Buy Now Pay Later (BNPL) service built with Flutter, '
-        'providing a seamless and secure payment experience across devices. '
-        'Features a clean, user-friendly interface and integrates with '
-        'multiple payment gateways for flexible purchase management.',
+    description: LocalizedText(
+      'A cross-platform Buy Now Pay Later (BNPL) service built with Flutter, '
+      'providing a seamless and secure payment experience across devices. '
+      'Features a clean, user-friendly interface and integrates with '
+      'multiple payment gateways for flexible purchase management.',
+      'سرویس «خرید الان، پرداخت بعد» چندسکویی با فلاتر با تجربهٔ پرداخت امن و '
+      'یکدست روی دستگاه‌های مختلف؛ رابط کاربری تمیز و اتصال به درگاه‌های متعدد '
+      'برای مدیریت انعطاف‌پذیر خرید.',
+    ),
     skills: ['Flutter', 'Computer Science'],
     tags: ['Flutter', 'FinTech', 'BNPL', 'Payments'],
   ),
   _Project(
     name: 'Travel App',
-    description:
-        'A simple Flutter MVP for a travel services platform with an intuitive '
-        'interface to browse, book, and manage travel plans. Focused on core '
-        'functionality and optimized performance across devices for a '
-        'streamlined experience.',
+    description: LocalizedText(
+      'A simple Flutter MVP for a travel services platform with an intuitive '
+      'interface to browse, book, and manage travel plans. Focused on core '
+      'functionality and optimized performance across devices for a '
+      'streamlined experience.',
+      'یک MVP فلاتر برای پلتفرم خدمات سفر با رابط کاربری شهودی برای مرور، '
+      'رزرو و مدیریت برنامه‌های سفر؛ تمرکز بر هستهٔ محصول و عملکرد بهینه روی '
+      'دستگاه‌های مختلف.',
+    ),
     skills: ['Flutter', 'Computer Science'],
     tags: ['Flutter', 'Travel', 'MVP'],
     links: [
@@ -241,25 +283,28 @@ class _ProjectCardState extends State<_ProjectCard> {
 
   @override
   Widget build(BuildContext context) {
+    final locale = Localizations.localeOf(context);
+    final l10n = AppLocalizations.of(context);
+    final scheme = Theme.of(context).colorScheme;
     final project = widget.project;
     final isCompact = widget.isCompact;
     final titleStyle = TextStyle(
       fontSize: isCompact ? 20 : 24,
       fontFamily: 'Exo2',
-      color: Colors.blue,
+      color: scheme.primary,
       letterSpacing: isCompact ? 0.6 : 1.0,
       fontWeight: FontWeight.w600,
     );
     final metaStyle = TextStyle(
       fontSize: isCompact ? 12 : 13,
       fontFamily: 'Exo2',
-      color: Colors.black54,
+      color: scheme.onSurface.withValues(alpha: 0.65),
       fontStyle: FontStyle.italic,
     );
     final bodyStyle = TextStyle(
       fontSize: isCompact ? 14 : 16,
       fontFamily: 'Exo2',
-      color: Colors.black87,
+      color: scheme.onSurface.withValues(alpha: 0.92),
       height: 1.4,
     );
 
@@ -267,21 +312,21 @@ class _ProjectCardState extends State<_ProjectCard> {
       onEnter: (_) => setState(() => _hover = true),
       onExit: (_) => setState(() => _hover = false),
       child: AnimatedScale(
-        scale: _hover ? 1.008 : 1.0,
-        duration: const Duration(milliseconds: 220),
-        curve: Curves.easeOutCubic,
+        scale: _hover ? 1.006 : 1.0,
+        duration: const Duration(milliseconds: 420),
+        curve: Curves.easeOutQuint,
         child: AnimatedContainer(
-          duration: const Duration(milliseconds: 220),
-          curve: Curves.easeOutCubic,
+          duration: const Duration(milliseconds: 420),
+          curve: Curves.easeOutQuint,
           decoration: BoxDecoration(
-            color: Colors.white,
+            color: scheme.surfaceContainerHighest.withValues(alpha: 0.35),
             borderRadius: BorderRadius.circular(16),
-            border: Border.all(color: Colors.black12),
+            border: Border.all(color: scheme.outlineVariant),
             boxShadow: [
               BoxShadow(
-                color: const Color(0x14000000),
-                blurRadius: _hover ? 22 : 12,
-                offset: Offset(0, _hover ? 10 : 4),
+                color: scheme.shadow.withValues(alpha: _hover ? 0.22 : 0.12),
+                blurRadius: _hover ? 28 : 14,
+                offset: Offset(0, _hover ? 12 : 5),
               ),
             ],
           ),
@@ -297,12 +342,12 @@ class _ProjectCardState extends State<_ProjectCard> {
               if (project.associatedWith != null) ...[
                 const SizedBox(height: 2),
                 Text(
-                  'Associated with ${project.associatedWith!}',
+                  '${l10n.associatedWithPrefix} ${project.associatedWith!}',
                   style: metaStyle,
                 ),
               ],
               const SizedBox(height: 12),
-              Text(project.description, style: bodyStyle),
+              Text(project.description.resolve(locale), style: bodyStyle),
               if (project.highlights.isNotEmpty) ...[
                 const SizedBox(height: 12),
                 ...project.highlights.map(
@@ -316,14 +361,16 @@ class _ProjectCardState extends State<_ProjectCard> {
                           child: Container(
                             width: 6,
                             height: 6,
-                            decoration: const BoxDecoration(
-                              color: Colors.blue,
+                            decoration: BoxDecoration(
+                              color: scheme.primary,
                               shape: BoxShape.circle,
                             ),
                           ),
                         ),
                         const SizedBox(width: 8),
-                        Expanded(child: Text(h, style: bodyStyle)),
+                        Expanded(
+                          child: Text(h.resolve(locale), style: bodyStyle),
+                        ),
                       ],
                     ),
                   ),
@@ -332,9 +379,9 @@ class _ProjectCardState extends State<_ProjectCard> {
               if (project.skills.isNotEmpty) ...[
                 const SizedBox(height: 12),
                 Text(
-                  'Skills: ${project.skills.join(', ')}',
+                  '${l10n.skillsPrefix}: ${project.skills.join(', ')}',
                   style: bodyStyle.copyWith(
-                    color: Colors.black54,
+                    color: scheme.onSurface.withValues(alpha: 0.65),
                     fontSize: isCompact ? 13 : 14,
                   ),
                 ),
@@ -356,7 +403,11 @@ class _ProjectCardState extends State<_ProjectCard> {
                   runSpacing: 10,
                   children: [
                     for (final link in project.links)
-                      _LinkButton(link: link, isCompact: isCompact),
+                      _LinkButton(
+                        link: link,
+                        isCompact: isCompact,
+                        label: l10n.linkLabel(link.label),
+                      ),
                   ],
                 ),
               ],
@@ -375,19 +426,20 @@ class _TagChip extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final scheme = Theme.of(context).colorScheme;
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
       decoration: BoxDecoration(
-        color: Colors.blue.withValues(alpha: 0.08),
+        color: scheme.primary.withValues(alpha: 0.12),
         borderRadius: BorderRadius.circular(20),
-        border: Border.all(color: Colors.blue.withValues(alpha: 0.4)),
+        border: Border.all(color: scheme.primary.withValues(alpha: 0.45)),
       ),
       child: Text(
         '#$label',
-        style: const TextStyle(
+        style: TextStyle(
           fontFamily: 'Exo2',
           fontSize: 12,
-          color: Colors.blue,
+          color: scheme.primary,
         ),
       ),
     );
@@ -395,10 +447,15 @@ class _TagChip extends StatelessWidget {
 }
 
 class _LinkButton extends StatefulWidget {
-  const _LinkButton({required this.link, required this.isCompact});
+  const _LinkButton({
+    required this.link,
+    required this.isCompact,
+    required this.label,
+  });
 
   final _ProjectLink link;
   final bool isCompact;
+  final String label;
 
   @override
   State<_LinkButton> createState() => _LinkButtonState();
@@ -409,7 +466,8 @@ class _LinkButtonState extends State<_LinkButton> {
 
   @override
   Widget build(BuildContext context) {
-    final color = Colors.blue;
+    final scheme = Theme.of(context).colorScheme;
+    final color = scheme.primary;
     return MouseRegion(
       cursor: SystemMouseCursors.click,
       onEnter: (_) => setState(() => _hovering = true),
@@ -417,7 +475,8 @@ class _LinkButtonState extends State<_LinkButton> {
       child: GestureDetector(
         onTap: _open,
         child: AnimatedContainer(
-          duration: const Duration(milliseconds: 150),
+          duration: const Duration(milliseconds: 320),
+          curve: Curves.easeOutQuint,
           padding: EdgeInsets.symmetric(
             horizontal: widget.isCompact ? 12 : 14,
             vertical: widget.isCompact ? 8 : 10,
@@ -433,15 +492,15 @@ class _LinkButtonState extends State<_LinkButton> {
               Icon(
                 widget.link.icon,
                 size: widget.isCompact ? 16 : 18,
-                color: _hovering ? Colors.white : color,
+                color: _hovering ? scheme.onPrimary : color,
               ),
               const SizedBox(width: 6),
               Text(
-                widget.link.label,
+                widget.label,
                 style: TextStyle(
                   fontFamily: 'Exo2',
                   fontSize: widget.isCompact ? 13 : 14,
-                  color: _hovering ? Colors.white : color,
+                  color: _hovering ? scheme.onPrimary : color,
                   fontWeight: FontWeight.w500,
                 ),
               ),

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-/// Staggered fade + slide for a vertical list (e.g. project cards).
+/// Motion tuned for calm, high‑polish entrances (easeOutQuint, subtle offsets).
 class PortfolioStaggeredListView extends StatefulWidget {
   const PortfolioStaggeredListView({
     super.key,
@@ -36,15 +36,16 @@ class _PortfolioStaggeredListViewState extends State<PortfolioStaggeredListView>
     _controller = AnimationController(
       vsync: this,
       duration: Duration(
-        milliseconds: 520 + (widget.itemCount * 85).clamp(0, 1400),
+        milliseconds: 640 + (widget.itemCount * 72).clamp(0, 1800),
       ),
     );
     _animations = List.generate(widget.itemCount, (i) {
-      final start = (i / (n + 1.25)).clamp(0.0, 0.9);
-      final end = (start + 0.42).clamp(0.12, 1.0);
+      final start = (i / (n + 1.35)).clamp(0.0, 0.88);
+      final end = (start + 0.38).clamp(0.14, 1.0);
       return CurvedAnimation(
         parent: _controller,
-        curve: Interval(start, end, curve: Curves.easeOutCubic),
+        curve: Interval(start, end, curve: Curves.easeOutQuint),
+        reverseCurve: Interval(start, end, curve: Curves.easeInQuart),
       );
     });
     _controller.forward();
@@ -70,7 +71,7 @@ class _PortfolioStaggeredListViewState extends State<PortfolioStaggeredListView>
           opacity: anim,
           child: SlideTransition(
             position: Tween<Offset>(
-              begin: const Offset(0.03, 0.06),
+              begin: const Offset(0, 0.028),
               end: Offset.zero,
             ).animate(anim),
             child: widget.itemBuilder(context, index),
@@ -113,15 +114,16 @@ class _PortfolioStaggeredColumnState extends State<PortfolioStaggeredColumn>
     _controller = AnimationController(
       vsync: this,
       duration: Duration(
-        milliseconds: 380 + (widget.children.length * 72).clamp(0, 1600),
+        milliseconds: 520 + (widget.children.length * 78).clamp(0, 2000),
       ),
     );
     _animations = List.generate(widget.children.length, (i) {
-      final start = (i / (n + 1.1)).clamp(0.0, 0.88);
-      final end = (start + 0.45).clamp(0.1, 1.0);
+      final start = (i / (n + 1.2)).clamp(0.0, 0.86);
+      final end = (start + 0.4).clamp(0.12, 1.0);
       return CurvedAnimation(
         parent: _controller,
-        curve: Interval(start, end, curve: Curves.easeOutCubic),
+        curve: Interval(start, end, curve: Curves.easeOutQuint),
+        reverseCurve: Interval(start, end, curve: Curves.easeInQuart),
       );
     });
     _controller.forward();
@@ -145,7 +147,7 @@ class _PortfolioStaggeredColumnState extends State<PortfolioStaggeredColumn>
           opacity: anim,
           child: SlideTransition(
             position: Tween<Offset>(
-              begin: const Offset(0, 0.05),
+              begin: const Offset(0, 0.032),
               end: Offset.zero,
             ).animate(anim),
             child: widget.children[i],

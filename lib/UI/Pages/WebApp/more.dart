@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hasanm08/UI/Components/contact_button.dart';
 import 'package:hasanm08/UI/Components/portfolio_animations.dart';
+import 'package:hasanm08/l10n/app_localizations.dart';
 
 class More extends StatelessWidget {
   const More({super.key});
@@ -9,6 +10,8 @@ class More extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
+    final scheme = theme.colorScheme;
+    final l10n = AppLocalizations.of(context);
     return SingleChildScrollView(
       physics: const BouncingScrollPhysics(),
       child: Padding(
@@ -18,96 +21,96 @@ class More extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Text(
-              'More',
+              l10n.moreTitle,
               style: theme.textTheme.headlineSmall?.copyWith(
                 fontWeight: FontWeight.bold,
-                color: Colors.black87,
+                color: scheme.onSurface,
               ),
             ),
             const SizedBox(height: 8),
             Text(
-              'Jump around the site, open the source, or grab a few dev links.',
+              l10n.moreSubtitle,
               textAlign: TextAlign.center,
               style: theme.textTheme.bodyMedium?.copyWith(
-                color: Colors.black54,
+                color: scheme.onSurface.withValues(alpha: 0.7),
               ),
             ),
             const SizedBox(height: 24),
-            _sectionLabel(context, 'Jump to'),
+            _sectionLabel(context, l10n.moreJumpTo),
             const SizedBox(height: 12),
             Wrap(
               alignment: WrapAlignment.center,
               spacing: 10,
               runSpacing: 10,
-              children: const [
+              children: [
                 _QuickRouteButton(
-                  label: 'About',
+                  label: l10n.navAbout,
                   icon: Icons.person_outline,
                   path: '/about',
                 ),
                 _QuickRouteButton(
-                  label: 'Projects',
+                  label: l10n.navProjects,
                   icon: Icons.work_outline,
                   path: '/projects',
                 ),
                 _QuickRouteButton(
-                  label: 'Contact',
+                  label: l10n.navContact,
                   icon: Icons.mail_outline,
                   path: '/contact-me',
                 ),
               ],
             ),
             const SizedBox(height: 28),
-            _sectionLabel(context, 'This site'),
+            _sectionLabel(context, l10n.moreThisSite),
             const SizedBox(height: 12),
             Wrap(
               alignment: WrapAlignment.center,
-              children: const [
+              children: [
                 ContactButton(
                   icon: Icons.code,
                   link: 'https://github.com/hasanm08/hasanm08.github.io',
-                  title: 'Source code',
+                  title: l10n.moreSource,
                 ),
                 ContactButton(
                   icon: Icons.bug_report_outlined,
                   link: 'https://github.com/hasanm08/hasanm08.github.io/issues',
-                  title: 'Report issue',
+                  title: l10n.moreReportIssue,
                 ),
                 ContactButton(
                   icon: Icons.public,
                   link: 'https://hasanm08.github.io',
-                  title: 'Live site',
+                  title: l10n.moreLiveSite,
                 ),
               ],
             ),
             const SizedBox(height: 28),
-            _sectionLabel(context, 'Developer picks'),
+            _sectionLabel(context, l10n.moreDevPicks),
             const SizedBox(height: 12),
             Wrap(
               alignment: WrapAlignment.center,
-              children: const [
+              children: [
                 ContactButton(
                   icon: Icons.menu_book_outlined,
                   link: 'https://docs.flutter.dev',
-                  title: 'Flutter docs',
+                  title: l10n.moreFlutterDocs,
                 ),
                 ContactButton(
                   icon: Icons.extension,
                   link: 'https://pub.dev',
-                  title: 'pub.dev',
+                  title: l10n.morePubDev,
                 ),
                 ContactButton(
                   icon: Icons.school_outlined,
                   link: 'https://dart.dev/guides',
-                  title: 'Dart guides',
+                  title: l10n.moreDartGuides,
                 ),
               ],
             ),
             const SizedBox(height: 24),
             Text(
-              'Portfolio v2.1.0 · Built with Flutter',
+              l10n.moreFooter,
               style: theme.textTheme.bodySmall?.copyWith(
-                color: Colors.black38,
+                color: scheme.onSurface.withValues(alpha: 0.45),
               ),
             ),
             const SizedBox(height: 16),
@@ -118,12 +121,13 @@ class More extends StatelessWidget {
   }
 
   static Widget _sectionLabel(BuildContext context, String text) {
+    final scheme = Theme.of(context).colorScheme;
     return Text(
       text.toUpperCase(),
       style: Theme.of(context).textTheme.labelSmall?.copyWith(
             letterSpacing: 1.2,
             fontWeight: FontWeight.w600,
-            color: Colors.teal.shade700,
+            color: scheme.primary,
           ),
     );
   }
@@ -142,13 +146,14 @@ class _QuickRouteButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final scheme = Theme.of(context).colorScheme;
     return OutlinedButton.icon(
       onPressed: () => context.go(path),
       icon: Icon(icon, size: 18),
       label: Text(label),
       style: OutlinedButton.styleFrom(
-        foregroundColor: Colors.teal.shade700,
-        side: BorderSide(color: Colors.teal.shade400),
+        foregroundColor: scheme.primary,
+        side: BorderSide(color: scheme.outline),
         padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 10),
       ),
     );
