@@ -31,6 +31,15 @@ class AppLocalizations {
   String get themeLight => isFa ? 'روشن' : 'Light';
   String get themeDark => isFa ? 'تاریک' : 'Dark';
 
+  // —— Not found (go_router) ——
+  String get notFoundTitle => isFa ? 'صفحه پیدا نشد' : 'Page not found';
+  String get notFoundSubtitle => isFa
+      ? 'این مسیر در نمونه‌کار من تعریف نشده است؛ شاید لینک قدیمی باشد یا اشتباه تایپ شده باشد.'
+      : 'This path is not part of my portfolio — the link may be outdated or mistyped.';
+  String get notFoundPathLabel => isFa ? 'آدرس درخواستی' : 'Requested path';
+  String get notFoundHomeCta => isFa ? 'رفتن به خانه' : 'Back to home';
+  String get notFoundGoBack => isFa ? 'برگشت' : 'Go back';
+
   // —— About ——
   String get yearsSuffix => isFa ? 'سال' : 'years';
   String get ageLabel => isFa ? 'سن' : 'Age';

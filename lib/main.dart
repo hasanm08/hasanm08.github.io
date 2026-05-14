@@ -6,6 +6,7 @@ import 'package:hasanm08/UI/Pages/WebApp/about.dart';
 import 'package:hasanm08/UI/Pages/WebApp/contact.dart';
 import 'package:hasanm08/UI/Pages/WebApp/mobile_page.dart';
 import 'package:hasanm08/UI/Pages/WebApp/more.dart';
+import 'package:hasanm08/UI/Pages/WebApp/not_found_page.dart';
 import 'package:hasanm08/UI/Pages/WebApp/projects.dart';
 import 'package:hasanm08/UI/Pages/WebApp/web_root.dart';
 import 'package:hasanm08/l10n/app_localizations.dart';
@@ -57,6 +58,7 @@ CustomTransitionPage<void> _shellChildPage(GoRouterState state, Widget child) {
 
 final GoRouter _router = GoRouter(
   initialLocation: '/about',
+  errorBuilder: (context, state) => NotFoundPage(routerState: state),
   routes: [
     GoRoute(
       path: '/',

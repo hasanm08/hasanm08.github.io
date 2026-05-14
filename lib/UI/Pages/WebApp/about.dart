@@ -96,9 +96,10 @@ class About extends StatelessWidget {
       width: 350,
       padding: const EdgeInsets.all(20.0),
       child: Row(
-        mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Expanded(
+            flex: 2,
             child: Text(
               title,
               style: Theme.of(context).textTheme.bodyLarge?.copyWith(
@@ -107,12 +108,17 @@ class About extends StatelessWidget {
                   ),
             ),
           ),
-          Text(
-            description,
-            style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                  color: scheme.onSurface.withValues(alpha: 0.85),
-                  fontFamily: About.l10nFont(context),
-                ),
+          const SizedBox(width: 12),
+          Expanded(
+            flex: 3,
+            child: Text(
+              description,
+              textAlign: TextAlign.start,
+              style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                    color: scheme.onSurface.withValues(alpha: 0.85),
+                    fontFamily: About.l10nFont(context),
+                  ),
+            ),
           ),
         ],
       ),
