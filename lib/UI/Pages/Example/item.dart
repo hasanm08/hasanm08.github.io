@@ -5,7 +5,7 @@ class Item extends StatefulWidget {
   final IconData? icon;
   final String? text;
   final bool? selected;
-  const Item({Key? key, this.icon, this.text, this.selected}) : super(key: key);
+  const Item({super.key, this.icon, this.text, this.selected});
   @override
   ItemState createState() => ItemState();
 }

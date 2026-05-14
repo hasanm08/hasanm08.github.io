@@ -7,7 +7,7 @@ enum DeviceScreenType { mobile, tablet, desktop }
 class BaseWidget extends StatelessWidget {
   final Widget Function(
       BuildContext context, SizingInformation sizingInformation)? builder;
-  const BaseWidget({Key? key, this.builder}) : super(key: key);
+  const BaseWidget({super.key, this.builder});
   static DeviceScreenType getDeviceType(MediaQueryData mediaQuery) {
     var orientation = (mediaQuery.size.height > mediaQuery.size.width)
         ? Orientation.landscape

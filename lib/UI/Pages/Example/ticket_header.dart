@@ -4,8 +4,7 @@ import 'package:hasanm08/Utils/example_utils.dart';
 
 class TicketHeader extends StatelessWidget {
   const TicketHeader(
-      {Key? key, required this.firstLocation, required this.secondLocation})
-      : super(key: key);
+      {super.key, required this.firstLocation, required this.secondLocation});
   final String firstLocation;
   final String secondLocation;
 
@@ -41,8 +40,7 @@ class TicketHeader extends StatelessWidget {
                     horizontal: ExampleUtils.height(context) * .035),
                 elevation: 10,
                 child: Container(
-                  padding:
-                      EdgeInsets.all(ExampleUtils.height(context) * .035),
+                  padding: EdgeInsets.all(ExampleUtils.height(context) * .035),
                   child: Row(
                     mainAxisSize: MainAxisSize.max,
                     children: <Widget>[

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class WishList extends StatelessWidget {
-  const WishList({Key? key}) : super(key: key);
+  const WishList({super.key});
 
   @override
   Widget build(BuildContext context) {

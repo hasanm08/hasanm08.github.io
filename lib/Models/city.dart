@@ -6,14 +6,13 @@ class City extends StatelessWidget {
   final String? name, discount, offPrice;
 
   const City(
-      {Key? key,
+      {super.key,
       this.image,
       this.monthYear,
       this.price,
       this.name,
       this.discount,
-      this.offPrice})
-      : super(key: key);
+      this.offPrice});
   @override
   Widget build(BuildContext context) {
     return Column(

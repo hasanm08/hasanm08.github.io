@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:hasanm08/UI/Components/flight_card.dart';
 
 class TicketFooter extends StatelessWidget {
-  const TicketFooter({Key? key}) : super(key: key);
+  const TicketFooter({super.key});
 
   @override
   Widget build(BuildContext context) {

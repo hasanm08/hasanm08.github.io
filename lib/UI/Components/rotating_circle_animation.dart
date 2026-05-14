@@ -3,19 +3,18 @@ import 'dart:math' show pi;
 import 'package:flutter/material.dart';
 
 import 'half_circle_clipper.dart';
+
 extension on VoidCallback {
   Future<void> delayed(Duration duration) => Future.delayed(duration, this);
 }
 
 class RotatingCircle extends StatefulWidget {
-  const RotatingCircle({Key? key, required this.color, this.size = 140})
-      : super(key: key);
+  const RotatingCircle({super.key, required this.color, this.size = 140});
   final double size;
   final Color color;
   @override
   State<RotatingCircle> createState() => _RotatingCircleState();
 }
-
 
 class _RotatingCircleState extends State<RotatingCircle>
     with TickerProviderStateMixin {
@@ -123,7 +122,7 @@ class _RotatingCircleState extends State<RotatingCircle>
           seconds: 1,
         ),
       );
-    
+
     return AnimatedBuilder(
       animation: _counterClockwiseRotationController,
       builder: (context, child) {

@@ -5,7 +5,7 @@ class TagComponent extends StatelessWidget {
   final String? label;
   final Widget? avatar;
 
-  const TagComponent({Key? key, this.avatar, this.label}) : super(key: key);
+  const TagComponent({super.key, this.avatar, this.label});
 
   @override
   Widget build(BuildContext context) {

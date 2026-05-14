@@ -2,15 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:hasanm08/Utils/example_utils.dart';
 
 class CustomNavigationBar extends StatefulWidget {
-  const CustomNavigationBar({Key? key}) : super(key: key);
+  const CustomNavigationBar({super.key});
 
   @override
   CustomNavigationBarState createState() => CustomNavigationBarState();
 }
 
 class CustomNavigationBarState extends State<CustomNavigationBar> {
-  
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
