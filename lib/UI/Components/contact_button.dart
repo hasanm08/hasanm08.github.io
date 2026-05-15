@@ -8,12 +8,14 @@ class ContactButton extends StatefulWidget {
     required this.icon,
     required this.link,
     required this.title,
+    this.onPressed,
   });
 
   final IconData icon;
   final String title;
   final String link;
   final Color? color;
+  final VoidCallback? onPressed;
 
   @override
   ContactButtonState createState() => ContactButtonState();
@@ -59,19 +61,23 @@ class ContactButtonState extends State<ContactButton> {
               borderRadius: BorderRadius.all(Radius.circular(30)),
             ),
           ),
-          onPressed: () async => _showUrl(widget.link),
+          onPressed: widget.onPressed ?? () async => _showUrl(widget.link),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             mainAxisSize: MainAxisSize.max,
             children: [
               Icon(
                 widget.icon,
-                color: _hovering ? scheme.onPrimary : accent,
+                color: _hovering
+                    ? scheme.onPrimary
+                    : scheme.onSurface.withValues(alpha: 0.92),
               ),
               Text(
                 widget.title,
                 style: Theme.of(context).textTheme.bodySmall?.copyWith(
-                      color: _hovering ? scheme.onPrimary : accent,
+                      color: _hovering
+                          ? scheme.onPrimary
+                          : scheme.onSurface.withValues(alpha: 0.92),
                     ),
               ),
             ],
