@@ -33,14 +33,14 @@ void main() {
 CustomTransitionPage<void> _shellChildPage(GoRouterState state, Widget child) {
   return CustomTransitionPage<void>(
     key: state.pageKey,
-    transitionDuration: const Duration(milliseconds: 520),
-    reverseTransitionDuration: const Duration(milliseconds: 360),
+    transitionDuration: const Duration(milliseconds: 370),
+    reverseTransitionDuration: const Duration(milliseconds: 250),
     child: child,
     transitionsBuilder: (context, animation, secondaryAnimation, child) {
       final curved = CurvedAnimation(
         parent: animation,
-        curve: Curves.easeOutQuint,
-        reverseCurve: Curves.easeInQuart,
+        curve: Curves.bounceInOut,
+        reverseCurve: Curves.bounceInOut,
       );
       return FadeTransition(
         opacity: curved,
