@@ -44,6 +44,9 @@ jobs:
       - name: SPA fallback for deep links
         run: cp build/web/index.html build/web/404.html
 
+      - name: Copy static files (CV, etc.)
+        run: cp -r files build/web/files
+
       - name: Deploy to GitHub Pages
         if: >-
           github.event_name == 'pull_request'

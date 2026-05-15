@@ -2,7 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hasanm08/UI/Components/contact_button.dart';
 import 'package:hasanm08/UI/Components/portfolio_animations.dart';
+import 'package:hasanm08/Utils/cv_paths.dart';
+import 'package:hasanm08/Utils/cv_download_stub.dart'
+    if (dart.library.html) 'package:hasanm08/Utils/cv_download_web.dart';
 import 'package:hasanm08/l10n/app_localizations.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class More extends StatelessWidget {
   const More({super.key});
@@ -12,6 +16,7 @@ class More extends StatelessWidget {
     final theme = Theme.of(context);
     final scheme = theme.colorScheme;
     final l10n = AppLocalizations.of(context);
+    final cvUrl = cvAbsoluteUrl();
     return SingleChildScrollView(
       physics: const BouncingScrollPhysics(),
       child: Padding(
@@ -36,6 +41,29 @@ class More extends StatelessWidget {
               ),
             ),
             const SizedBox(height: 24),
+            _sectionLabel(context, l10n.moreResume),
+            const SizedBox(height: 12),
+            Wrap(
+              alignment: WrapAlignment.center,
+              children: [
+                ContactButton(
+                  icon: Icons.description_outlined,
+                  link: cvUrl,
+                  title: l10n.moreViewCv,
+                  onPressed: () => launchUrl(
+                    Uri.parse(cvUrl),
+                    mode: LaunchMode.externalApplication,
+                  ),
+                ),
+                ContactButton(
+                  icon: Icons.download_outlined,
+                  link: cvUrl,
+                  title: l10n.moreDownloadCv,
+                  onPressed: () => downloadCvFile(cvUrl, cvFileName),
+                ),
+              ],
+            ),
+            const SizedBox(height: 28),
             _sectionLabel(context, l10n.moreJumpTo),
             const SizedBox(height: 12),
             Wrap(

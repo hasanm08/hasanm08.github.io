@@ -75,6 +75,9 @@ class AppLocalizations {
   String get moreSubtitle => isFa
       ? 'میان‌برها، کد منبع و چند لینک مفید برای توسعه‌دهندگان.'
       : 'Jump around the site, open the source, or grab a few dev links.';
+  String get moreResume => isFa ? 'رزومه' : 'Resume';
+  String get moreViewCv => isFa ? 'مشاهدهٔ رزومه' : 'View CV';
+  String get moreDownloadCv => isFa ? 'دانلود رزومه' : 'Download CV';
   String get moreJumpTo => isFa ? 'پرش به' : 'Jump to';
   String get moreThisSite => isFa ? 'این وب‌سایت' : 'This site';
   String get moreDevPicks => isFa ? 'پیشنهادهای توسعه' : 'Developer picks';
