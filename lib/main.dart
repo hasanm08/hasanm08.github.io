@@ -15,6 +15,7 @@ import 'package:hasanm08/theme/app_theme.dart';
 import 'package:provider/provider.dart';
 
 import 'UI/Components/base_widget.dart';
+import 'UI/Components/portfolio_animations.dart';
 import 'Utils/sizing_information.dart';
 import 'Utils/web_url_strategy_stub.dart'
     if (dart.library.html) 'Utils/web_url_strategy_web.dart';
@@ -33,26 +34,10 @@ void main() {
 CustomTransitionPage<void> _shellChildPage(GoRouterState state, Widget child) {
   return CustomTransitionPage<void>(
     key: state.pageKey,
-    transitionDuration: const Duration(milliseconds: 370),
-    reverseTransitionDuration: const Duration(milliseconds: 250),
+    transitionDuration: PortfolioMotion.medium,
+    reverseTransitionDuration: PortfolioMotion.fast,
     child: child,
-    transitionsBuilder: (context, animation, secondaryAnimation, child) {
-      final curved = CurvedAnimation(
-        parent: animation,
-        curve: Curves.bounceInOut,
-        reverseCurve: Curves.bounceInOut,
-      );
-      return FadeTransition(
-        opacity: curved,
-        child: SlideTransition(
-          position: Tween<Offset>(
-            begin: const Offset(0, 0.022),
-            end: Offset.zero,
-          ).animate(curved),
-          child: child,
-        ),
-      );
-    },
+    transitionsBuilder: portfolioPageTransition,
   );
 }
 
@@ -122,6 +107,8 @@ class MyApp extends StatelessWidget {
           theme: AppTheme.light(),
           darkTheme: AppTheme.dark(),
           themeMode: settings.themeMode,
+          themeAnimationDuration: PortfolioMotion.medium,
+          themeAnimationCurve: PortfolioMotion.standard,
           locale: settings.locale,
           supportedLocales: AppLocalizations.supportedLocales,
           localizationsDelegates: const [

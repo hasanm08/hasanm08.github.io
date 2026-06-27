@@ -312,12 +312,12 @@ class _ProjectCardState extends State<_ProjectCard> {
       onEnter: (_) => setState(() => _hover = true),
       onExit: (_) => setState(() => _hover = false),
       child: AnimatedScale(
-        scale: _hover ? 1.006 : 1.0,
-        duration: const Duration(milliseconds: 420),
-        curve: Curves.easeOutQuint,
+        scale: _hover ? 1.008 : 1.0,
+        duration: PortfolioMotion.medium,
+        curve: PortfolioMotion.standard,
         child: AnimatedContainer(
-          duration: const Duration(milliseconds: 420),
-          curve: Curves.easeOutQuint,
+          duration: PortfolioMotion.medium,
+          curve: PortfolioMotion.standard,
           decoration: BoxDecoration(
             color: scheme.surfaceContainerHighest.withValues(alpha: 0.35),
             borderRadius: BorderRadius.circular(16),
@@ -475,8 +475,8 @@ class _LinkButtonState extends State<_LinkButton> {
       child: GestureDetector(
         onTap: _open,
         child: AnimatedContainer(
-          duration: const Duration(milliseconds: 320),
-          curve: Curves.easeOutQuint,
+          duration: PortfolioMotion.medium,
+          curve: PortfolioMotion.standard,
           padding: EdgeInsets.symmetric(
             horizontal: widget.isCompact ? 12 : 14,
             vertical: widget.isCompact ? 8 : 10,

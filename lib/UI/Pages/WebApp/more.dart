@@ -161,7 +161,7 @@ class More extends StatelessWidget {
   }
 }
 
-class _QuickRouteButton extends StatelessWidget {
+class _QuickRouteButton extends StatefulWidget {
   const _QuickRouteButton({
     required this.label,
     required this.icon,
@@ -173,16 +173,34 @@ class _QuickRouteButton extends StatelessWidget {
   final String path;
 
   @override
+  State<_QuickRouteButton> createState() => _QuickRouteButtonState();
+}
+
+class _QuickRouteButtonState extends State<_QuickRouteButton> {
+  bool _hovering = false;
+
+  @override
   Widget build(BuildContext context) {
     final scheme = Theme.of(context).colorScheme;
-    return OutlinedButton.icon(
-      onPressed: () => context.go(path),
-      icon: Icon(icon, size: 18),
-      label: Text(label),
-      style: OutlinedButton.styleFrom(
-        foregroundColor: scheme.primary,
-        side: BorderSide(color: scheme.outline),
-        padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 10),
+    return MouseRegion(
+      onEnter: (_) => setState(() => _hovering = true),
+      onExit: (_) => setState(() => _hovering = false),
+      child: AnimatedScale(
+        scale: _hovering ? 1.04 : 1,
+        duration: PortfolioMotion.medium,
+        curve: PortfolioMotion.standard,
+        child: OutlinedButton.icon(
+          onPressed: () => context.go(widget.path),
+          icon: Icon(widget.icon, size: 18),
+          label: Text(widget.label),
+          style: OutlinedButton.styleFrom(
+            foregroundColor: _hovering ? scheme.onPrimary : scheme.primary,
+            backgroundColor:
+                _hovering ? scheme.primary : Colors.transparent,
+            side: BorderSide(color: scheme.primary),
+            padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 10),
+          ),
+        ),
       ),
     );
   }

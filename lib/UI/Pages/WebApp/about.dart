@@ -18,6 +18,7 @@ class About extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.center,
         mainAxisSize: MainAxisSize.max,
+        scaleDisabledIndices: const {1},
         children: [
           const SizedBox(height: 12),
           const Padding(
@@ -25,9 +26,12 @@ class About extends StatelessWidget {
             child: SizedBox(
               height: 250,
               width: 500,
-              child: CustomAnimated3DCard(
-                characterImage: 'assets/images/hasanm308.png',
-                coverImage: 'assets/images/hasanm308.jpeg',
+              child: Center(
+                child: CustomAnimated3DCard(
+                  characterImage: 'assets/images/hasanm308.png',
+                  coverImage: 'assets/images/hasanm308.jpeg',
+                  size: 220,
+                ),
               ),
             ),
           ),

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hasanm08/UI/Pages/WebApp/menu_button.dart';
+import 'package:hasanm08/UI/Components/portfolio_animations.dart';
 import 'package:hasanm08/Utils/app_shell_routes.dart';
 import 'package:hasanm08/l10n/app_localizations.dart';
 import 'package:hasanm08/providers/app_settings.dart';
@@ -41,50 +42,56 @@ class WebRoot extends StatelessWidget {
                   ),
                 ],
               ),
-              child: Column(
-                mainAxisSize: MainAxisSize.max,
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
+              child: PortfolioSidebarReveal(
+                child: Column(
+                  mainAxisSize: MainAxisSize.max,
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
                   Column(
                     mainAxisSize: MainAxisSize.max,
                     children: [
-                      Center(
-                        child: Container(
-                          margin: const EdgeInsets.all(12),
-                          height: 100,
-                          width: 100,
-                          decoration: const BoxDecoration(
-                            shape: BoxShape.rectangle,
-                            image: DecorationImage(
-                              fit: BoxFit.fill,
-                              image: AssetImage('assets/images/coding.png'),
+                      PortfolioStaggeredColumn(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          Center(
+                            child: Container(
+                              margin: const EdgeInsets.all(12),
+                              height: 100,
+                              width: 100,
+                              decoration: const BoxDecoration(
+                                shape: BoxShape.rectangle,
+                                image: DecorationImage(
+                                  fit: BoxFit.fill,
+                                  image: AssetImage('assets/images/coding.png'),
+                                ),
+                              ),
                             ),
                           ),
-                        ),
-                      ),
-                      MenuButton(
-                        icon: Icons.person,
-                        text: l10n.navAbout,
-                        route: '/about',
-                        isSelected: selectedIndex == 0,
-                      ),
-                      MenuButton(
-                        icon: Icons.call,
-                        text: l10n.navContact,
-                        route: '/contact-me',
-                        isSelected: selectedIndex == 1,
-                      ),
-                      MenuButton(
-                        icon: Icons.work,
-                        text: l10n.navProjects,
-                        route: '/projects',
-                        isSelected: selectedIndex == 2,
-                      ),
-                      MenuButton(
-                        icon: Icons.more_horiz,
-                        text: l10n.navMore,
-                        route: '/more',
-                        isSelected: selectedIndex == 3,
+                          MenuButton(
+                            icon: Icons.person,
+                            text: l10n.navAbout,
+                            route: '/about',
+                            isSelected: selectedIndex == 0,
+                          ),
+                          MenuButton(
+                            icon: Icons.call,
+                            text: l10n.navContact,
+                            route: '/contact-me',
+                            isSelected: selectedIndex == 1,
+                          ),
+                          MenuButton(
+                            icon: Icons.work,
+                            text: l10n.navProjects,
+                            route: '/projects',
+                            isSelected: selectedIndex == 2,
+                          ),
+                          MenuButton(
+                            icon: Icons.more_horiz,
+                            text: l10n.navMore,
+                            route: '/more',
+                            isSelected: selectedIndex == 3,
+                          ),
+                        ],
                       ),
                     ],
                   ),
@@ -145,6 +152,7 @@ class WebRoot extends StatelessWidget {
                     ),
                   ),
                 ],
+                ),
               ),
             ),
             Expanded(

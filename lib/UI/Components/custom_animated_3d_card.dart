@@ -1,4 +1,7 @@
+import 'dart:math' show pi, sin;
+
 import 'package:flutter/material.dart';
+import 'package:hasanm08/UI/Components/portfolio_animations.dart';
 
 class CustomAnimated3DCard extends StatefulWidget {
   final String characterImage;
@@ -17,104 +20,115 @@ class CustomAnimated3DCard extends StatefulWidget {
 }
 
 class CustomAnimated3DCardState extends State<CustomAnimated3DCard>
-    with SingleTickerProviderStateMixin {
-  bool isHovered = false;
-  late AnimationController _controller;
-  late Animation<double> _tilt;
+    with TickerProviderStateMixin {
+  late AnimationController _hoverController;
+  late AnimationController _floatController;
+  late Animation<double> _hover;
 
   @override
   void initState() {
     super.initState();
-    _controller = AnimationController(
+    _hoverController = AnimationController(
       vsync: this,
-      duration: const Duration(milliseconds: 480),
-      reverseDuration: const Duration(milliseconds: 400),
-      lowerBound: 0.0,
-      upperBound: 1.0,
+      duration: PortfolioMotion.medium,
+      reverseDuration: PortfolioMotion.fast,
     );
-    _tilt = CurvedAnimation(
-      parent: _controller,
-      curve: Curves.easeOutQuint,
-      reverseCurve: Curves.easeInQuart,
+    _hover = CurvedAnimation(
+      parent: _hoverController,
+      curve: PortfolioMotion.entrance,
+      reverseCurve: PortfolioMotion.exit,
     );
-    _controller.addListener(() {
-      setState(() {});
-    });
+    _floatController = AnimationController(
+      vsync: this,
+      duration: const Duration(milliseconds: 3200),
+    )..repeat();
   }
 
   @override
   void dispose() {
-    _controller.dispose();
+    _hoverController.dispose();
+    _floatController.dispose();
     super.dispose();
   }
 
   void _setHover(bool hovered) {
-    setState(() {
-      isHovered = hovered;
-      if (isHovered) {
-        _controller.forward();
-      } else {
-        _controller.reverse();
-      }
-    });
+    if (hovered) {
+      _hoverController.forward();
+    } else {
+      _hoverController.reverse();
+    }
   }
 
   @override
   Widget build(BuildContext context) {
-    const motionMs = 420;
-    final tiltAmount = _tilt.value * 5;
+    final size = widget.size ?? 300.0;
+    final animate = PortfolioMotion.shouldAnimate(context);
 
-    return InkWell(
-      onTap: () => _setHover(!isHovered),
-      onHover: _setHover,
-      child: SizedBox(
-        width: 300,
-        height: 300,
-        child: Stack(
-          clipBehavior: Clip.none,
-          children: [
-            Positioned(
-              child: AnimatedOpacity(
-                opacity: isHovered ? 0 : 1,
-                duration: const Duration(milliseconds: motionMs),
-                curve: Curves.easeOutQuint,
-                child: AnimatedContainer(
-                  duration: const Duration(milliseconds: motionMs),
-                  curve: Curves.easeOutQuint,
-                  transformAlignment: FractionalOffset.center,
-                  transform: Matrix4.identity()
-                    ..setEntry(3, 2, 0.0001)
-                    ..rotateX(-tiltAmount),
-                  decoration: BoxDecoration(
-                    shape: BoxShape.circle,
-                    image: DecorationImage(
-                      image: AssetImage(widget.coverImage),
-                      fit: BoxFit.contain,
+    return MouseRegion(
+      onEnter: (_) => _setHover(true),
+      onExit: (_) => _setHover(false),
+      child: GestureDetector(
+        onTap: () {
+          if (_hoverController.isCompleted) {
+            _hoverController.reverse();
+          } else {
+            _hoverController.forward();
+          }
+        },
+        child: AnimatedBuilder(
+          animation: Listenable.merge([_hover, _floatController]),
+          builder: (context, child) {
+            final hover = _hover.value;
+            final tiltRadians = hover * 5 * (pi / 180);
+            final floatY = animate && hover < 0.02
+                ? sin(_floatController.value * 2 * pi) * 4
+                : 0.0;
+            final characterVisible = hover > 0.001;
+
+            return Transform.translate(
+              offset: Offset(0, floatY),
+              child: SizedBox(
+                width: size,
+                height: size,
+                child: Stack(
+                  fit: StackFit.expand,
+                  clipBehavior: Clip.hardEdge,
+                  children: [
+                    Opacity(
+                      opacity: 1 - hover,
+                      child: Transform(
+                        alignment: Alignment.center,
+                        transform: Matrix4.identity()
+                          ..setEntry(3, 2, 0.001)
+                          ..rotateX(-tiltRadians),
+                        child: ClipOval(
+                          child: Image.asset(
+                            widget.coverImage,
+                            fit: BoxFit.cover,
+                            width: size,
+                            height: size,
+                          ),
+                        ),
+                      ),
                     ),
-                  ),
+                    if (characterVisible)
+                      Opacity(
+                        opacity: hover,
+                        child: Padding(
+                          padding: EdgeInsets.all(8 * hover),
+                          child: Image.asset(
+                            widget.characterImage,
+                            fit: BoxFit.contain,
+                            width: size,
+                            height: size,
+                          ),
+                        ),
+                      ),
+                  ],
                 ),
               ),
-            ),
-            AnimatedPositioned(
-              duration: const Duration(milliseconds: motionMs),
-              curve: Curves.easeOutQuint,
-              bottom: isHovered ? 8 : 0,
-              left: 0,
-              right: 0,
-              top: isHovered ? 8 : 0,
-              child: AnimatedOpacity(
-                duration: const Duration(milliseconds: motionMs),
-                curve: Curves.easeOutQuint,
-                opacity: isHovered ? 1 : 0,
-                child: Image.asset(
-                  widget.characterImage,
-                  fit: BoxFit.contain,
-                  width: double.infinity,
-                  height: double.infinity,
-                ),
-              ),
-            ),
-          ],
+            );
+          },
         ),
       ),
     );
