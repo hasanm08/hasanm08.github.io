@@ -29,7 +29,7 @@ class About extends StatelessWidget {
               child: Center(
                 child: CustomAnimated3DCard(
                   characterImage: 'assets/images/hasanm308.png',
-                  coverImage: 'assets/images/hasanm308.jpeg',
+                  coverImage: 'assets/images/hasanm308.jpg',
                   size: 220,
                 ),
               ),

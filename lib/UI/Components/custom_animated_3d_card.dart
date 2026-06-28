@@ -61,7 +61,7 @@ class CustomAnimated3DCardState extends State<CustomAnimated3DCard>
 
   @override
   Widget build(BuildContext context) {
-    final size = widget.size ?? 300.0;
+    final size = 300.0;
     final animate = PortfolioMotion.shouldAnimate(context);
 
     return MouseRegion(
@@ -79,7 +79,7 @@ class CustomAnimated3DCardState extends State<CustomAnimated3DCard>
           animation: Listenable.merge([_hover, _floatController]),
           builder: (context, child) {
             final hover = _hover.value;
-            final tiltRadians = hover * 5 * (pi / 180);
+
             final floatY = animate && hover < 0.02
                 ? sin(_floatController.value * 2 * pi) * 4
                 : 0.0;
@@ -87,45 +87,17 @@ class CustomAnimated3DCardState extends State<CustomAnimated3DCard>
 
             return Transform.translate(
               offset: Offset(0, floatY),
-              child: SizedBox(
-                width: size,
-                height: size,
-                child: Stack(
-                  fit: StackFit.expand,
-                  clipBehavior: Clip.hardEdge,
-                  children: [
-                    Opacity(
-                      opacity: 1 - hover,
-                      child: Transform(
-                        alignment: Alignment.center,
-                        transform: Matrix4.identity()
-                          ..setEntry(3, 2, 0.001)
-                          ..rotateX(-tiltRadians),
-                        child: ClipOval(
-                          child: Image.asset(
-                            widget.coverImage,
-                            fit: BoxFit.cover,
-                            width: size,
-                            height: size,
-                          ),
-                        ),
-                      ),
-                    ),
-                    if (characterVisible)
-                      Opacity(
-                        opacity: hover,
-                        child: Padding(
-                          padding: EdgeInsets.all(8 * hover),
-                          child: Image.asset(
-                            widget.characterImage,
-                            fit: BoxFit.contain,
-                            width: size,
-                            height: size,
-                          ),
-                        ),
-                      ),
-                  ],
-                ),
+              child: Stack(
+                fit: StackFit.expand,
+                clipBehavior: Clip.hardEdge,
+                children: [
+                  Image.asset(
+                    widget.characterImage,
+                    fit: BoxFit.contain,
+                    width: size,
+                    height: size,
+                  ),
+                ],
               ),
             );
           },
