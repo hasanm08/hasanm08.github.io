@@ -83,8 +83,6 @@ class CustomAnimated3DCardState extends State<CustomAnimated3DCard>
             final floatY = animate && hover < 0.02
                 ? sin(_floatController.value * 2 * pi) * 4
                 : 0.0;
-            final characterVisible = hover > 0.001;
-
             return Transform.translate(
               offset: Offset(0, floatY),
               child: Stack(
