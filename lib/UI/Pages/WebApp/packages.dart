@@ -61,6 +61,7 @@ class Packages extends StatelessWidget {
 class _Package {
   const _Package({
     required this.name,
+    required this.icon,
     required this.tagline,
     required this.description,
     this.features = const [],
@@ -71,6 +72,7 @@ class _Package {
   });
 
   final String name;
+  final IconData icon;
   final LocalizedText tagline;
   final LocalizedText description;
   final List<LocalizedText> features;
@@ -94,7 +96,92 @@ class _PackageLink {
 
 final List<_Package> _packages = [
   _Package(
+    name: 'flow_routing',
+    icon: Icons.alt_route,
+    tagline: LocalizedText(
+      'Routing that feels obvious in code and honest in the browser.',
+      'مسیریابی که در کد واضح است و در مرورگر صادقانه عمل می‌کند.',
+    ),
+    description: LocalizedText(
+      'After months of fighting routing bugs — wrong URLs on refresh, tabs that '
+      'behaved like full page pushes, string paths scattered everywhere, guards '
+      'that were hard to reason about — I built Flow from scratch. flow_routing '
+      'is a Flutter router not wrapped around GoRouter: typed routes, derived '
+      'URLs, refresh-safe web navigation, and tab stacks that don\'t feel like '
+      'opening a new app every time.',
+      'بعد از ماه‌ها درگیری با باگ‌های مسیریابی — URL اشتباه بعد از رفرش، تب‌هایی '
+      'که مثل push صفحهٔ کامل رفتار می‌کردند، مسیرهای رشته‌ای پراکنده، گاردهایی '
+      'که سخت قابل فهم بودند — Flow را از صفر ساختم. flow_routing روتر فلاتر است '
+      'که دور GoRouter پیچیده نشده: مسیرهای تایپ‌شده، URLهای مشتق‌شده، ناوبری وب '
+      'ایمن در برابر رفرش، و استک تب‌هایی که هر بار حس اپ جدید نمی‌دهند.',
+    ),
+    features: const [
+      LocalizedText(
+        'Typed routes first — navigate with UserRoute(id: 42), not magic strings',
+        'مسیرهای تایپ‌شده — ناوبری با UserRoute(id: 42)، نه رشته‌های جادویی',
+      ),
+      LocalizedText(
+        'URLs you don\'t hand-write — routes derive their own location',
+        'URLهایی که دستی نمی‌نویسید — مسیرها location خود را می‌سازند',
+      ),
+      LocalizedText(
+        'Clean web URLs — deep links, back/forward, refresh-safe',
+        'URLهای تمیز وب — لینک عمیق، عقب/جلو، ایمن در برابر رفرش',
+      ),
+      LocalizedText(
+        'Real tab navigation — switch tabs without full-page pushes',
+        'ناوبری واقعی تب — تعویض تب بدون push صفحهٔ کامل',
+      ),
+      LocalizedText(
+        'Guards and middleware — auth, redirects, logging in a clear pipeline',
+        'گارد و middleware — احراز هویت، ریدایرکت، لاگ در خط لولهٔ شفاف',
+      ),
+      LocalizedText(
+        'Separated stacks — declarative go vs imperative push overlays',
+        'استک‌های جدا — go اعلانی در برابر overlayهای push امری',
+      ),
+      LocalizedText(
+        'No code generation — strong types without build_runner',
+        'بدون code generation — تایپ قوی بدون build_runner',
+      ),
+    ],
+    technicalDetails: const [
+      LocalizedText(
+        'context.go, context.push, context.pop — URL always derived from the route',
+        'context.go، context.push، context.pop — URL همیشه از مسیر مشتق می‌شود',
+      ),
+      LocalizedText(
+        'Full example app, docs, tests, and GoRouter/AutoRoute migration notes',
+        'اپ نمونه، مستندات، تست‌ها و یادداشت مهاجرت از GoRouter/AutoRoute',
+      ),
+    ],
+    tags: [
+      'Flutter',
+      'Dart',
+      'Web',
+      'Open Source',
+      'Routing',
+    ],
+    links: [
+      _PackageLink(
+        label: 'pub.dev',
+        url: 'https://pub.dev/packages/flow_routing',
+        icon: Icons.widgets_outlined,
+      ),
+      _PackageLink(
+        label: 'Source',
+        url: 'https://github.com/hasanm08/flow',
+        icon: Icons.code,
+      ),
+    ],
+    license: LocalizedText(
+      'Open source. Star it, try the example, break it — feedback welcome.',
+      'متن‌باز. ستاره بدهید، نمونه را امتحان کنید، بشکنید — بازخورد خوش‌آمد است.',
+    ),
+  ),
+  _Package(
     name: 'tv_textfield',
+    icon: Icons.tv,
     tagline: LocalizedText(
       'Flutter on TV shouldn\'t feel broken.',
       'فلاتر روی تلویزیون نباید حس خرابی بدهد.',
@@ -248,7 +335,7 @@ class _PackageCardState extends State<_PackageCard> {
             children: [
               Row(
                 children: [
-                  Icon(Icons.tv, color: scheme.primary, size: isCompact ? 22 : 26),
+                  Icon(package.icon, color: scheme.primary, size: isCompact ? 22 : 26),
                   const SizedBox(width: 10),
                   Expanded(child: Text(package.name, style: titleStyle)),
                 ],
