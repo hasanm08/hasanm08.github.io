@@ -6,6 +6,7 @@ class AppShellRoutes {
     '/about',
     '/contact-me',
     '/projects',
+    '/packages',
     '/more',
   ];
 

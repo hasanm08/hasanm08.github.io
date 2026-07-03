@@ -1,0 +1,458 @@
+import 'package:flutter/material.dart';
+import 'package:hasanm08/UI/Components/portfolio_animations.dart';
+import 'package:hasanm08/l10n/app_localizations.dart';
+import 'package:hasanm08/l10n/localized_text.dart';
+import 'package:url_launcher/url_launcher.dart';
+
+class Packages extends StatelessWidget {
+  const Packages({super.key});
+
+  static const double _wideBreakpoint = 960;
+
+  @override
+  Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context);
+    return LayoutBuilder(
+      builder: (context, constraints) {
+        final isWide = constraints.maxWidth >= _wideBreakpoint;
+        final horizontalPadding = isWide ? 24.0 : 12.0;
+
+        return Scrollbar(
+          child: PortfolioStaggeredListView(
+            physics: const BouncingScrollPhysics(
+              parent: AlwaysScrollableScrollPhysics(),
+            ),
+            padding: EdgeInsets.fromLTRB(
+              horizontalPadding,
+              16,
+              horizontalPadding,
+              24,
+            ),
+            itemCount: _packages.length + 1,
+            separatorBuilder: (_, __) => const SizedBox(height: 16),
+            itemBuilder: (context, index) {
+              if (index == 0) {
+                return Padding(
+                  padding: const EdgeInsets.only(bottom: 8),
+                  child: Text(
+                    l10n.packagesTitle,
+                    style: Theme.of(context).textTheme.headlineSmall?.copyWith(
+                          fontFamily: 'Exo2',
+                          fontSize: isWide ? 30 : 24,
+                          color: Theme.of(context).colorScheme.primary,
+                          letterSpacing: 1.2,
+                          fontWeight: FontWeight.w600,
+                        ),
+                  ),
+                );
+              }
+              return _PackageCard(
+                package: _packages[index - 1],
+                isCompact: !isWide,
+              );
+            },
+          ),
+        );
+      },
+    );
+  }
+}
+
+class _Package {
+  const _Package({
+    required this.name,
+    required this.tagline,
+    required this.description,
+    this.features = const [],
+    this.technicalDetails = const [],
+    this.tags = const [],
+    this.links = const [],
+    this.license,
+  });
+
+  final String name;
+  final LocalizedText tagline;
+  final LocalizedText description;
+  final List<LocalizedText> features;
+  final List<LocalizedText> technicalDetails;
+  final List<String> tags;
+  final List<_PackageLink> links;
+  final LocalizedText? license;
+}
+
+class _PackageLink {
+  const _PackageLink({
+    required this.label,
+    required this.url,
+    required this.icon,
+  });
+
+  final String label;
+  final String url;
+  final IconData icon;
+}
+
+final List<_Package> _packages = [
+  _Package(
+    name: 'tv_textfield',
+    tagline: LocalizedText(
+      'Flutter on TV shouldn\'t feel broken.',
+      'فلاتر روی تلویزیون نباید حس خرابی بدهد.',
+    ),
+    description: LocalizedText(
+      'If you\'ve built for Android TV or Apple TV, you\'ve probably hit this: '
+      'focus gets stuck, the remote stops cooperating, and text fields fight you '
+      'instead of helping you. tv_textfield is a Flutter package that makes '
+      'TextField actually work on TV — a drop-in replacement where you swap '
+      'TextField for TvTextField.',
+      'اگر برای Android TV یا Apple TV توسعه داده‌اید، احتمالاً این را دیده‌اید: '
+      'فوکوس گیر می‌کند، ریموت همکاری نمی‌کند و فیلدهای متنی به‌جای کمک، '
+      'مقاومت می‌کنند. tv_textfield پکیجی فلاتر است که TextField را واقعاً روی '
+      'تلویزیون کاربردی می‌کند — جایگزین مستقیم با تعویض TextField به TvTextField.',
+    ),
+    features: const [
+      LocalizedText(
+        'Fixes D-pad / Siri Remote focus issues',
+        'رفع مشکلات فوکوس D-pad و Siri Remote',
+      ),
+      LocalizedText(
+        'Supports software and hardware keyboards',
+        'پشتیبانی از کیبوردهای نرم‌افزاری و سخت‌افزاری',
+      ),
+      LocalizedText(
+        'Works across Android TV, Apple TV, iOS, desktop, and web',
+        'سازگار با Android TV، Apple TV، iOS، دسکتاپ و وب',
+      ),
+      LocalizedText(
+        'Drop-in API — swap TextField for TvTextField',
+        'API جایگزین مستقیم — TextField را با TvTextField عوض کنید',
+      ),
+    ],
+    technicalDetails: const [
+      LocalizedText(
+        'Native EditText on Android',
+        'EditText بومی روی اندروید',
+      ),
+      LocalizedText(
+        'Native UITextField on Apple TV',
+        'UITextField بومی روی Apple TV',
+      ),
+      LocalizedText(
+        'Smart Flutter fallback everywhere else',
+        'فالبک هوشمند فلاتر در بقیهٔ پلتفرم‌ها',
+      ),
+    ],
+    tags: [
+      'Flutter',
+      'Android TV',
+      'Apple TV',
+      'tvOS',
+      'Open Source',
+      'Dart',
+    ],
+    links: [
+      _PackageLink(
+        label: 'pub.dev',
+        url: 'https://pub.dev/packages/tv_textfield',
+        icon: Icons.widgets_outlined,
+      ),
+      _PackageLink(
+        label: 'Source',
+        url: 'https://github.com/hasanm08/tv_textfield',
+        icon: Icons.code,
+      ),
+    ],
+    license: LocalizedText(
+      'Open source (MIT). Feedback and contributions welcome.',
+      'متن‌باز (MIT). بازخورد و مشارکت خوش‌آمد است.',
+    ),
+  ),
+];
+
+class _PackageCard extends StatefulWidget {
+  const _PackageCard({
+    required this.package,
+    required this.isCompact,
+  });
+
+  final _Package package;
+  final bool isCompact;
+
+  @override
+  State<_PackageCard> createState() => _PackageCardState();
+}
+
+class _PackageCardState extends State<_PackageCard> {
+  bool _hover = false;
+
+  @override
+  Widget build(BuildContext context) {
+    final locale = Localizations.localeOf(context);
+    final l10n = AppLocalizations.of(context);
+    final scheme = Theme.of(context).colorScheme;
+    final package = widget.package;
+    final isCompact = widget.isCompact;
+    final titleStyle = TextStyle(
+      fontSize: isCompact ? 20 : 24,
+      fontFamily: 'Exo2',
+      color: scheme.primary,
+      letterSpacing: isCompact ? 0.6 : 1.0,
+      fontWeight: FontWeight.w600,
+    );
+    final taglineStyle = TextStyle(
+      fontSize: isCompact ? 14 : 16,
+      fontFamily: 'Exo2',
+      color: scheme.primary.withValues(alpha: 0.85),
+      fontStyle: FontStyle.italic,
+      height: 1.35,
+    );
+    final sectionStyle = TextStyle(
+      fontSize: isCompact ? 13 : 14,
+      fontFamily: 'Exo2',
+      color: scheme.onSurface.withValues(alpha: 0.75),
+      fontWeight: FontWeight.w600,
+      letterSpacing: 0.4,
+    );
+    final bodyStyle = TextStyle(
+      fontSize: isCompact ? 14 : 16,
+      fontFamily: 'Exo2',
+      color: scheme.onSurface.withValues(alpha: 0.92),
+      height: 1.4,
+    );
+
+    return MouseRegion(
+      onEnter: (_) => setState(() => _hover = true),
+      onExit: (_) => setState(() => _hover = false),
+      child: AnimatedScale(
+        scale: _hover ? 1.008 : 1.0,
+        duration: PortfolioMotion.medium,
+        curve: PortfolioMotion.standard,
+        child: AnimatedContainer(
+          duration: PortfolioMotion.medium,
+          curve: PortfolioMotion.standard,
+          decoration: BoxDecoration(
+            color: scheme.surfaceContainerHighest.withValues(alpha: 0.35),
+            borderRadius: BorderRadius.circular(16),
+            border: Border.all(color: scheme.outlineVariant),
+            boxShadow: [
+              BoxShadow(
+                color: scheme.shadow.withValues(alpha: _hover ? 0.22 : 0.12),
+                blurRadius: _hover ? 28 : 14,
+                offset: Offset(0, _hover ? 12 : 5),
+              ),
+            ],
+          ),
+          padding: EdgeInsets.all(isCompact ? 16 : 20),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Row(
+                children: [
+                  Icon(Icons.tv, color: scheme.primary, size: isCompact ? 22 : 26),
+                  const SizedBox(width: 10),
+                  Expanded(child: Text(package.name, style: titleStyle)),
+                ],
+              ),
+              const SizedBox(height: 8),
+              Text(package.tagline.resolve(locale), style: taglineStyle),
+              const SizedBox(height: 12),
+              Text(package.description.resolve(locale), style: bodyStyle),
+              if (package.features.isNotEmpty) ...[
+                const SizedBox(height: 16),
+                Text(l10n.packagesWhatItDoes, style: sectionStyle),
+                const SizedBox(height: 8),
+                ...package.features.map(
+                  (feature) => Padding(
+                    padding: const EdgeInsets.only(bottom: 6),
+                    child: Row(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Padding(
+                          padding: EdgeInsets.only(top: isCompact ? 6 : 7),
+                          child: Container(
+                            width: 6,
+                            height: 6,
+                            decoration: BoxDecoration(
+                              color: scheme.primary,
+                              shape: BoxShape.circle,
+                            ),
+                          ),
+                        ),
+                        const SizedBox(width: 8),
+                        Expanded(
+                          child: Text(feature.resolve(locale), style: bodyStyle),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              ],
+              if (package.technicalDetails.isNotEmpty) ...[
+                const SizedBox(height: 12),
+                Text(l10n.packagesUnderTheHood, style: sectionStyle),
+                const SizedBox(height: 8),
+                ...package.technicalDetails.map(
+                  (detail) => Padding(
+                    padding: const EdgeInsets.only(bottom: 6),
+                    child: Row(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Padding(
+                          padding: EdgeInsets.only(top: isCompact ? 6 : 7),
+                          child: Container(
+                            width: 6,
+                            height: 6,
+                            decoration: BoxDecoration(
+                              color: scheme.secondary,
+                              shape: BoxShape.circle,
+                            ),
+                          ),
+                        ),
+                        const SizedBox(width: 8),
+                        Expanded(
+                          child: Text(detail.resolve(locale), style: bodyStyle),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              ],
+              if (package.license != null) ...[
+                const SizedBox(height: 12),
+                Text(package.license!.resolve(locale), style: bodyStyle.copyWith(
+                  color: scheme.onSurface.withValues(alpha: 0.7),
+                  fontSize: isCompact ? 13 : 14,
+                )),
+              ],
+              if (package.tags.isNotEmpty) ...[
+                const SizedBox(height: 12),
+                Wrap(
+                  spacing: 8,
+                  runSpacing: 8,
+                  children: [
+                    for (final tag in package.tags) _TagChip(label: tag),
+                  ],
+                ),
+              ],
+              if (package.links.isNotEmpty) ...[
+                const SizedBox(height: 16),
+                Wrap(
+                  spacing: 10,
+                  runSpacing: 10,
+                  children: [
+                    for (final link in package.links)
+                      _LinkButton(
+                        link: link,
+                        isCompact: isCompact,
+                        label: l10n.linkLabel(link.label),
+                      ),
+                  ],
+                ),
+              ],
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class _TagChip extends StatelessWidget {
+  const _TagChip({required this.label});
+
+  final String label;
+
+  @override
+  Widget build(BuildContext context) {
+    final scheme = Theme.of(context).colorScheme;
+    return Container(
+      padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
+      decoration: BoxDecoration(
+        color: scheme.primary.withValues(alpha: 0.12),
+        borderRadius: BorderRadius.circular(20),
+        border: Border.all(color: scheme.primary.withValues(alpha: 0.45)),
+      ),
+      child: Text(
+        '#$label',
+        style: TextStyle(
+          fontFamily: 'Exo2',
+          fontSize: 12,
+          color: scheme.primary,
+        ),
+      ),
+    );
+  }
+}
+
+class _LinkButton extends StatefulWidget {
+  const _LinkButton({
+    required this.link,
+    required this.isCompact,
+    required this.label,
+  });
+
+  final _PackageLink link;
+  final bool isCompact;
+  final String label;
+
+  @override
+  State<_LinkButton> createState() => _LinkButtonState();
+}
+
+class _LinkButtonState extends State<_LinkButton> {
+  bool _hovering = false;
+
+  @override
+  Widget build(BuildContext context) {
+    final scheme = Theme.of(context).colorScheme;
+    final color = scheme.primary;
+    return MouseRegion(
+      cursor: SystemMouseCursors.click,
+      onEnter: (_) => setState(() => _hovering = true),
+      onExit: (_) => setState(() => _hovering = false),
+      child: GestureDetector(
+        onTap: _open,
+        child: AnimatedContainer(
+          duration: PortfolioMotion.medium,
+          curve: PortfolioMotion.standard,
+          padding: EdgeInsets.symmetric(
+            horizontal: widget.isCompact ? 12 : 14,
+            vertical: widget.isCompact ? 8 : 10,
+          ),
+          decoration: BoxDecoration(
+            color: _hovering ? color : Colors.transparent,
+            borderRadius: BorderRadius.circular(24),
+            border: Border.all(color: color),
+          ),
+          child: Row(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Icon(
+                widget.link.icon,
+                size: widget.isCompact ? 16 : 18,
+                color: _hovering ? scheme.onPrimary : color,
+              ),
+              const SizedBox(width: 6),
+              Text(
+                widget.label,
+                style: TextStyle(
+                  fontFamily: 'Exo2',
+                  fontSize: widget.isCompact ? 13 : 14,
+                  color: _hovering ? scheme.onPrimary : color,
+                  fontWeight: FontWeight.w500,
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+
+  Future<void> _open() async {
+    final uri = Uri.parse(widget.link.url);
+    if (await canLaunchUrl(uri)) {
+      await launchUrl(uri, mode: LaunchMode.externalApplication);
+    }
+  }
+}

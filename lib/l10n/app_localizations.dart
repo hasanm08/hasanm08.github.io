@@ -23,6 +23,7 @@ class AppLocalizations {
   String get navAbout => isFa ? 'درباره' : 'About';
   String get navContact => isFa ? 'تماس' : 'Contact';
   String get navProjects => isFa ? 'پروژه‌ها' : 'Projects';
+  String get navPackages => isFa ? 'پکیج‌ها' : 'Packages';
   String get navMore => isFa ? 'بیشتر' : 'More';
   String get madeWith => isFa ? 'ساخته‌شده با' : 'Made with';
   String get themeTooltip => isFa ? 'حالت نمایش' : 'Appearance';
@@ -93,6 +94,13 @@ class AppLocalizations {
 
   // —— Projects ——
   String get projectsTitle => isFa ? 'پروژه‌ها' : 'Projects';
+
+  // —— Packages ——
+  String get packagesTitle => isFa ? 'پکیج‌ها' : 'Packages';
+  String get packagesWhatItDoes =>
+      isFa ? 'قابلیت‌ها' : 'What it does';
+  String get packagesUnderTheHood =>
+      isFa ? 'زیرساخت' : 'Under the hood';
   String get associatedWithPrefix =>
       isFa ? 'همکاری با' : 'Associated with';
   String get skillsPrefix => isFa ? 'مهارت‌ها' : 'Skills';
@@ -109,6 +117,8 @@ class AppLocalizations {
       'Myket' => 'مایکت',
       'Sibapp' => 'سیب‌اپ',
       'Zaban.com' => 'Zaban.com',
+      'pub.dev' => 'pub.dev',
+      'Source' => 'سورس',
       _ => en,
     };
   }

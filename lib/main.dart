@@ -7,6 +7,7 @@ import 'package:hasanm08/UI/Pages/WebApp/contact.dart';
 import 'package:hasanm08/UI/Pages/WebApp/mobile_page.dart';
 import 'package:hasanm08/UI/Pages/WebApp/more.dart';
 import 'package:hasanm08/UI/Pages/WebApp/not_found_page.dart';
+import 'package:hasanm08/UI/Pages/WebApp/packages.dart';
 import 'package:hasanm08/UI/Pages/WebApp/projects.dart';
 import 'package:hasanm08/UI/Pages/WebApp/web_root.dart';
 import 'package:hasanm08/l10n/app_localizations.dart';
@@ -84,6 +85,11 @@ final GoRouter _router = GoRouter(
           path: '/projects',
           pageBuilder: (context, state) =>
               _shellChildPage(state, const Projects()),
+        ),
+        GoRoute(
+          path: '/packages',
+          pageBuilder: (context, state) =>
+              _shellChildPage(state, const Packages()),
         ),
         GoRoute(
           path: '/more',

@@ -59,6 +59,11 @@ class More extends StatelessWidget {
                   path: '/projects',
                 ),
                 _QuickRouteButton(
+                  label: l10n.navPackages,
+                  icon: Icons.widgets_outlined,
+                  path: '/packages',
+                ),
+                _QuickRouteButton(
                   label: l10n.navContact,
                   icon: Icons.mail_outline,
                   path: '/contact-me',

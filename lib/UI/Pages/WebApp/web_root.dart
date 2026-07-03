@@ -86,10 +86,16 @@ class WebRoot extends StatelessWidget {
                             isSelected: selectedIndex == 2,
                           ),
                           MenuButton(
+                            icon: Icons.widgets_outlined,
+                            text: l10n.navPackages,
+                            route: '/packages',
+                            isSelected: selectedIndex == 3,
+                          ),
+                          MenuButton(
                             icon: Icons.more_horiz,
                             text: l10n.navMore,
                             route: '/more',
-                            isSelected: selectedIndex == 3,
+                            isSelected: selectedIndex == 4,
                           ),
                         ],
                       ),

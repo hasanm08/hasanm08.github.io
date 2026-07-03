@@ -82,6 +82,10 @@ class MobilePage extends StatelessWidget {
             label: l10n.navProjects,
           ),
           BottomNavigationBarItem(
+            icon: const Icon(Icons.widgets_outlined),
+            label: l10n.navPackages,
+          ),
+          BottomNavigationBarItem(
             icon: const Icon(Icons.more_horiz),
             label: l10n.navMore,
           ),
