@@ -28,6 +28,53 @@ class AppLocalizations {
   String get madeWith => isFa ? 'ساخته‌شده با' : 'Made with';
   String get themeTooltip => isFa ? 'حالت نمایش' : 'Appearance';
   String get languageTooltip => isFa ? 'زبان' : 'Language';
+
+  // —— Showcase (flow_showcase) ——
+  String get showcaseNext => isFa ? 'بعدی' : 'Next';
+  String get showcaseSkip => isFa ? 'رد کردن همه' : 'Skip All';
+  String get showcaseDefaultTitle => isFa ? 'راهنما' : 'Tour';
+  String get showcaseDefaultContent =>
+      isFa ? 'بخشی از نمونه‌کار' : 'Part of the portfolio';
+
+  String get showcaseNavAboutTitle => isFa ? 'درباره من' : 'About me';
+  String get showcaseNavAboutContent => isFa
+      ? 'بیو، تجربه و مهارت‌ها — از اینجا شروع کنید.'
+      : 'Bio, experience, and skills — start here.';
+
+  String get showcaseNavContactTitle => isFa ? 'تماس' : 'Get in touch';
+  String get showcaseNavContactContent => isFa
+      ? 'تلفن، ایمیل و شبکه‌های اجتماعی در یک جا.'
+      : 'Phone, email, and social links in one place.';
+
+  String get showcaseNavProjectsTitle => isFa ? 'پروژه‌ها' : 'Projects';
+  String get showcaseNavProjectsContent => isFa
+      ? 'اپ‌ها و پروژه‌هایی که ساخته‌ام.'
+      : 'Apps and side projects I have built.';
+
+  String get showcaseNavPackagesTitle => isFa ? 'پکیج‌ها' : 'Packages';
+  String get showcaseNavPackagesContent => isFa
+      ? 'پکیج‌های فلاتر و دارت منتشرشده در pub.dev.'
+      : 'Flutter and Dart packages published on pub.dev.';
+
+  String get showcaseNavMoreTitle => isFa ? 'بیشتر' : 'More';
+  String get showcaseNavMoreContent => isFa
+      ? 'رزومه، کد منبع و لینک‌های مفید برای توسعه‌دهندگان.'
+      : 'Resume, source code, and handy developer links.';
+
+  String get showcaseThemeTitle => isFa ? 'حالت نمایش' : 'Appearance';
+  String get showcaseThemeContent => isFa
+      ? 'بین حالت روشن، تاریک و هماهنگ با سیستم جابه‌جا شوید.'
+      : 'Switch between light, dark, and system theme.';
+
+  String get showcaseLanguageTitle => isFa ? 'زبان' : 'Language';
+  String get showcaseLanguageContent => isFa
+      ? 'بین انگلیسی و فارسی تغییر دهید.'
+      : 'Toggle between English and فارسی.';
+
+  String get showcaseContentTitle => isFa ? 'محتوای اصلی' : 'Main view';
+  String get showcaseContentContent => isFa
+      ? 'بخشی که از منو انتخاب می‌کنید اینجا نمایش داده می‌شود.'
+      : 'The section you pick from the menu appears here.';
   String get themeSystem => isFa ? 'هماهنگ با سیستم' : 'Match system';
   String get themeLight => isFa ? 'روشن' : 'Light';
   String get themeDark => isFa ? 'تاریک' : 'Dark';

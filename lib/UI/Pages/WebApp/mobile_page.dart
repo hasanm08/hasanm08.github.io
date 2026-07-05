@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:hasanm08/Utils/app_shell_routes.dart';
 import 'package:hasanm08/l10n/app_localizations.dart';
 import 'package:hasanm08/providers/app_settings.dart';
+import 'package:hasanm08/showcase/portfolio_showcase.dart';
+import 'package:hasanm08/showcase/portfolio_showcase_target.dart';
 import 'package:provider/provider.dart';
 
 /// Mobile/tablet shell: same route-driven tabs as [WebRoot], with a bottom bar.
@@ -31,23 +33,29 @@ class MobilePage extends StatelessWidget {
         actions: [
           Consumer<AppSettings>(
             builder: (context, settings, _) {
-              return IconButton(
-                tooltip: l10n.themeTooltip,
-                onPressed: settings.cycleTheme,
-                icon: Icon(_themeIcon(settings.themeMode)),
+              return PortfolioShowcaseTarget(
+                id: PortfolioShowcaseIds.themeToggle,
+                child: IconButton(
+                  tooltip: l10n.themeTooltip,
+                  onPressed: settings.cycleTheme,
+                  icon: Icon(_themeIcon(settings.themeMode)),
+                ),
               );
             },
           ),
           Consumer<AppSettings>(
             builder: (context, settings, _) {
-              return IconButton(
-                tooltip: l10n.languageTooltip,
-                onPressed: settings.toggleLocale,
-                icon: Text(
-                  settings.locale.languageCode == 'fa' ? 'فا' : 'EN',
-                  style: const TextStyle(
-                    fontWeight: FontWeight.w700,
-                    fontFamily: 'Exo2',
+              return PortfolioShowcaseTarget(
+                id: PortfolioShowcaseIds.languageToggle,
+                child: IconButton(
+                  tooltip: l10n.languageTooltip,
+                  onPressed: settings.toggleLocale,
+                  icon: Text(
+                    settings.locale.languageCode == 'fa' ? 'فا' : 'EN',
+                    style: const TextStyle(
+                      fontWeight: FontWeight.w700,
+                      fontFamily: 'Exo2',
+                    ),
                   ),
                 ),
               );
@@ -70,23 +78,38 @@ class MobilePage extends StatelessWidget {
         },
         items: [
           BottomNavigationBarItem(
-            icon: const Icon(Icons.person),
+            icon: PortfolioShowcaseTarget(
+              id: PortfolioShowcaseIds.navAbout,
+              child: const Icon(Icons.person),
+            ),
             label: l10n.navAbout,
           ),
           BottomNavigationBarItem(
-            icon: const Icon(Icons.call),
+            icon: PortfolioShowcaseTarget(
+              id: PortfolioShowcaseIds.navContact,
+              child: const Icon(Icons.call),
+            ),
             label: l10n.navContact,
           ),
           BottomNavigationBarItem(
-            icon: const Icon(Icons.work),
+            icon: PortfolioShowcaseTarget(
+              id: PortfolioShowcaseIds.navProjects,
+              child: const Icon(Icons.work),
+            ),
             label: l10n.navProjects,
           ),
           BottomNavigationBarItem(
-            icon: const Icon(Icons.widgets_outlined),
+            icon: PortfolioShowcaseTarget(
+              id: PortfolioShowcaseIds.navPackages,
+              child: const Icon(Icons.widgets_outlined),
+            ),
             label: l10n.navPackages,
           ),
           BottomNavigationBarItem(
-            icon: const Icon(Icons.more_horiz),
+            icon: PortfolioShowcaseTarget(
+              id: PortfolioShowcaseIds.navMore,
+              child: const Icon(Icons.more_horiz),
+            ),
             label: l10n.navMore,
           ),
         ],

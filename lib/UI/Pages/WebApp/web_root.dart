@@ -5,6 +5,8 @@ import 'package:hasanm08/Utils/app_shell_routes.dart';
 import 'package:hasanm08/l10n/app_localizations.dart';
 import 'package:hasanm08/providers/app_settings.dart';
 import 'package:hasanm08/routes/app_routes.dart';
+import 'package:hasanm08/showcase/portfolio_showcase.dart';
+import 'package:hasanm08/showcase/portfolio_showcase_target.dart';
 import 'package:provider/provider.dart';
 
 class WebRoot extends StatelessWidget {
@@ -68,35 +70,50 @@ class WebRoot extends StatelessWidget {
                               ),
                             ),
                           ),
-                          MenuButton(
-                            icon: Icons.person,
-                            text: l10n.navAbout,
-                            route: const AboutRoute(),
-                            isSelected: selectedIndex == 0,
+                          PortfolioShowcaseTarget(
+                            id: PortfolioShowcaseIds.navAbout,
+                            child: MenuButton(
+                              icon: Icons.person,
+                              text: l10n.navAbout,
+                              route: const AboutRoute(),
+                              isSelected: selectedIndex == 0,
+                            ),
                           ),
-                          MenuButton(
-                            icon: Icons.call,
-                            text: l10n.navContact,
-                            route: const ContactRoute(),
-                            isSelected: selectedIndex == 1,
+                          PortfolioShowcaseTarget(
+                            id: PortfolioShowcaseIds.navContact,
+                            child: MenuButton(
+                              icon: Icons.call,
+                              text: l10n.navContact,
+                              route: const ContactRoute(),
+                              isSelected: selectedIndex == 1,
+                            ),
                           ),
-                          MenuButton(
-                            icon: Icons.work,
-                            text: l10n.navProjects,
-                            route: const ProjectsRoute(),
-                            isSelected: selectedIndex == 2,
+                          PortfolioShowcaseTarget(
+                            id: PortfolioShowcaseIds.navProjects,
+                            child: MenuButton(
+                              icon: Icons.work,
+                              text: l10n.navProjects,
+                              route: const ProjectsRoute(),
+                              isSelected: selectedIndex == 2,
+                            ),
                           ),
-                          MenuButton(
-                            icon: Icons.widgets_outlined,
-                            text: l10n.navPackages,
-                            route: const PackagesRoute(),
-                            isSelected: selectedIndex == 3,
+                          PortfolioShowcaseTarget(
+                            id: PortfolioShowcaseIds.navPackages,
+                            child: MenuButton(
+                              icon: Icons.widgets_outlined,
+                              text: l10n.navPackages,
+                              route: const PackagesRoute(),
+                              isSelected: selectedIndex == 3,
+                            ),
                           ),
-                          MenuButton(
-                            icon: Icons.more_horiz,
-                            text: l10n.navMore,
-                            route: const MoreRoute(),
-                            isSelected: selectedIndex == 4,
+                          PortfolioShowcaseTarget(
+                            id: PortfolioShowcaseIds.navMore,
+                            child: MenuButton(
+                              icon: Icons.more_horiz,
+                              text: l10n.navMore,
+                              route: const MoreRoute(),
+                              isSelected: selectedIndex == 4,
+                            ),
                           ),
                         ],
                       ),
@@ -111,25 +128,31 @@ class WebRoot extends StatelessWidget {
                           builder: (context, settings, _) {
                             return Row(
                               children: [
-                                IconButton(
-                                  tooltip: l10n.themeTooltip,
-                                  onPressed: settings.cycleTheme,
-                                  icon: Icon(
-                                    _themeIcon(settings.themeMode),
-                                    color: scheme.onPrimary,
+                                PortfolioShowcaseTarget(
+                                  id: PortfolioShowcaseIds.themeToggle,
+                                  child: IconButton(
+                                    tooltip: l10n.themeTooltip,
+                                    onPressed: settings.cycleTheme,
+                                    icon: Icon(
+                                      _themeIcon(settings.themeMode),
+                                      color: scheme.onPrimary,
+                                    ),
                                   ),
                                 ),
-                                IconButton(
-                                  tooltip: l10n.languageTooltip,
-                                  onPressed: settings.toggleLocale,
-                                  icon: Text(
-                                    settings.locale.languageCode == 'fa'
-                                        ? 'فا'
-                                        : 'EN',
-                                    style: TextStyle(
-                                      fontWeight: FontWeight.w700,
-                                      color: scheme.onPrimary,
-                                      fontFamily: 'Exo2',
+                                PortfolioShowcaseTarget(
+                                  id: PortfolioShowcaseIds.languageToggle,
+                                  child: IconButton(
+                                    tooltip: l10n.languageTooltip,
+                                    onPressed: settings.toggleLocale,
+                                    icon: Text(
+                                      settings.locale.languageCode == 'fa'
+                                          ? 'فا'
+                                          : 'EN',
+                                      style: TextStyle(
+                                        fontWeight: FontWeight.w700,
+                                        color: scheme.onPrimary,
+                                        fontFamily: 'Exo2',
+                                      ),
                                     ),
                                   ),
                                 ),
