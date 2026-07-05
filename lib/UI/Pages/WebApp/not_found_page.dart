@@ -9,9 +9,7 @@ import 'package:provider/provider.dart';
 
 /// Full-screen route miss page: respects [AppSettings] theme & locale (MaterialApp).
 class NotFoundPage extends StatefulWidget {
-  const NotFoundPage({super.key, required this.routerState});
-
-  final FlowRouteState routerState;
+  const NotFoundPage({super.key});
 
   @override
   State<NotFoundPage> createState() => _NotFoundPageState();
@@ -49,8 +47,9 @@ class _NotFoundPageState extends State<NotFoundPage>
     final l10n = AppLocalizations.of(context);
     final scheme = Theme.of(context).colorScheme;
     final textTheme = Theme.of(context).textTheme;
-    final path = widget.routerState.uri.path;
-    final query = widget.routerState.uri.query;
+    final routerState = context.routeState;
+    final path = routerState.uri.path;
+    final query = routerState.uri.query;
     final fullPath = query.isEmpty ? path : '$path?$query';
     final canPop = context.canPop();
 

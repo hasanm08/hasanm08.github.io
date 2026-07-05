@@ -21,7 +21,7 @@ final FlowRouter portfolioRouter = FlowRouter(
       redirectTo: _toContact,
     ),
   ],
-  errorBuilder: (context, state) => NotFoundPage(routerState: state),
+  errorBuilder: _notFoundWithOverlay,
   routes: [
     FlowLeafNode(
       FlowRouteDefinition<RootRoute>(
@@ -89,8 +89,29 @@ final FlowRouter portfolioRouter = FlowRouter(
         factory: (_) => const MoreRoute(),
       ),
     ),
+    FlowLeafNode(
+      FlowRouteDefinition<NotFoundRoute>(
+        name: 'not-found',
+        pathTemplate: '/*',
+        builder: (context, route) => const NotFoundPage(),
+        factory: (_) => const NotFoundRoute(),
+      ),
+    ),
   ],
 );
+
+/// [FlowRouter.errorBuilder] renders outside the navigator; wrap so tooltips work.
+Widget _notFoundWithOverlay(BuildContext context, FlowRouteState state) {
+  return Navigator(
+    pages: const [
+      MaterialPage<void>(
+        key: ValueKey('flow-not-found'),
+        child: NotFoundPage(),
+      ),
+    ],
+    onDidRemovePage: (_) {},
+  );
+}
 
 bool _isRootRoute(GuardContext context) => context.targetRoute is RootRoute;
 

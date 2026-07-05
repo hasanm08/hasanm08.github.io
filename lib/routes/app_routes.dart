@@ -58,6 +58,15 @@ final class MoreRoute extends FlowRoute {
   String get pathTemplate => '/more';
 }
 
+/// Catch-all for unknown paths (must stay last in the route table).
+final class NotFoundRoute extends FlowRoute {
+  const NotFoundRoute();
+  @override
+  String get name => 'not-found';
+  @override
+  String get pathTemplate => '/*';
+}
+
 /// Shell tab routes in navigation order.
 const List<FlowRoute> shellTabRoutes = [
   AboutRoute(),
