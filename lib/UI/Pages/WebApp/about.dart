@@ -20,7 +20,10 @@ class About extends StatelessWidget {
         mainAxisSize: MainAxisSize.max,
         scaleDisabledIndices: const {1},
         children: [
-          const SizedBox(height: 12),
+          const SizedBox(
+            height: 12,
+            width: double.infinity,
+          ),
           const Padding(
             padding: EdgeInsets.all(12.0),
             child: SizedBox(

@@ -401,7 +401,7 @@ class _PortfolioHoverLiftState extends State<PortfolioHoverLift> {
   }
 }
 
-/// Page transition builder shared by [GoRouter] shell routes.
+/// Page transition builder shared by portfolio shell routes.
 Widget portfolioPageTransition(
   BuildContext context,
   Animation<double> animation,

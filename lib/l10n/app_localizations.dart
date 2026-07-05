@@ -32,7 +32,7 @@ class AppLocalizations {
   String get themeLight => isFa ? 'روشن' : 'Light';
   String get themeDark => isFa ? 'تاریک' : 'Dark';
 
-  // —— Not found (go_router) ——
+  // —— Not found (flow_routing) ——
   String get notFoundTitle => isFa ? 'صفحه پیدا نشد' : 'Page not found';
   String get notFoundSubtitle => isFa
       ? 'این مسیر در نمونه‌کار من تعریف نشده است؛ شاید لینک قدیمی باشد یا اشتباه تایپ شده باشد.'

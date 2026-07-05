@@ -1,5 +1,5 @@
+import 'package:flow_routing/flow_routing.dart';
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
 import 'package:hasanm08/Utils/app_shell_routes.dart';
 import 'package:hasanm08/l10n/app_localizations.dart';
 import 'package:hasanm08/providers/app_settings.dart';
@@ -63,9 +63,9 @@ class MobilePage extends StatelessWidget {
         selectedItemColor: scheme.primary,
         unselectedItemColor: scheme.onSurface.withValues(alpha: 0.55),
         onTap: (index) {
-          final path = AppShellRoutes.pathForIndex(index);
-          if (path != currentPath) {
-            context.go(path);
+          final route = AppShellRoutes.routeForIndex(index);
+          if (route.location != currentPath) {
+            context.go(route);
           }
         },
         items: [

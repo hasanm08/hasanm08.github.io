@@ -4,6 +4,7 @@ import 'package:hasanm08/UI/Components/portfolio_animations.dart';
 import 'package:hasanm08/Utils/app_shell_routes.dart';
 import 'package:hasanm08/l10n/app_localizations.dart';
 import 'package:hasanm08/providers/app_settings.dart';
+import 'package:hasanm08/routes/app_routes.dart';
 import 'package:provider/provider.dart';
 
 class WebRoot extends StatelessWidget {
@@ -70,31 +71,31 @@ class WebRoot extends StatelessWidget {
                           MenuButton(
                             icon: Icons.person,
                             text: l10n.navAbout,
-                            route: '/about',
+                            route: const AboutRoute(),
                             isSelected: selectedIndex == 0,
                           ),
                           MenuButton(
                             icon: Icons.call,
                             text: l10n.navContact,
-                            route: '/contact-me',
+                            route: const ContactRoute(),
                             isSelected: selectedIndex == 1,
                           ),
                           MenuButton(
                             icon: Icons.work,
                             text: l10n.navProjects,
-                            route: '/projects',
+                            route: const ProjectsRoute(),
                             isSelected: selectedIndex == 2,
                           ),
                           MenuButton(
                             icon: Icons.widgets_outlined,
                             text: l10n.navPackages,
-                            route: '/packages',
+                            route: const PackagesRoute(),
                             isSelected: selectedIndex == 3,
                           ),
                           MenuButton(
                             icon: Icons.more_horiz,
                             text: l10n.navMore,
-                            route: '/more',
+                            route: const MoreRoute(),
                             isSelected: selectedIndex == 4,
                           ),
                         ],

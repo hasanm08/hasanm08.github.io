@@ -1,11 +1,11 @@
+import 'package:flow_routing/flow_routing.dart';
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
 import 'package:hasanm08/UI/Components/portfolio_animations.dart';
 
 class MenuButton extends StatefulWidget {
   final String text;
   final IconData icon;
-  final String route;
+  final FlowRoute route;
   final bool isSelected;
 
   const MenuButton({

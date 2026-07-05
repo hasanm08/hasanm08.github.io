@@ -1,16 +1,17 @@
 import 'dart:ui';
 
+import 'package:flow_routing/flow_routing.dart';
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
 import 'package:hasanm08/l10n/app_localizations.dart';
 import 'package:hasanm08/providers/app_settings.dart';
+import 'package:hasanm08/routes/app_routes.dart';
 import 'package:provider/provider.dart';
 
 /// Full-screen route miss page: respects [AppSettings] theme & locale (MaterialApp).
 class NotFoundPage extends StatefulWidget {
   const NotFoundPage({super.key, required this.routerState});
 
-  final GoRouterState routerState;
+  final FlowRouteState routerState;
 
   @override
   State<NotFoundPage> createState() => _NotFoundPageState();
@@ -51,8 +52,7 @@ class _NotFoundPageState extends State<NotFoundPage>
     final path = widget.routerState.uri.path;
     final query = widget.routerState.uri.query;
     final fullPath = query.isEmpty ? path : '$path?$query';
-    final router = GoRouter.of(context);
-    final canPop = router.canPop();
+    final canPop = context.canPop();
 
     final body = Scaffold(
       extendBodyBehindAppBar: true,
@@ -263,7 +263,7 @@ class _NotFoundPageState extends State<NotFoundPage>
                       alignment: WrapAlignment.center,
                       children: [
                         FilledButton.icon(
-                          onPressed: () => context.go('/about'),
+                          onPressed: () => context.go(const AboutRoute()),
                           icon: const Icon(Icons.home_outlined),
                           label: Text(l10n.notFoundHomeCta),
                           style: FilledButton.styleFrom(

@@ -7,7 +7,7 @@ Personal portfolio and CV site built with **Flutter for the web**. It ships as a
 ## Highlights
 
 - **Responsive shell** — dedicated mobile and desktop experiences with shared content.
-- **Routing** — [`go_router`](https://pub.dev/packages/go_router) with animated page transitions; sections include About, Projects, Contact, and More.
+- **Routing** — [`flow_routing`](https://github.com/hasanm08/flow) with typed routes and animated page transitions; sections include About, Projects, Contact, and More.
 - **Theme** — light, dark, and system appearance, persisted locally.
 - **Localization** — English and Persian (Farsi), with locale persistence.
 - **Polished UI** — custom typography (Pacifico, Exo 2, Kalame), animations, and interactive components tailored for a portfolio.
@@ -19,7 +19,7 @@ Personal portfolio and CV site built with **Flutter for the web**. It ships as a
 | Framework  | Flutter (SDK ≥ 3.3), Material 3 |
 | Web        | `flutter build web` (default CanvasKit / JS pipeline; not SkWasm on Pages) |
 | State      | `provider` (`AppSettings` for theme and locale) |
-| Navigation | `go_router` |
+| Navigation | `flow_routing` |
 | Storage    | `shared_preferences` for theme and language |
 | Other      | `url_launcher`, `intl`, `web` |
 
@@ -53,7 +53,8 @@ Ensure GitHub Pages is configured to serve from the **`gh-pages`** branch (root)
 
 ## Repository layout (overview)
 
-- `lib/main.dart` — app bootstrap, `GoRouter`, localization delegates, theme wiring.
+- `lib/main.dart` — app bootstrap, `FlowRouter`, localization delegates, theme wiring.
+- `lib/router.dart` — typed route definitions and redirect guards.
 - `lib/UI/Pages/WebApp/` — section pages and shell (`web_root`, `mobile_page`).
 - `lib/theme/` — light and dark `ThemeData`.
 - `lib/l10n/` — custom `AppLocalizations` (EN / FA).

@@ -1,5 +1,6 @@
+import 'package:flow_routing/flow_routing.dart';
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
+import 'package:hasanm08/routes/app_routes.dart';
 import 'package:hasanm08/UI/Components/contact_button.dart';
 import 'package:hasanm08/UI/Components/portfolio_animations.dart';
 import 'package:hasanm08/Utils/cv_download_stub.dart'
@@ -51,22 +52,22 @@ class More extends StatelessWidget {
                 _QuickRouteButton(
                   label: l10n.navAbout,
                   icon: Icons.person_outline,
-                  path: '/about',
+                  route: const AboutRoute(),
                 ),
                 _QuickRouteButton(
                   label: l10n.navProjects,
                   icon: Icons.work_outline,
-                  path: '/projects',
+                  route: const ProjectsRoute(),
                 ),
                 _QuickRouteButton(
                   label: l10n.navPackages,
                   icon: Icons.widgets_outlined,
-                  path: '/packages',
+                  route: const PackagesRoute(),
                 ),
                 _QuickRouteButton(
                   label: l10n.navContact,
                   icon: Icons.mail_outline,
-                  path: '/contact-me',
+                  route: const ContactRoute(),
                 ),
               ],
             ),
@@ -170,12 +171,12 @@ class _QuickRouteButton extends StatefulWidget {
   const _QuickRouteButton({
     required this.label,
     required this.icon,
-    required this.path,
+    required this.route,
   });
 
   final String label;
   final IconData icon;
-  final String path;
+  final FlowRoute route;
 
   @override
   State<_QuickRouteButton> createState() => _QuickRouteButtonState();
@@ -195,7 +196,7 @@ class _QuickRouteButtonState extends State<_QuickRouteButton> {
         duration: PortfolioMotion.medium,
         curve: PortfolioMotion.standard,
         child: OutlinedButton.icon(
-          onPressed: () => context.go(widget.path),
+          onPressed: () => context.go(widget.route),
           icon: Icon(widget.icon, size: 18),
           label: Text(widget.label),
           style: OutlinedButton.styleFrom(
