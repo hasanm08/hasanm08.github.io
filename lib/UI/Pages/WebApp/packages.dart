@@ -180,6 +180,85 @@ final List<_Package> _packages = [
     ),
   ),
   _Package(
+    name: 'flow_showcase',
+    icon: Icons.tour,
+    tagline: LocalizedText(
+      'Onboarding that spotlights what matters — without dragging in half of pub.',
+      'آنبوردینگی که آنچه مهم است را برجسته می‌کند — بدون وابستگی‌های سنگین.',
+    ),
+    description: LocalizedText(
+      'Most showcase packages either feel heavy or fight your layout. flow_showcase '
+      'is a lightweight Flutter walkthrough: wrap widgets once with FlowShowcaseTarget, '
+      'start a tour by id, and get blurred spotlight overlays, adaptive tooltips, and '
+      'multi-step navigation — zero third-party runtime dependencies. This portfolio '
+      'uses it for the first-run tour you see in the shell.',
+      'بیشتر پکیج‌های showcase یا سنگین‌اند یا با layout شما می‌جنگند. flow_showcase '
+      'یک walkthrough سبک فلاتر است: ویجت‌ها را یک‌بار با FlowShowcaseTarget بپیچید، '
+      'تور را با id شروع کنید، و overlay spotlight محو، tooltip تطبیقی و ناوبری '
+      'چندمرحله‌ای بگیرید — بدون هیچ وابستگی runtime شخص ثالث. این پورتفولیو از آن '
+      'برای تور اولین اجرا در shell استفاده می‌کند.',
+    ),
+    features: const [
+      LocalizedText(
+        'Declarative targets — wrap once, tour by id',
+        'هدف‌های اعلانی — یک‌بار بپیچید، با id تور بگیرید',
+      ),
+      LocalizedText(
+        'Multi-step flows — skip, next, and dot navigation',
+        'جریان چندمرحله‌ای — رد کردن، بعدی و ناوبری نقطه‌ای',
+      ),
+      LocalizedText(
+        'Adaptive layout — tooltips flip above/below targets on any screen',
+        'چیدمان تطبیقی — tooltip بالا/پایین هدف روی هر صفحه',
+      ),
+      LocalizedText(
+        'Performance focused — one animation controller per step, minimal rebuilds',
+        'متمرکز بر عملکرد — یک کنترلر انیمیشن در هر مرحله، rebuild کم',
+      ),
+      LocalizedText(
+        'Fully customizable — blur, colors, timing, and copy via FlowShowcaseStyle',
+        'کاملاً قابل سفارشی‌سازی — blur، رنگ، زمان‌بندی و متن با FlowShowcaseStyle',
+      ),
+      LocalizedText(
+        'Memory safe — registry cleanup on dispose, overlay removed on skip/complete',
+        'ایمن در حافظه — پاک‌سازی registry در dispose، حذف overlay در skip/complete',
+      ),
+    ],
+    technicalDetails: const [
+      LocalizedText(
+        'FlowShowcaseTarget registers GlobalKeys; FlowShowcaseController drives the sequence',
+        'FlowShowcaseTarget کلیدهای GlobalKey را ثبت می‌کند؛ FlowShowcaseController توالی را می‌راند',
+      ),
+      LocalizedText(
+        'Full example app with dashboard demo — bottom nav and FAB highlights',
+        'اپ نمونه کامل با دمو داشبورد — هایلایت bottom nav و FAB',
+      ),
+    ],
+    tags: [
+      'Flutter',
+      'Dart',
+      'Open Source',
+      'Onboarding',
+      'UX',
+    ],
+    links: [
+      _PackageLink(
+        label: 'pub.dev',
+        url: 'https://pub.dev/packages/flow_showcase',
+        icon: Icons.widgets_outlined,
+      ),
+      _PackageLink(
+        label: 'Source',
+        url: 'https://github.com/hasanm08/flow_showcase',
+        icon: Icons.code,
+      ),
+    ],
+    license: LocalizedText(
+      'Open source (MIT). Issues and pull requests welcome on GitHub.',
+      'متن‌باز (MIT). issue و pull request در GitHub خوش‌آمد است.',
+    ),
+  ),
+  _Package(
     name: 'tv_textfield',
     icon: Icons.tv,
     tagline: LocalizedText(
