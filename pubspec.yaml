@@ -29,10 +29,16 @@ asset:
   - assets/images/
   - assets/animations/
 
-flutter_icons:
+flutter_launcher_icons:
   android: "launcher_icon"
   ios: true
-  image_path: "assets/images/myicon.png"
+  image_path: "logo.png"
+  remove_alpha_ios: true
+  web:
+    generate: true
+    image_path: "logo.png"
+    background_color: "#0F172A"
+    theme_color: "#0175C2"
 
 flutter:
   uses-material-design: true
