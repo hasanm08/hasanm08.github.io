@@ -1,12 +1,12 @@
 import 'package:flow_routing/flow_routing.dart';
 import 'package:flutter/material.dart';
-import 'package:hasanm08/routes/app_routes.dart';
 import 'package:hasanm08/UI/Components/contact_button.dart';
 import 'package:hasanm08/UI/Components/portfolio_animations.dart';
 import 'package:hasanm08/Utils/cv_download_stub.dart'
     if (dart.library.html) 'package:hasanm08/Utils/cv_download_web.dart';
 import 'package:hasanm08/Utils/cv_paths.dart';
 import 'package:hasanm08/l10n/app_localizations.dart';
+import 'package:hasanm08/routes/app_routes.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class More extends StatelessWidget {
@@ -159,10 +159,10 @@ class More extends StatelessWidget {
     return Text(
       text.toUpperCase(),
       style: Theme.of(context).textTheme.labelSmall?.copyWith(
-            letterSpacing: 1.2,
-            fontWeight: FontWeight.w600,
-            color: scheme.primary,
-          ),
+        letterSpacing: 1.2,
+        fontWeight: FontWeight.w600,
+        color: scheme.primary,
+      ),
     );
   }
 }
@@ -201,8 +201,7 @@ class _QuickRouteButtonState extends State<_QuickRouteButton> {
           label: Text(widget.label),
           style: OutlinedButton.styleFrom(
             foregroundColor: _hovering ? scheme.onPrimary : scheme.primary,
-            backgroundColor:
-                _hovering ? scheme.primary : Colors.transparent,
+            backgroundColor: _hovering ? scheme.primary : Colors.transparent,
             side: BorderSide(color: scheme.primary),
             padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 10),
           ),

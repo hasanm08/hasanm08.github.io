@@ -53,10 +53,7 @@ class _PortfolioShellState extends State<PortfolioShell> {
     final selectedIndex = AppShellRoutes.indexForPath(currentPath);
     final body = PortfolioShowcaseTarget(
       id: PortfolioShowcaseIds.contentArea,
-      child: IndexedStack(
-        index: selectedIndex,
-        children: _tabBodies,
-      ),
+      child: IndexedStack(index: selectedIndex, children: _tabBodies),
     );
 
     return LayoutBuilder(
@@ -80,14 +77,8 @@ Widget _appRootForSize(
   String currentPath,
   Widget child,
 ) {
-  final mobile = MobilePage(
-    currentPath: currentPath,
-    child: child,
-  );
-  final web = WebRoot(
-    currentPath: currentPath,
-    child: child,
-  );
+  final mobile = MobilePage(currentPath: currentPath, child: child);
+  final web = WebRoot(currentPath: currentPath, child: child);
   switch (sizingInformation.deviceType) {
     case null:
       return const Text('');
@@ -96,8 +87,10 @@ Widget _appRootForSize(
     case DeviceScreenType.tablet:
       return mobile;
     case DeviceScreenType.desktop:
-      return BaseWidget(builder: (context, sizingInformation) {
-        return web;
-      });
+      return BaseWidget(
+        builder: (context, sizingInformation) {
+          return web;
+        },
+      );
   }
 }

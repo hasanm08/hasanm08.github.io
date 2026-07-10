@@ -28,12 +28,14 @@ class _NotFoundPageState extends State<NotFoundPage>
       vsync: this,
       duration: const Duration(milliseconds: 2800),
     )..repeat(reverse: true);
-    _floatY = Tween<double>(begin: -6, end: 10).animate(
-      CurvedAnimation(parent: _pulse, curve: Curves.easeInOutCubic),
-    );
-    _glow = Tween<double>(begin: 0.22, end: 0.55).animate(
-      CurvedAnimation(parent: _pulse, curve: Curves.easeInOutSine),
-    );
+    _floatY = Tween<double>(
+      begin: -6,
+      end: 10,
+    ).animate(CurvedAnimation(parent: _pulse, curve: Curves.easeInOutCubic));
+    _glow = Tween<double>(
+      begin: 0.22,
+      end: 0.55,
+    ).animate(CurvedAnimation(parent: _pulse, curve: Curves.easeInOutSine));
   }
 
   @override
@@ -140,10 +142,7 @@ class _NotFoundPageState extends State<NotFoundPage>
                           blendMode: BlendMode.srcIn,
                           shaderCallback: (bounds) {
                             return LinearGradient(
-                              colors: [
-                                scheme.primary,
-                                scheme.tertiary,
-                              ],
+                              colors: [scheme.primary, scheme.tertiary],
                               begin: Alignment.topLeft,
                               end: Alignment.bottomRight,
                             ).createShader(bounds);
@@ -151,7 +150,8 @@ class _NotFoundPageState extends State<NotFoundPage>
                           child: Text(
                             '404',
                             textAlign: TextAlign.center,
-                            style: textTheme.displayLarge?.copyWith(
+                            style:
+                                textTheme.displayLarge?.copyWith(
                                   fontFamily: 'Exo2',
                                   fontWeight: FontWeight.w900,
                                   fontSize: 112,
@@ -205,8 +205,9 @@ class _NotFoundPageState extends State<NotFoundPage>
                                   alpha: 0.35 + _glow.value * 0.25,
                                 ),
                               ),
-                              color: scheme.surfaceContainerHighest
-                                  .withValues(alpha: 0.55),
+                              color: scheme.surfaceContainerHighest.withValues(
+                                alpha: 0.55,
+                              ),
                               boxShadow: [
                                 BoxShadow(
                                   color: scheme.primary.withValues(
@@ -234,8 +235,9 @@ class _NotFoundPageState extends State<NotFoundPage>
                                       Text(
                                         l10n.notFoundPathLabel,
                                         style: textTheme.labelMedium?.copyWith(
-                                          color: scheme.onSurface
-                                              .withValues(alpha: 0.65),
+                                          color: scheme.onSurface.withValues(
+                                            alpha: 0.65,
+                                          ),
                                         ),
                                       ),
                                       const SizedBox(height: 2),
@@ -298,10 +300,7 @@ class _NotFoundPageState extends State<NotFoundPage>
     if (!l10n.isFa) {
       return body;
     }
-    return Directionality(
-      textDirection: TextDirection.rtl,
-      child: body,
-    );
+    return Directionality(textDirection: TextDirection.rtl, child: body);
   }
 
   static IconData _themeIcon(ThemeMode mode) {
@@ -314,10 +313,7 @@ class _NotFoundPageState extends State<NotFoundPage>
 }
 
 class _Blob extends StatelessWidget {
-  const _Blob({
-    required this.color,
-    this.size = 200,
-  });
+  const _Blob({required this.color, this.size = 200});
 
   final Color color;
   final double size;
@@ -327,11 +323,7 @@ class _Blob extends StatelessWidget {
     return ClipOval(
       child: BackdropFilter(
         filter: ImageFilter.blur(sigmaX: 40, sigmaY: 40),
-        child: Container(
-          width: size,
-          height: size,
-          color: color,
-        ),
+        child: Container(width: size, height: size, color: color),
       ),
     );
   }

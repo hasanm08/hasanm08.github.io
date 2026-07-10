@@ -66,9 +66,9 @@ class MenuButtonState extends State<MenuButton> {
               style: TextButton.styleFrom(
                 tapTargetSize: MaterialTapTargetSize.shrinkWrap,
                 animationDuration: PortfolioMotion.fast,
-                textStyle: Theme.of(context).textTheme.bodyLarge?.copyWith(
-                      fontWeight: FontWeight.w700,
-                    ),
+                textStyle: Theme.of(
+                  context,
+                ).textTheme.bodyLarge?.copyWith(fontWeight: FontWeight.w700),
                 padding: const EdgeInsets.all(12),
                 foregroundColor: active ? scheme.primary : scheme.onPrimary,
                 shape: const RoundedRectangleBorder(
@@ -87,11 +87,7 @@ class MenuButtonState extends State<MenuButton> {
                   AnimatedContainer(
                     duration: PortfolioMotion.medium,
                     curve: PortfolioMotion.standard,
-                    transform: Matrix4.translationValues(
-                      active ? 4 : 0,
-                      0,
-                      0,
-                    ),
+                    transform: Matrix4.translationValues(active ? 4 : 0, 0, 0),
                     child: Icon(
                       widget.icon,
                       color: active ? scheme.primary : scheme.onPrimary,
