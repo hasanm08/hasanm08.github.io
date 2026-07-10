@@ -73,7 +73,7 @@ class MobilePage extends StatelessWidget {
         onTap: (index) {
           final route = AppShellRoutes.routeForIndex(index);
           if (route.location != currentPath) {
-            context.go(route);
+            context.flow(route);
           }
         },
         items: [

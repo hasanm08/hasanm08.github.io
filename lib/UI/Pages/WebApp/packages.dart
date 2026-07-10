@@ -29,7 +29,7 @@ class Packages extends StatelessWidget {
               24,
             ),
             itemCount: _packages.length + 1,
-            separatorBuilder: (_, __) => const SizedBox(height: 16),
+            separatorBuilder: (_, _) => const SizedBox(height: 16),
             itemBuilder: (context, index) {
               if (index == 0) {
                 return Padding(
@@ -37,12 +37,12 @@ class Packages extends StatelessWidget {
                   child: Text(
                     l10n.packagesTitle,
                     style: Theme.of(context).textTheme.headlineSmall?.copyWith(
-                          fontFamily: 'Exo2',
-                          fontSize: isWide ? 30 : 24,
-                          color: Theme.of(context).colorScheme.primary,
-                          letterSpacing: 1.2,
-                          fontWeight: FontWeight.w600,
-                        ),
+                      fontFamily: 'Exo2',
+                      fontSize: isWide ? 30 : 24,
+                      color: Theme.of(context).colorScheme.primary,
+                      letterSpacing: 1.2,
+                      fontWeight: FontWeight.w600,
+                    ),
                   ),
                 );
               }
@@ -104,16 +104,16 @@ final List<_Package> _packages = [
     ),
     description: LocalizedText(
       'After months of fighting routing bugs — wrong URLs on refresh, tabs that '
-      'behaved like full page pushes, string paths scattered everywhere, guards '
-      'that were hard to reason about — I built Flow from scratch. flow_routing '
-      'is a Flutter router not wrapped around GoRouter: typed routes, derived '
-      'URLs, refresh-safe web navigation, and tab stacks that don\'t feel like '
-      'opening a new app every time.',
+          'behaved like full page pushes, string paths scattered everywhere, guards '
+          'that were hard to reason about — I built Flow from scratch. flow_routing '
+          'is a Flutter router not wrapped around GoRouter: typed routes, derived '
+          'URLs, refresh-safe web navigation, and tab stacks that don\'t feel like '
+          'opening a new app every time.',
       'بعد از ماه‌ها درگیری با باگ‌های مسیریابی — URL اشتباه بعد از رفرش، تب‌هایی '
-      'که مثل push صفحهٔ کامل رفتار می‌کردند، مسیرهای رشته‌ای پراکنده، گاردهایی '
-      'که سخت قابل فهم بودند — Flow را از صفر ساختم. flow_routing روتر فلاتر است '
-      'که دور GoRouter پیچیده نشده: مسیرهای تایپ‌شده، URLهای مشتق‌شده، ناوبری وب '
-      'ایمن در برابر رفرش، و استک تب‌هایی که هر بار حس اپ جدید نمی‌دهند.',
+          'که مثل push صفحهٔ کامل رفتار می‌کردند، مسیرهای رشته‌ای پراکنده، گاردهایی '
+          'که سخت قابل فهم بودند — Flow را از صفر ساختم. flow_routing روتر فلاتر است '
+          'که دور GoRouter پیچیده نشده: مسیرهای تایپ‌شده، URLهای مشتق‌شده، ناوبری وب '
+          'ایمن در برابر رفرش، و استک تب‌هایی که هر بار حس اپ جدید نمی‌دهند.',
     ),
     features: const [
       LocalizedText(
@@ -147,21 +147,15 @@ final List<_Package> _packages = [
     ],
     technicalDetails: const [
       LocalizedText(
-        'context.go, context.push, context.pop — URL always derived from the route',
-        'context.go، context.push، context.pop — URL همیشه از مسیر مشتق می‌شود',
+        'context.flow, context.pop — URL always derived from the route',
+        'context.flow، context.pop — URL همیشه از مسیر مشتق می‌شود',
       ),
       LocalizedText(
         'Full example app, docs, tests, and GoRouter/AutoRoute migration notes',
         'اپ نمونه، مستندات، تست‌ها و یادداشت مهاجرت از GoRouter/AutoRoute',
       ),
     ],
-    tags: [
-      'Flutter',
-      'Dart',
-      'Web',
-      'Open Source',
-      'Routing',
-    ],
+    tags: ['Flutter', 'Dart', 'Web', 'Open Source', 'Routing'],
     links: [
       _PackageLink(
         label: 'pub.dev',
@@ -188,15 +182,15 @@ final List<_Package> _packages = [
     ),
     description: LocalizedText(
       'Most showcase packages either feel heavy or fight your layout. flow_showcase '
-      'is a lightweight Flutter walkthrough: wrap widgets once with FlowShowcaseTarget, '
-      'start a tour by id, and get blurred spotlight overlays, adaptive tooltips, and '
-      'multi-step navigation — zero third-party runtime dependencies. This portfolio '
-      'uses it for the first-run tour you see in the shell.',
+          'is a lightweight Flutter walkthrough: wrap widgets once with FlowShowcaseTarget, '
+          'start a tour by id, and get blurred spotlight overlays, adaptive tooltips, and '
+          'multi-step navigation — zero third-party runtime dependencies. This portfolio '
+          'uses it for the first-run tour you see in the shell.',
       'بیشتر پکیج‌های showcase یا سنگین‌اند یا با layout شما می‌جنگند. flow_showcase '
-      'یک walkthrough سبک فلاتر است: ویجت‌ها را یک‌بار با FlowShowcaseTarget بپیچید، '
-      'تور را با id شروع کنید، و overlay spotlight محو، tooltip تطبیقی و ناوبری '
-      'چندمرحله‌ای بگیرید — بدون هیچ وابستگی runtime شخص ثالث. این پورتفولیو از آن '
-      'برای تور اولین اجرا در shell استفاده می‌کند.',
+          'یک walkthrough سبک فلاتر است: ویجت‌ها را یک‌بار با FlowShowcaseTarget بپیچید، '
+          'تور را با id شروع کنید، و overlay spotlight محو، tooltip تطبیقی و ناوبری '
+          'چندمرحله‌ای بگیرید — بدون هیچ وابستگی runtime شخص ثالث. این پورتفولیو از آن '
+          'برای تور اولین اجرا در shell استفاده می‌کند.',
     ),
     features: const [
       LocalizedText(
@@ -234,13 +228,7 @@ final List<_Package> _packages = [
         'اپ نمونه کامل با دمو داشبورد — هایلایت bottom nav و FAB',
       ),
     ],
-    tags: [
-      'Flutter',
-      'Dart',
-      'Open Source',
-      'Onboarding',
-      'UX',
-    ],
+    tags: ['Flutter', 'Dart', 'Open Source', 'Onboarding', 'UX'],
     links: [
       _PackageLink(
         label: 'pub.dev',
@@ -267,14 +255,14 @@ final List<_Package> _packages = [
     ),
     description: LocalizedText(
       'If you\'ve built for Android TV or Apple TV, you\'ve probably hit this: '
-      'focus gets stuck, the remote stops cooperating, and text fields fight you '
-      'instead of helping you. tv_textfield is a Flutter package that makes '
-      'TextField actually work on TV — a drop-in replacement where you swap '
-      'TextField for TvTextField.',
+          'focus gets stuck, the remote stops cooperating, and text fields fight you '
+          'instead of helping you. tv_textfield is a Flutter package that makes '
+          'TextField actually work on TV — a drop-in replacement where you swap '
+          'TextField for TvTextField.',
       'اگر برای Android TV یا Apple TV توسعه داده‌اید، احتمالاً این را دیده‌اید: '
-      'فوکوس گیر می‌کند، ریموت همکاری نمی‌کند و فیلدهای متنی به‌جای کمک، '
-      'مقاومت می‌کنند. tv_textfield پکیجی فلاتر است که TextField را واقعاً روی '
-      'تلویزیون کاربردی می‌کند — جایگزین مستقیم با تعویض TextField به TvTextField.',
+          'فوکوس گیر می‌کند، ریموت همکاری نمی‌کند و فیلدهای متنی به‌جای کمک، '
+          'مقاومت می‌کنند. tv_textfield پکیجی فلاتر است که TextField را واقعاً روی '
+          'تلویزیون کاربردی می‌کند — جایگزین مستقیم با تعویض TextField به TvTextField.',
     ),
     features: const [
       LocalizedText(
@@ -295,10 +283,7 @@ final List<_Package> _packages = [
       ),
     ],
     technicalDetails: const [
-      LocalizedText(
-        'Native EditText on Android',
-        'EditText بومی روی اندروید',
-      ),
+      LocalizedText('Native EditText on Android', 'EditText بومی روی اندروید'),
       LocalizedText(
         'Native UITextField on Apple TV',
         'UITextField بومی روی Apple TV',
@@ -308,14 +293,7 @@ final List<_Package> _packages = [
         'فالبک هوشمند فلاتر در بقیهٔ پلتفرم‌ها',
       ),
     ],
-    tags: [
-      'Flutter',
-      'Android TV',
-      'Apple TV',
-      'tvOS',
-      'Open Source',
-      'Dart',
-    ],
+    tags: ['Flutter', 'Android TV', 'Apple TV', 'tvOS', 'Open Source', 'Dart'],
     links: [
       _PackageLink(
         label: 'pub.dev',
@@ -336,10 +314,7 @@ final List<_Package> _packages = [
 ];
 
 class _PackageCard extends StatefulWidget {
-  const _PackageCard({
-    required this.package,
-    required this.isCompact,
-  });
+  const _PackageCard({required this.package, required this.isCompact});
 
   final _Package package;
   final bool isCompact;
@@ -414,7 +389,11 @@ class _PackageCardState extends State<_PackageCard> {
             children: [
               Row(
                 children: [
-                  Icon(package.icon, color: scheme.primary, size: isCompact ? 22 : 26),
+                  Icon(
+                    package.icon,
+                    color: scheme.primary,
+                    size: isCompact ? 22 : 26,
+                  ),
                   const SizedBox(width: 10),
                   Expanded(child: Text(package.name, style: titleStyle)),
                 ],
@@ -446,7 +425,10 @@ class _PackageCardState extends State<_PackageCard> {
                         ),
                         const SizedBox(width: 8),
                         Expanded(
-                          child: Text(feature.resolve(locale), style: bodyStyle),
+                          child: Text(
+                            feature.resolve(locale),
+                            style: bodyStyle,
+                          ),
                         ),
                       ],
                     ),
@@ -485,10 +467,13 @@ class _PackageCardState extends State<_PackageCard> {
               ],
               if (package.license != null) ...[
                 const SizedBox(height: 12),
-                Text(package.license!.resolve(locale), style: bodyStyle.copyWith(
-                  color: scheme.onSurface.withValues(alpha: 0.7),
-                  fontSize: isCompact ? 13 : 14,
-                )),
+                Text(
+                  package.license!.resolve(locale),
+                  style: bodyStyle.copyWith(
+                    color: scheme.onSurface.withValues(alpha: 0.7),
+                    fontSize: isCompact ? 13 : 14,
+                  ),
+                ),
               ],
               if (package.tags.isNotEmpty) ...[
                 const SizedBox(height: 12),

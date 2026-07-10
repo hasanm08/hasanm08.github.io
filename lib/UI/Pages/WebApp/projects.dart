@@ -29,7 +29,7 @@ class Projects extends StatelessWidget {
               24,
             ),
             itemCount: _projects.length + 1,
-            separatorBuilder: (_, __) => const SizedBox(height: 16),
+            separatorBuilder: (_, _) => const SizedBox(height: 16),
             itemBuilder: (context, index) {
               if (index == 0) {
                 return Padding(
@@ -37,12 +37,12 @@ class Projects extends StatelessWidget {
                   child: Text(
                     l10n.projectsTitle,
                     style: Theme.of(context).textTheme.headlineSmall?.copyWith(
-                          fontFamily: 'Exo2',
-                          fontSize: isWide ? 30 : 24,
-                          color: Theme.of(context).colorScheme.primary,
-                          letterSpacing: 1.2,
-                          fontWeight: FontWeight.w600,
-                        ),
+                      fontFamily: 'Exo2',
+                      fontSize: isWide ? 30 : 24,
+                      color: Theme.of(context).colorScheme.primary,
+                      letterSpacing: 1.2,
+                      fontWeight: FontWeight.w600,
+                    ),
                   ),
                 );
               }
@@ -98,15 +98,15 @@ final List<_Project> _projects = [
     dateRange: 'Mar 2025 – Mar 2026',
     description: LocalizedText(
       'Volvero is a peer-to-peer vehicle sharing mobile application that '
-      'connects vehicle owners with drivers, enabling efficient, secure, '
-      'and sustainable access to cars, motorcycles, and commercial vehicles. '
-      'As a core member of the Volvero Flutter team, I led multiple '
-      'high-impact technical improvements across performance, security, '
-      'and code quality.',
+          'connects vehicle owners with drivers, enabling efficient, secure, '
+          'and sustainable access to cars, motorcycles, and commercial vehicles. '
+          'As a core member of the Volvero Flutter team, I led multiple '
+          'high-impact technical improvements across performance, security, '
+          'and code quality.',
       '«ولورو» یک اپلیکیشن موبایل اشتراک خودرو همتا به همتا است که مالکان و '
-      'رانندگان را به هم متصل می‌کند و دسترسی امن، کارآمد و پایدار به خودرو، '
-      'موتورسیکلت و ناوگان تجاری را ممکن می‌سازد. به‌عنوان عضو اصلی تیم فلاتر '
-      'ولورو، روی بهبودهای فنی مهم در عملکرد، امنیت و کیفیت کد نقش داشتم.',
+          'رانندگان را به هم متصل می‌کند و دسترسی امن، کارآمد و پایدار به خودرو، '
+          'موتورسیکلت و ناوگان تجاری را ممکن می‌سازد. به‌عنوان عضو اصلی تیم فلاتر '
+          'ولورو، روی بهبودهای فنی مهم در عملکرد، امنیت و کیفیت کد نقش داشتم.',
     ),
     highlights: const [
       LocalizedText(
@@ -165,12 +165,12 @@ final List<_Project> _projects = [
     associatedWith: 'ParsPack | پارس پک',
     description: LocalizedText(
       'An interactive English learning mobile app designed to make language '
-      'acquisition more engaging and enjoyable through efficient tools and '
-      'gamified elements. Grew the active user base to 50,000 by delivering '
-      'a seamless experience and integrating cutting-edge learning features.',
+          'acquisition more engaging and enjoyable through efficient tools and '
+          'gamified elements. Grew the active user base to 50,000 by delivering '
+          'a seamless experience and integrating cutting-edge learning features.',
       'یک اپلیکیشن موبایل آموزش زبان انگلیسی تعاملی که با ابزارهای کارآمد و '
-      'المان‌های بازی‌وار، یادگیری را جذاب‌تر می‌کند. با تمرکز بر تجربهٔ روان و '
-      'امکانات یادگیری به‌روز، به رشد پایگاه فعال تا حدود ۵۰٬۰۰۰ کاربر کمک شد.',
+          'المان‌های بازی‌وار، یادگیری را جذاب‌تر می‌کند. با تمرکز بر تجربهٔ روان و '
+          'امکانات یادگیری به‌روز، به رشد پایگاه فعال تا حدود ۵۰٬۰۰۰ کاربر کمک شد.',
     ),
     skills: ['Web Development', 'Computer Science', 'Flutter'],
     tags: ['Flutter', 'EdTech', 'PWA', 'Gamification'],
@@ -190,11 +190,7 @@ final List<_Project> _projects = [
         url: 'https://sibapp.com/applications/Zaban',
         icon: Icons.apple,
       ),
-      _ProjectLink(
-        label: 'PWA',
-        url: 'https://app.zaban.io',
-        icon: Icons.web,
-      ),
+      _ProjectLink(label: 'PWA', url: 'https://app.zaban.io', icon: Icons.web),
       _ProjectLink(
         label: 'Cafe Bazaar',
         url: 'https://cafebazaar.ir/app/edu.xaban.xaban',
@@ -211,12 +207,12 @@ final List<_Project> _projects = [
     name: 'CodeWolf',
     description: LocalizedText(
       'A comprehensive management application for a programming institute '
-      'built with WPF, focused on delivering an intuitive user experience '
-      'through sleek, modern styling. The app streamlines administrative '
-      'tasks and enhances overall efficiency for staff and students.',
+          'built with WPF, focused on delivering an intuitive user experience '
+          'through sleek, modern styling. The app streamlines administrative '
+          'tasks and enhances overall efficiency for staff and students.',
       'یک نرم‌افزار جامع مدیریتی برای آموزشگاه برنامه‌نویسی با WPF با تمرکز بر '
-      'تجربهٔ کاربری شهودی و ظاهر مدرن؛ فرایندهای اداری را ساده‌تر و کارایی '
-      'کارکنان و هنرجویان را بالا می‌برد.',
+          'تجربهٔ کاربری شهودی و ظاهر مدرن؛ فرایندهای اداری را ساده‌تر و کارایی '
+          'کارکنان و هنرجویان را بالا می‌برد.',
     ),
     skills: ['WPF', 'C#', 'Computer Science'],
     tags: ['Desktop', 'Windows', 'WPF', 'C#'],
@@ -232,12 +228,12 @@ final List<_Project> _projects = [
     name: 'PayBay',
     description: LocalizedText(
       'A cross-platform Buy Now Pay Later (BNPL) service built with Flutter, '
-      'providing a seamless and secure payment experience across devices. '
-      'Features a clean, user-friendly interface and integrates with '
-      'multiple payment gateways for flexible purchase management.',
+          'providing a seamless and secure payment experience across devices. '
+          'Features a clean, user-friendly interface and integrates with '
+          'multiple payment gateways for flexible purchase management.',
       'سرویس «خرید الان، پرداخت بعد» چندسکویی با فلاتر با تجربهٔ پرداخت امن و '
-      'یکدست روی دستگاه‌های مختلف؛ رابط کاربری تمیز و اتصال به درگاه‌های متعدد '
-      'برای مدیریت انعطاف‌پذیر خرید.',
+          'یکدست روی دستگاه‌های مختلف؛ رابط کاربری تمیز و اتصال به درگاه‌های متعدد '
+          'برای مدیریت انعطاف‌پذیر خرید.',
     ),
     skills: ['Flutter', 'Computer Science'],
     tags: ['Flutter', 'FinTech', 'BNPL', 'Payments'],
@@ -246,12 +242,12 @@ final List<_Project> _projects = [
     name: 'Travel App',
     description: LocalizedText(
       'A simple Flutter MVP for a travel services platform with an intuitive '
-      'interface to browse, book, and manage travel plans. Focused on core '
-      'functionality and optimized performance across devices for a '
-      'streamlined experience.',
+          'interface to browse, book, and manage travel plans. Focused on core '
+          'functionality and optimized performance across devices for a '
+          'streamlined experience.',
       'یک MVP فلاتر برای پلتفرم خدمات سفر با رابط کاربری شهودی برای مرور، '
-      'رزرو و مدیریت برنامه‌های سفر؛ تمرکز بر هستهٔ محصول و عملکرد بهینه روی '
-      'دستگاه‌های مختلف.',
+          'رزرو و مدیریت برنامه‌های سفر؛ تمرکز بر هستهٔ محصول و عملکرد بهینه روی '
+          'دستگاه‌های مختلف.',
     ),
     skills: ['Flutter', 'Computer Science'],
     tags: ['Flutter', 'Travel', 'MVP'],
@@ -266,10 +262,7 @@ final List<_Project> _projects = [
 ];
 
 class _ProjectCard extends StatefulWidget {
-  const _ProjectCard({
-    required this.project,
-    required this.isCompact,
-  });
+  const _ProjectCard({required this.project, required this.isCompact});
 
   final _Project project;
   final bool isCompact;

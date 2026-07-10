@@ -75,7 +75,7 @@ class WebRoot extends StatelessWidget {
                             child: MenuButton(
                               icon: Icons.person,
                               text: l10n.navAbout,
-                              route: const AboutRoute(),
+                              route: Routes.about,
                               isSelected: selectedIndex == 0,
                             ),
                           ),
@@ -84,7 +84,7 @@ class WebRoot extends StatelessWidget {
                             child: MenuButton(
                               icon: Icons.call,
                               text: l10n.navContact,
-                              route: const ContactRoute(),
+                              route: Routes.contact,
                               isSelected: selectedIndex == 1,
                             ),
                           ),
@@ -93,7 +93,7 @@ class WebRoot extends StatelessWidget {
                             child: MenuButton(
                               icon: Icons.work,
                               text: l10n.navProjects,
-                              route: const ProjectsRoute(),
+                              route: Routes.projects,
                               isSelected: selectedIndex == 2,
                             ),
                           ),
@@ -102,7 +102,7 @@ class WebRoot extends StatelessWidget {
                             child: MenuButton(
                               icon: Icons.widgets_outlined,
                               text: l10n.navPackages,
-                              route: const PackagesRoute(),
+                              route: Routes.packages,
                               isSelected: selectedIndex == 3,
                             ),
                           ),
@@ -111,7 +111,7 @@ class WebRoot extends StatelessWidget {
                             child: MenuButton(
                               icon: Icons.more_horiz,
                               text: l10n.navMore,
-                              route: const MoreRoute(),
+                              route: Routes.more,
                               isSelected: selectedIndex == 4,
                             ),
                           ),

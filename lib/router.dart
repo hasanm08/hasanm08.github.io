@@ -10,92 +10,62 @@ const _shellPageKey = 'portfolio-shell';
 const _tabTransition = FlowTransition.none();
 
 final FlowRouter portfolioRouter = FlowRouter(
-  initialLocation: const AboutRoute().location,
+  initialLocation: Routes.about.location,
   guards: const [
-    RedirectGuard(
-      condition: _isRootRoute,
-      redirectTo: _toAbout,
-    ),
-    RedirectGuard(
-      condition: _isContactLegacyRoute,
-      redirectTo: _toContact,
-    ),
+    RedirectGuard(condition: _isRootRoute, redirectTo: _toAbout),
+    RedirectGuard(condition: _isContactLegacyRoute, redirectTo: _toContact),
   ],
   errorBuilder: _notFoundWithOverlay,
   routes: [
-    FlowLeafNode(
-      FlowRouteDefinition<RootRoute>(
-        name: 'root',
-        pathTemplate: '/',
-        builder: (context, route) => const SizedBox.shrink(),
-        factory: (_) => const RootRoute(),
-      ),
+    flow(
+      '/',
+      name: 'root',
+      builder: (context, route) => const SizedBox.shrink(),
     ),
-    FlowLeafNode(
-      FlowRouteDefinition<ContactLegacyRoute>(
-        name: 'contact-legacy',
-        pathTemplate: '/contact',
-        builder: (context, route) => const SizedBox.shrink(),
-        factory: (_) => const ContactLegacyRoute(),
-      ),
+    flow(
+      '/contact',
+      name: 'contact-legacy',
+      builder: (context, route) => const SizedBox.shrink(),
     ),
-    FlowLeafNode(
-      FlowRouteDefinition<AboutRoute>(
-        name: 'about',
-        pathTemplate: '/about',
-        pageKey: _shellPageKey,
-        transition: _tabTransition,
-        builder: (context, route) => const PortfolioShell(),
-        factory: (_) => const AboutRoute(),
-      ),
+    flow(
+      '/about',
+      name: 'about',
+      pageKey: _shellPageKey,
+      transition: _tabTransition,
+      builder: (context, route) => const PortfolioShell(),
     ),
-    FlowLeafNode(
-      FlowRouteDefinition<ContactRoute>(
-        name: 'contact',
-        pathTemplate: '/contact-me',
-        pageKey: _shellPageKey,
-        transition: _tabTransition,
-        builder: (context, route) => const PortfolioShell(),
-        factory: (_) => const ContactRoute(),
-      ),
+    flow(
+      '/contact-me',
+      name: 'contact',
+      pageKey: _shellPageKey,
+      transition: _tabTransition,
+      builder: (context, route) => const PortfolioShell(),
     ),
-    FlowLeafNode(
-      FlowRouteDefinition<ProjectsRoute>(
-        name: 'projects',
-        pathTemplate: '/projects',
-        pageKey: _shellPageKey,
-        transition: _tabTransition,
-        builder: (context, route) => const PortfolioShell(),
-        factory: (_) => const ProjectsRoute(),
-      ),
+    flow(
+      '/projects',
+      name: 'projects',
+      pageKey: _shellPageKey,
+      transition: _tabTransition,
+      builder: (context, route) => const PortfolioShell(),
     ),
-    FlowLeafNode(
-      FlowRouteDefinition<PackagesRoute>(
-        name: 'packages',
-        pathTemplate: '/packages',
-        pageKey: _shellPageKey,
-        transition: _tabTransition,
-        builder: (context, route) => const PortfolioShell(),
-        factory: (_) => const PackagesRoute(),
-      ),
+    flow(
+      '/packages',
+      name: 'packages',
+      pageKey: _shellPageKey,
+      transition: _tabTransition,
+      builder: (context, route) => const PortfolioShell(),
     ),
-    FlowLeafNode(
-      FlowRouteDefinition<MoreRoute>(
-        name: 'more',
-        pathTemplate: '/more',
-        pageKey: _shellPageKey,
-        transition: _tabTransition,
-        builder: (context, route) => const PortfolioShell(),
-        factory: (_) => const MoreRoute(),
-      ),
+    flow(
+      '/more',
+      name: 'more',
+      pageKey: _shellPageKey,
+      transition: _tabTransition,
+      builder: (context, route) => const PortfolioShell(),
     ),
-    FlowLeafNode(
-      FlowRouteDefinition<NotFoundRoute>(
-        name: 'not-found',
-        pathTemplate: '/*',
-        builder: (context, route) => const NotFoundPage(),
-        factory: (_) => const NotFoundRoute(),
-      ),
+    flow(
+      '/*',
+      name: 'not-found',
+      builder: (context, route) => const NotFoundPage(),
     ),
   ],
 );
@@ -113,11 +83,11 @@ Widget _notFoundWithOverlay(BuildContext context, FlowRouteState state) {
   );
 }
 
-bool _isRootRoute(GuardContext context) => context.targetRoute is RootRoute;
+bool _isRootRoute(GuardContext context) => context.targetRoute.isName('root');
 
-FlowRoute _toAbout(GuardContext context) => const AboutRoute();
+FlowRoute _toAbout(GuardContext context) => Routes.about;
 
 bool _isContactLegacyRoute(GuardContext context) =>
-    context.targetRoute is ContactLegacyRoute;
+    context.targetRoute.isName('contact-legacy');
 
-FlowRoute _toContact(GuardContext context) => const ContactRoute();
+FlowRoute _toContact(GuardContext context) => Routes.contact;

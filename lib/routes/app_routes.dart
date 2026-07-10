@@ -1,77 +1,41 @@
 import 'package:flow_routing/flow_routing.dart';
 
-/// Root path redirect target (`/` → `/about`).
-final class RootRoute extends FlowRoute {
-  const RootRoute();
-  @override
-  String get name => 'root';
-  @override
-  String get pathTemplate => '/';
-}
+/// App route instances — no subclasses required.
+///
+/// ```dart
+/// context.flow(Routes.about);
+/// context.flow(Routes.contact, push: true);
+/// ```
+abstract final class Routes {
+  Routes._();
 
-/// Legacy contact path (`/contact` → `/contact-me`).
-final class ContactLegacyRoute extends FlowRoute {
-  const ContactLegacyRoute();
-  @override
-  String get name => 'contact-legacy';
-  @override
-  String get pathTemplate => '/contact';
-}
+  /// Root path redirect target (`/` → `/about`).
+  static const root = FlowRoute(name: 'root', pathTemplate: '/');
 
-final class AboutRoute extends FlowRoute {
-  const AboutRoute();
-  @override
-  String get name => 'about';
-  @override
-  String get pathTemplate => '/about';
-}
+  /// Legacy contact path (`/contact` → `/contact-me`).
+  static const contactLegacy = FlowRoute(
+    name: 'contact-legacy',
+    pathTemplate: '/contact',
+  );
 
-final class ContactRoute extends FlowRoute {
-  const ContactRoute();
-  @override
-  String get name => 'contact';
-  @override
-  String get pathTemplate => '/contact-me';
-}
+  static const about = FlowRoute(name: 'about', pathTemplate: '/about');
+  static const contact = FlowRoute(name: 'contact', pathTemplate: '/contact-me');
+  static const projects = FlowRoute(name: 'projects', pathTemplate: '/projects');
+  static const packages = FlowRoute(
+    name: 'packages',
+    pathTemplate: '/pub-packages',
+  );
+  static const more = FlowRoute(name: 'more', pathTemplate: '/more');
 
-final class ProjectsRoute extends FlowRoute {
-  const ProjectsRoute();
-  @override
-  String get name => 'projects';
-  @override
-  String get pathTemplate => '/projects';
-}
-
-final class PackagesRoute extends FlowRoute {
-  const PackagesRoute();
-  @override
-  String get name => 'packages';
-  @override
-  String get pathTemplate => '/packages';
-}
-
-final class MoreRoute extends FlowRoute {
-  const MoreRoute();
-  @override
-  String get name => 'more';
-  @override
-  String get pathTemplate => '/more';
-}
-
-/// Catch-all for unknown paths (must stay last in the route table).
-final class NotFoundRoute extends FlowRoute {
-  const NotFoundRoute();
-  @override
-  String get name => 'not-found';
-  @override
-  String get pathTemplate => '/*';
+  /// Catch-all for unknown paths (must stay last in the route table).
+  static const notFound = FlowRoute(name: 'not-found', pathTemplate: '/*');
 }
 
 /// Shell tab routes in navigation order.
 const List<FlowRoute> shellTabRoutes = [
-  AboutRoute(),
-  ContactRoute(),
-  ProjectsRoute(),
-  PackagesRoute(),
-  MoreRoute(),
+  Routes.about,
+  Routes.contact,
+  Routes.projects,
+  Routes.packages,
+  Routes.more,
 ];

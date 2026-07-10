@@ -49,7 +49,7 @@ class _PortfolioShellState extends State<PortfolioShell> {
 
   @override
   Widget build(BuildContext context) {
-    final currentPath = context.flow.location;
+    final currentPath = context.location;
     final selectedIndex = AppShellRoutes.indexForPath(currentPath);
     final body = PortfolioShowcaseTarget(
       id: PortfolioShowcaseIds.contentArea,

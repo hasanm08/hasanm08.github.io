@@ -262,7 +262,7 @@ class _NotFoundPageState extends State<NotFoundPage>
                       alignment: WrapAlignment.center,
                       children: [
                         FilledButton.icon(
-                          onPressed: () => context.go(const AboutRoute()),
+                          onPressed: () => context.flow(Routes.about),
                           icon: const Icon(Icons.home_outlined),
                           label: Text(l10n.notFoundHomeCta),
                           style: FilledButton.styleFrom(

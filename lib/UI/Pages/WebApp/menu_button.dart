@@ -79,7 +79,7 @@ class MenuButtonState extends State<MenuButton> {
                 ),
               ),
               onPressed: () {
-                context.go(widget.route);
+                context.flow(widget.route);
               },
               child: Row(
                 mainAxisSize: MainAxisSize.max,

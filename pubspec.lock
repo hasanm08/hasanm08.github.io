@@ -92,11 +92,12 @@ packages:
   flow_routing:
     dependency: "direct main"
     description:
-      name: flow_routing
-      sha256: "547d1adfd08b1c4609afdbe193ec1cd2def0f782092c4540271effce5adf63d7"
-      url: "https://pub.dev"
-    source: hosted
-    version: "1.0.2"
+      path: "."
+      ref: "v2.0.0"
+      resolved-ref: "2776639242d49b10b80c085ea005abe88fccb53d"
+      url: "https://github.com/hasanm08/flow.git"
+    source: git
+    version: "2.0.0"
   flow_showcase:
     dependency: "direct main"
     description:

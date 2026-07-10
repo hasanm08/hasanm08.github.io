@@ -52,22 +52,22 @@ class More extends StatelessWidget {
                 _QuickRouteButton(
                   label: l10n.navAbout,
                   icon: Icons.person_outline,
-                  route: const AboutRoute(),
+                  route: Routes.about,
                 ),
                 _QuickRouteButton(
                   label: l10n.navProjects,
                   icon: Icons.work_outline,
-                  route: const ProjectsRoute(),
+                  route: Routes.projects,
                 ),
                 _QuickRouteButton(
                   label: l10n.navPackages,
                   icon: Icons.widgets_outlined,
-                  route: const PackagesRoute(),
+                  route: Routes.packages,
                 ),
                 _QuickRouteButton(
                   label: l10n.navContact,
                   icon: Icons.mail_outline,
-                  route: const ContactRoute(),
+                  route: Routes.contact,
                 ),
               ],
             ),
@@ -196,7 +196,7 @@ class _QuickRouteButtonState extends State<_QuickRouteButton> {
         duration: PortfolioMotion.medium,
         curve: PortfolioMotion.standard,
         child: OutlinedButton.icon(
-          onPressed: () => context.go(widget.route),
+          onPressed: () => context.flow(widget.route),
           icon: Icon(widget.icon, size: 18),
           label: Text(widget.label),
           style: OutlinedButton.styleFrom(
