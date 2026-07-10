@@ -19,11 +19,17 @@ abstract final class Routes {
   );
 
   static const about = FlowRoute(name: 'about', pathTemplate: '/about');
-  static const contact = FlowRoute(name: 'contact', pathTemplate: '/contact-me');
-  static const projects = FlowRoute(name: 'projects', pathTemplate: '/projects');
+  static const contact = FlowRoute(
+    name: 'contact',
+    pathTemplate: '/contact-me',
+  );
+  static const projects = FlowRoute(
+    name: 'projects',
+    pathTemplate: '/projects',
+  );
   static const packages = FlowRoute(
     name: 'packages',
-    pathTemplate: '/pub-packages',
+    pathTemplate: '/packages',
   );
   static const more = FlowRoute(name: 'more', pathTemplate: '/more');
 
