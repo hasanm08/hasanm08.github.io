@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:hasanm08/UI/Components/portfolio_animations.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -6,13 +7,15 @@ class ContactButton extends StatefulWidget {
   const ContactButton({
     super.key,
     this.color,
-    required this.icon,
+    this.icon,
+    this.logo,
     required this.link,
     required this.title,
     this.onPressed,
-  });
+  }) : assert(icon != null || logo != null);
 
-  final IconData icon;
+  final IconData? icon;
+  final String? logo;
   final String title;
   final String link;
   final Color? color;
@@ -66,9 +69,9 @@ class ContactButtonState extends State<ContactButton> {
             style: TextButton.styleFrom(
               tapTargetSize: MaterialTapTargetSize.shrinkWrap,
               animationDuration: PortfolioMotion.fast,
-              textStyle: Theme.of(context).textTheme.bodyLarge?.copyWith(
-                    fontWeight: FontWeight.w700,
-                  ),
+              textStyle: Theme.of(
+                context,
+              ).textTheme.bodyLarge?.copyWith(fontWeight: FontWeight.w700),
               padding: const EdgeInsets.all(8),
               foregroundColor: _hovering ? scheme.onPrimary : accent,
               shape: const RoundedRectangleBorder(
@@ -84,20 +87,15 @@ class ContactButtonState extends State<ContactButton> {
                   turns: _hovering ? 0.04 : 0,
                   duration: PortfolioMotion.medium,
                   curve: PortfolioMotion.standard,
-                  child: Icon(
-                    widget.icon,
-                    color: _hovering
-                        ? scheme.onPrimary
-                        : scheme.onSurface.withValues(alpha: 0.92),
-                  ),
+                  child: _buildLeading(),
                 ),
                 Text(
                   widget.title,
                   style: Theme.of(context).textTheme.bodySmall?.copyWith(
-                        color: _hovering
-                            ? scheme.onPrimary
-                            : scheme.onSurface.withValues(alpha: 0.92),
-                      ),
+                    color: _hovering
+                        ? scheme.onPrimary
+                        : scheme.onSurface.withValues(alpha: 0.92),
+                  ),
                 ),
               ],
             ),
@@ -105,6 +103,43 @@ class ContactButtonState extends State<ContactButton> {
         ),
       ),
     );
+  }
+
+  Widget _buildLeading() {
+    const size = 22.0;
+
+    if (widget.logo != null) {
+      return _buildLogoImage(widget.logo!, size);
+    }
+
+    final scheme = Theme.of(context).colorScheme;
+
+    return Icon(
+      widget.icon,
+      size: size,
+      color: _hovering
+          ? scheme.onPrimary
+          : scheme.onSurface.withValues(alpha: 0.92),
+    );
+  }
+
+  Widget _buildLogoImage(String logo, double size) {
+    if (logo.endsWith('.svg')) {
+      return SvgPicture.asset(
+        logo,
+        width: size,
+        height: size,
+        fit: BoxFit.contain,
+        colorFilter: ColorFilter.mode(
+          _hovering
+              ? Theme.of(context).colorScheme.onPrimary
+              : Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.92),
+          BlendMode.srcIn,
+        ),
+      );
+    }
+
+    return Image.asset(logo, width: size, height: size, fit: BoxFit.contain);
   }
 
   Future<void> _showUrl(String url) async {

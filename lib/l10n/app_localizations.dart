@@ -110,6 +110,7 @@ class AppLocalizations {
   String get contactCall => isFa ? 'تماس تلفنی' : 'Make a call';
   String get contactGmail => 'Gmail';
   String get contactInstagram => isFa ? 'اینستاگرام' : 'Instagram';
+  String get contactYoutube => isFa ? 'یوتیوب' : 'YouTube';
   String get contactTelegram => isFa ? 'تلگرام' : 'Telegram';
   String get contactTwitter => 'Twitter';
   String get contactWhatsapp => 'WhatsApp';
