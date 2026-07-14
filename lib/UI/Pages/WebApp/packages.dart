@@ -96,6 +96,87 @@ class _PackageLink {
 
 final List<_Package> _packages = [
   _Package(
+    name: 'flow_widget',
+    icon: Icons.widgets_outlined,
+    tagline: LocalizedText(
+      'One clean Dart API for home-screen widgets — every platform, no string soup.',
+      'یک API تمیز دارت برای ویجت‌های صفحهٔ اصلی — همهٔ پلتفرم‌ها، بدون رشته‌بازی.',
+    ),
+    description: LocalizedText(
+      'Home-screen widgets have always been painful in Flutter — different APIs per '
+          'platform, stringly-typed storage, and glue code that doesn\'t scale. '
+          'flow_widget is a federated plugin that gives you one typed API across '
+          'Android (App Widgets + Glance), iOS & macOS (WidgetKit, Live Activities, '
+          'Dynamic Island), Windows & Linux, and Wear OS Tiles & watchOS Complications. '
+          'No reflection. Built for production apps.',
+      'ویجت‌های صفحهٔ اصلی در فلاتر همیشه دردسرساز بوده — API متفاوت در هر پلتفرم، '
+          'ذخیره‌سازی رشته‌ای و glue code که مقیاس‌پذیر نیست. flow_widget پلاگین '
+          'فدرال است که یک API تایپ‌شده در اندروید (App Widgets + Glance)، iOS و macOS '
+          '(WidgetKit، Live Activities، Dynamic Island)، ویندوز و لینوکس، و Wear OS Tiles '
+          'و watchOS Complications می‌دهد. بدون reflection. برای اپ‌های production.',
+    ),
+    features: const [
+      LocalizedText(
+        'One API — initialize, save typed data, and update widgets by name',
+        'یک API — initialize، ذخیرهٔ دادهٔ تایپ‌شده و به‌روزرسانی ویجت با نام',
+      ),
+      LocalizedText(
+        'Cross-platform — Android, iOS, macOS, Windows, Linux, Wear OS, watchOS',
+        'چندپلتفرمه — اندروید، iOS، macOS، ویندوز، لینوکس، Wear OS، watchOS',
+      ),
+      LocalizedText(
+        'Typed models — @FlowWidgetModel code generation, no magic strings',
+        'مدل‌های تایپ‌شده — code generation با @FlowWidgetModel، بدون رشتهٔ جادویی',
+      ),
+      LocalizedText(
+        'Batched updates — efficient widget refreshes when data changes',
+        'به‌روزرسانی دسته‌ای — refresh کارآمد ویجت وقتی داده عوض می‌شود',
+      ),
+      LocalizedText(
+        'flow_widget_cli — scaffold native boilerplate and run doctor checks',
+        'flow_widget_cli — scaffold کد بومی و اجرای doctor checks',
+      ),
+      LocalizedText(
+        'Live Activities & Dynamic Island — iOS/macOS beyond static widgets',
+        'Live Activities و Dynamic Island — iOS/macOS فراتر از ویجت‌های استاتیک',
+      ),
+    ],
+    technicalDetails: const [
+      LocalizedText(
+        'FlowWidget.initialize(), saveData(), update() — simple, explicit entry points',
+        'FlowWidget.initialize()، saveData()، update() — نقطه‌های ورود ساده و صریح',
+      ),
+      LocalizedText(
+        'Full docs, example app, and CI — ready to ship, not a weekend prototype',
+        'مستندات کامل، اپ نمونه و CI — آمادهٔ production، نه پروتوتایپ آخر هفته',
+      ),
+    ],
+    tags: [
+      'Flutter',
+      'Dart',
+      'Open Source',
+      'WidgetKit',
+      'Android',
+      'iOS',
+    ],
+    links: [
+      _PackageLink(
+        label: 'pub.dev',
+        url: 'https://pub.dev/packages/flow_widget',
+        icon: Icons.widgets_outlined,
+      ),
+      _PackageLink(
+        label: 'Source',
+        url: 'https://github.com/hasanm08/flow_widget',
+        icon: Icons.code,
+      ),
+    ],
+    license: LocalizedText(
+      'Open source. Star the repo if it saves you a weekend — feedback and contributions welcome.',
+      'متن‌باز. اگر یک آخر هفته نجاتتان داد ستاره بدهید — بازخورد و مشارکت خوش‌آمد است.',
+    ),
+  ),
+  _Package(
     name: 'flow_routing',
     icon: Icons.alt_route,
     tagline: LocalizedText(
