@@ -259,6 +259,115 @@ final List<_Project> _projects = [
       ),
     ],
   ),
+  _Project(
+    name: 'HabitForge',
+    description: LocalizedText(
+      'An AI-powered habit tracking platform built with Flutter using scalable '
+          'feature-based architecture and modern software engineering practices. '
+          'Implements habit scheduling, recurring tasks, progress analytics, streak '
+          'tracking, notifications, and home screen widgets with a strong focus on '
+          'performance, maintainability, and user experience. Designed for future '
+          'SaaS expansion with offline-first capabilities, extensible state '
+          'management, and reusable UI components.',
+      'پلتفرم ردیابی عادت مبتنی بر هوش مصنوعی با فلاتر و معماری مقیاس‌پذیر '
+          'feature-based. شامل زمان‌بندی عادت، کارهای تکراری، تحلیل پیشرفت، '
+          'ردیابی streak، اعلان‌ها و ویجت‌های صفحهٔ اصلی با تمرکز بر عملکرد، '
+          'نگهداری‌پذیری و تجربهٔ کاربری. طراحی‌شده برای توسعهٔ آیندهٔ SaaS با '
+          'قابلیت offline-first، مدیریت state قابل گسترش و کامپوننت‌های UI قابل '
+          'استفادهٔ مجدد.',
+    ),
+    highlights: const [
+      LocalizedText(
+        'Designed a scalable feature-based architecture following Clean '
+            'Architecture principles.',
+        'طراحی معماری مقیاس‌پذیر feature-based بر اساس اصول Clean Architecture.',
+      ),
+      LocalizedText(
+        'Built reusable UI components and modular business logic.',
+        'ساخت کامپوننت‌های UI قابل استفادهٔ مجدد و منطق کسب‌وکار ماژولار.',
+      ),
+      LocalizedText(
+        'Implemented habit scheduling, reminders, streaks, and analytics.',
+        'پیاده‌سازی زمان‌بندی عادت، یادآورها، streakها و تحلیل‌ها.',
+      ),
+      LocalizedText(
+        'Optimized application performance and smooth animations.',
+        'بهینه‌سازی عملکرد اپلیکیشن و انیمیشن‌های روان.',
+      ),
+      LocalizedText(
+        'Developed a responsive cross-platform Flutter app for Android, iOS, '
+            'and Web readiness.',
+        'توسعهٔ اپلیکیشن فلاتر واکنش‌گرا برای اندروید، iOS و آمادگی وب.',
+      ),
+      LocalizedText(
+        'Integrated local persistence, state management, and extensible domain '
+            'models for future cloud synchronization.',
+        'یکپارچه‌سازی persistence محلی، مدیریت state و مدل‌های دامنهٔ قابل '
+            'گسترش برای همگام‌سازی ابری آینده.',
+      ),
+    ],
+    skills: ['Flutter', 'Dart', 'Clean Architecture'],
+    tags: [
+      'Flutter',
+      'Dart',
+      'Clean Architecture',
+      'Habits',
+      'Cross-Platform',
+      'Unpublished',
+    ],
+  ),
+  _Project(
+    name: 'Flow Ledger',
+    description: LocalizedText(
+      'A lightweight accounting solution for individuals and small businesses '
+          'that simplifies financial management through invoice generation, '
+          'inventory tracking, expense and income management, and business '
+          'analytics. Built with a modular Flutter architecture emphasizing '
+          'maintainability, scalability, and intuitive user experience.',
+      'راه‌حل حسابداری سبک‌وزن برای افراد و کسب‌وکارهای کوچک که مدیریت مالی را '
+          'با صدور فاکتور، ردیابی موجودی، مدیریت هزینه و درآمد و تحلیل کسب‌وکار '
+          'ساده می‌کند. با معماری ماژولار فلاتر و تمرکز بر نگهداری‌پذیری، '
+          'مقیاس‌پذیری و تجربهٔ کاربری شهودی ساخته شده است.',
+    ),
+    highlights: const [
+      LocalizedText(
+        'Developed invoice generation and customer management modules.',
+        'توسعهٔ ماژول‌های صدور فاکتور و مدیریت مشتری.',
+      ),
+      LocalizedText(
+        'Implemented inventory and stock tracking.',
+        'پیاده‌سازی ردیابی موجودی و انبار.',
+      ),
+      LocalizedText(
+        'Built expense, income, and cash flow management features.',
+        'ساخت قابلیت‌های مدیریت هزینه، درآمد و جریان نقدی.',
+      ),
+      LocalizedText(
+        'Created interactive dashboards and financial reports with charts.',
+        'ایجاد داشبوردهای تعاملی و گزارش‌های مالی با نمودار.',
+      ),
+      LocalizedText(
+        'Designed reusable architecture supporting future cloud synchronization '
+            'and multi-business support.',
+        'طراحی معماری قابل استفادهٔ مجدد برای همگام‌سازی ابری و پشتیبانی چند '
+            'کسب‌وکار در آینده.',
+      ),
+      LocalizedText(
+        'Focused on performance, clean code practices, and responsive UI across '
+            'mobile platforms.',
+        'تمرکز بر عملکرد، کد تمیز و رابط کاربری واکنش‌گرا در پلتفرم‌های موبایل.',
+      ),
+    ],
+    skills: ['Flutter', 'Inventory Management', 'Invoicing', 'Analytics'],
+    tags: [
+      'Flutter',
+      'Accounting',
+      'Inventory',
+      'Invoicing',
+      'Analytics',
+      'Unpublished',
+    ],
+  ),
 ];
 
 class _ProjectCard extends StatefulWidget {
