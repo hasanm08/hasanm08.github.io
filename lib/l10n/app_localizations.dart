@@ -14,10 +14,7 @@ class AppLocalizations {
   static const LocalizationsDelegate<AppLocalizations> delegate =
       AppLocalizationsDelegate();
 
-  static const List<Locale> supportedLocales = [
-    Locale('en'),
-    Locale('fa'),
-  ];
+  static const List<Locale> supportedLocales = [Locale('en'), Locale('fa')];
 
   // —— Shell ——
   String get navAbout => isFa ? 'درباره' : 'About';
@@ -125,8 +122,10 @@ class AppLocalizations {
       ? 'میان‌برها، کد منبع و چند لینک مفید برای توسعه‌دهندگان.'
       : 'Jump around the site, open the source, or grab a few dev links.';
   String get moreResume => isFa ? 'رزومه' : 'Resume';
-  String get moreViewCv => isFa ? 'مشاهدهٔ رزومه' : 'View CV';
-  String get moreDownloadCv => isFa ? 'دانلود رزومه' : 'Download CV';
+  String get moreViewCvEn => isFa ? 'مشاهده انگلیسی' : 'View English';
+  String get moreViewCvFa => isFa ? 'مشاهده فارسی' : 'View Farsi';
+  String get moreDownloadCvEn => isFa ? 'رزومه انگلیسی' : 'English CV';
+  String get moreDownloadCvFa => isFa ? 'رزومه فارسی' : 'Farsi CV';
   String get moreJumpTo => isFa ? 'پرش به' : 'Jump to';
   String get moreThisSite => isFa ? 'این وب‌سایت' : 'This site';
   String get moreDevPicks => isFa ? 'پیشنهادهای توسعه' : 'Developer picks';
@@ -145,12 +144,9 @@ class AppLocalizations {
 
   // —— Packages ——
   String get packagesTitle => isFa ? 'پکیج‌ها' : 'Packages';
-  String get packagesWhatItDoes =>
-      isFa ? 'قابلیت‌ها' : 'What it does';
-  String get packagesUnderTheHood =>
-      isFa ? 'زیرساخت' : 'Under the hood';
-  String get associatedWithPrefix =>
-      isFa ? 'همکاری با' : 'Associated with';
+  String get packagesWhatItDoes => isFa ? 'قابلیت‌ها' : 'What it does';
+  String get packagesUnderTheHood => isFa ? 'زیرساخت' : 'Under the hood';
+  String get associatedWithPrefix => isFa ? 'همکاری با' : 'Associated with';
   String get skillsPrefix => isFa ? 'مهارت‌ها' : 'Skills';
 
   String linkLabel(String en) {
@@ -176,9 +172,9 @@ class AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {
   const AppLocalizationsDelegate();
 
   @override
-  bool isSupported(Locale locale) =>
-      AppLocalizations.supportedLocales
-          .any((l) => l.languageCode == locale.languageCode);
+  bool isSupported(Locale locale) => AppLocalizations.supportedLocales.any(
+    (l) => l.languageCode == locale.languageCode,
+  );
 
   @override
   Future<AppLocalizations> load(Locale locale) async {

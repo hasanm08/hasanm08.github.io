@@ -12,6 +12,7 @@ class ContactButton extends StatefulWidget {
     required this.link,
     required this.title,
     this.onPressed,
+    this.width = 150,
   }) : assert(icon != null || logo != null);
 
   final IconData? icon;
@@ -20,6 +21,7 @@ class ContactButton extends StatefulWidget {
   final String link;
   final Color? color;
   final VoidCallback? onPressed;
+  final double width;
 
   @override
   ContactButtonState createState() => ContactButtonState();
@@ -50,7 +52,7 @@ class ContactButtonState extends State<ContactButton> {
           curve: PortfolioMotion.standard,
           margin: const EdgeInsets.all(8),
           height: 55,
-          width: 150,
+          width: widget.width,
           decoration: BoxDecoration(
             color: _hovering ? accent : Colors.transparent,
             borderRadius: const BorderRadius.all(Radius.circular(30)),
@@ -89,12 +91,16 @@ class ContactButtonState extends State<ContactButton> {
                   curve: PortfolioMotion.standard,
                   child: _buildLeading(),
                 ),
-                Text(
-                  widget.title,
-                  style: Theme.of(context).textTheme.bodySmall?.copyWith(
-                    color: _hovering
-                        ? scheme.onPrimary
-                        : scheme.onSurface.withValues(alpha: 0.92),
+                Flexible(
+                  child: Text(
+                    widget.title,
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
+                    style: Theme.of(context).textTheme.bodySmall?.copyWith(
+                      color: _hovering
+                          ? scheme.onPrimary
+                          : scheme.onSurface.withValues(alpha: 0.92),
+                    ),
                   ),
                 ),
               ],

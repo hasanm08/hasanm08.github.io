@@ -307,13 +307,13 @@ final List<_Project> _projects = [
       ),
     ],
     skills: ['Flutter', 'Dart', 'Clean Architecture'],
-    tags: [
-      'Flutter',
-      'Dart',
-      'Clean Architecture',
-      'Habits',
-      'Cross-Platform',
-      'Unpublished',
+    tags: ['Flutter', 'Dart', 'Clean Architecture', 'Habits', 'Cross-Platform'],
+    links: [
+      _ProjectLink(
+        label: 'Cafe Bazaar',
+        url: 'https://cafebazaar.ir/app/io.hasanm08.habit_forge',
+        icon: Icons.android,
+      ),
     ],
   ),
   _Project(
@@ -359,13 +359,13 @@ final List<_Project> _projects = [
       ),
     ],
     skills: ['Flutter', 'Inventory Management', 'Invoicing', 'Analytics'],
-    tags: [
-      'Flutter',
-      'Accounting',
-      'Inventory',
-      'Invoicing',
-      'Analytics',
-      'Unpublished',
+    tags: ['Flutter', 'Accounting', 'Inventory', 'Invoicing', 'Analytics'],
+    links: [
+      _ProjectLink(
+        label: 'Cafe Bazaar',
+        url: 'https://cafebazaar.ir/app/io.hasanm08.flow_ledger',
+        icon: Icons.android,
+      ),
     ],
   ),
 ];

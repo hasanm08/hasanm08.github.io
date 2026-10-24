@@ -1,4 +1,18 @@
-const cvRelativePath = '/files/Amirhassan_Amirmahani_CV_July2026.pdf';
-const cvFileName = 'Amirhassan_Amirmahani_CV_July2026.pdf';
+class CvFile {
+  const CvFile({required this.relativePath, required this.fileName});
 
-String cvAbsoluteUrl() => Uri.base.resolve(cvRelativePath).toString();
+  final String relativePath;
+  final String fileName;
+
+  String absoluteUrl() => Uri.base.resolve(relativePath).toString();
+}
+
+const englishCv = CvFile(
+  relativePath: '/files/Amirhassan_Amirmahani_CV_English.pdf',
+  fileName: 'Amirhassan_Amirmahani_CV_English.pdf',
+);
+
+const farsiCv = CvFile(
+  relativePath: '/files/Amirhassan_Amirmahani_CV_Farsi.pdf',
+  fileName: 'Amirhassan_Amirmahani_CV_Farsi.pdf',
+);

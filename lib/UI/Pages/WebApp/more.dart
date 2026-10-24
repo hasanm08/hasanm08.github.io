@@ -17,7 +17,6 @@ class More extends StatelessWidget {
     final theme = Theme.of(context);
     final scheme = theme.colorScheme;
     final l10n = AppLocalizations.of(context);
-    final cvUrl = cvAbsoluteUrl();
     return SingleChildScrollView(
       physics: const BouncingScrollPhysics(),
       child: Padding(
@@ -79,18 +78,35 @@ class More extends StatelessWidget {
               children: [
                 ContactButton(
                   icon: Icons.description,
-                  link: cvUrl,
-                  title: l10n.moreViewCv,
-                  onPressed: () => launchUrl(
-                    Uri.parse(cvUrl),
-                    mode: LaunchMode.externalApplication,
+                  link: englishCv.absoluteUrl(),
+                  title: l10n.moreViewCvEn,
+                  width: 168,
+                  onPressed: () => _openCv(englishCv),
+                ),
+                ContactButton(
+                  icon: Icons.description,
+                  link: farsiCv.absoluteUrl(),
+                  title: l10n.moreViewCvFa,
+                  width: 168,
+                  onPressed: () => _openCv(farsiCv),
+                ),
+                ContactButton(
+                  icon: Icons.download,
+                  link: englishCv.absoluteUrl(),
+                  title: l10n.moreDownloadCvEn,
+                  width: 168,
+                  onPressed: () => downloadCvFile(
+                    englishCv.absoluteUrl(),
+                    englishCv.fileName,
                   ),
                 ),
                 ContactButton(
                   icon: Icons.download,
-                  link: cvUrl,
-                  title: l10n.moreDownloadCv,
-                  onPressed: () => downloadCvFile(cvUrl, cvFileName),
+                  link: farsiCv.absoluteUrl(),
+                  title: l10n.moreDownloadCvFa,
+                  width: 168,
+                  onPressed: () =>
+                      downloadCvFile(farsiCv.absoluteUrl(), farsiCv.fileName),
                 ),
               ],
             ),
@@ -151,6 +167,13 @@ class More extends StatelessWidget {
           ],
         ),
       ),
+    );
+  }
+
+  static Future<void> _openCv(CvFile cv) {
+    return launchUrl(
+      Uri.parse(cv.absoluteUrl()),
+      mode: LaunchMode.externalApplication,
     );
   }
 

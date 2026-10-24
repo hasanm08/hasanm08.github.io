@@ -1,7 +1,7 @@
 name: hasanm08
 description: My portfolio website.
 publish_to: none
-version: 2.1.0
+version: 2.1.1
 
 environment:
   sdk: ">=3.12.2 <4.0.0"
